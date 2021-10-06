@@ -2398,9 +2398,9 @@
     "pretty-format" "^26.6.2"
 
 "@testing-library/dom@>=7.21.4":
-  "integrity" "sha512-nMqxP8qPHgYAiIPMVb6zko5DInPJ/LdILgrkWB5HBJhBCIU5avso8pU9IafnXVGLRq+LDtbvo0LuVbjEo27BgQ=="
-  "resolved" "https://registry.npmjs.org/@testing-library/dom/-/dom-8.7.1.tgz"
-  "version" "8.7.1"
+  "integrity" "sha512-2zN0Zv9dMnaMAd4c/1E1ZChu4QrICyvWtkUvHFQBPhS1oG3VYGcM7SLGLYdda7187ILRXzIUOvOsbXQm4EASjA=="
+  "resolved" "https://registry.npmjs.org/@testing-library/dom/-/dom-8.7.2.tgz"
+  "version" "8.7.2"
   dependencies:
     "@babel/code-frame" "^7.10.4"
     "@babel/runtime" "^7.12.5"
@@ -7130,11 +7130,6 @@
   "version" "1.2.1"
   dependencies:
     "ms" "^2.0.0"
-
-"i@^0.3.7":
-  "integrity" "sha512-FYz4wlXgkQwIPqhzC5TdNMLSE5+GS1IIDJZY/1ZiEPCT2S3COUVZeT5OW4BmW4r5LHLQuOosSwsvnroG9GR59Q=="
-  "resolved" "https://registry.npmjs.org/i/-/i-0.3.7.tgz"
-  "version" "0.3.7"
 
 "iconv-lite@^0.6.2":
   "integrity" "sha512-2y91h5OpQlolefMPmUlivelittSWy0rP+oYVpn6A7GwVHNE8AWzoYOBNmlwks3LobaJxgHCYZAnyNo2GgpNRNQ=="

@@ -1,15 +1,22 @@
-import React from 'react';
 import Sidebar from 'components/Sidebar';
+import Footer from 'components/Footer';
+import JadwalForm from 'components/JadwalForm';
 
-function Jadwal() {
+export default function jadwalMakan() {
     return (
         <>
             <Sidebar />
-            <div className="content p-5 bg-netral100 rounded-xl shadow-xl ml-5 mr-5 md:ml-80 mr-7 bg-olive">
-                    
+            <div className="md:ml-64">
+                <div className="bg-primary500 px-3 md:px-8 h-40" />
+                <div className="px-3 md:px-8 -mt-24">
+                    <div className="container mx-auto max-w-full">
+                        <div className="grid grid-cols-1">
+                            <JadwalForm />
+                        </div>
+                        <Footer />
+                    </div>
+                </div>
             </div>
         </>
     );
 }
-
-export default Jadwal;

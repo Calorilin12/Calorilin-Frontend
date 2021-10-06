@@ -12,15 +12,16 @@ function Login() {
     console.log(localStorage.getItem('name'))
     return (
         <>
+        <div className="bg-white w-full h-screen">
             <div className="box w-8/12 md:w-4/12">   
                 <div className="logo-title space-y-7">
                     <div className="logo">
                         <img className="h-11 w-11" src={Logo} alt="Logo Calorilin"/>
                         <div className="title h-full">
-                            <h1 className="text-darkBlue text-3xl">Calorin</h1>
+                            <h1 className="text-netral500 text-3xl">Calorin</h1>
                         </div>
                     </div>
-                    <h4 className="text-darkBlue lg:text-xl">Login ke dashboard anda</h4>
+                    <h4 className="text-netral500 lg:text-xl">Login ke dashboard anda</h4>
                 </div>
                 <form action="#" className="mt-5">
                     <div className="Email mb-3">
@@ -48,6 +49,7 @@ function Login() {
                     <Link className="link bg-primary500 mt-8 focus:ring focus:ring-green-100 w-full h-10" to="/dashboard">Masuk</Link>
                 </form>
             </div>
+        </div>
         </>
     );
 }
