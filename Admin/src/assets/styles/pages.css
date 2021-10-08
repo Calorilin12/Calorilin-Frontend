@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap');
+
+.box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.content {
+    height: 525px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 25px;
+}
+
+.link{
+    color: white;
+    text-align: center;
+    padding: 6px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+}
+
+.logo-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+.inputField, h6{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+}
+
+label, ul{
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+.title{
+    position: relative;
+    left: 5px;
+    top: 16px;
+}
+
+#toggle {
+    position: absolute;
+    top: 73%;
+    right: 20px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.div1 { grid-area: 1 / 1 / 3 / 3; }
+.div2 { grid-area: 1 / 3 / 3 / 5; }
+.div3 { grid-area: 1 / 5 / 2 / 6; }
+.div4 { grid-area: 2 / 5 / 3 / 6; }
+.div5 { grid-area: 3 / 1 / 6 / 6; } 
+
+.divContent {
+    margin-top: 22px;
+}
+
+.ikon {
+    margin-top: 25px;
+    margin-left: 20px;
+}
+
+.tabel{
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 180px;
+}
+
+.logout {
+    display: inline-block;
+}
