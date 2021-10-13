@@ -10,14 +10,6 @@ export default function JadwalForm() {
             <CardHeader color="green" contentPosition="none">
                 <div className="w-full flex items-center justify-between">
                     <h2 className="text-white text-2xl">Jadwal Makan Pengguna</h2>
-                    <Button
-                        color="transparent"
-                        buttonType="link"
-                        size="lg"
-                        style={{ padding: 0 }}
-                    >
-                        See More
-                    </Button>
                 </div>
             </CardHeader>
             <CardBody>

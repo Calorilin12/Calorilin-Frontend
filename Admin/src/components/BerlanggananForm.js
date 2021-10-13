@@ -10,14 +10,6 @@ export default function BerlanggananForm() {
             <CardHeader color="green" contentPosition="none">
                 <div className="w-full flex items-center justify-between">
                     <h2 className="text-white text-2xl">Transaksi Berlangganan</h2>
-                    <Button
-                        color="transparent"
-                        buttonType="link"
-                        size="lg"
-                        style={{ padding: 0 }}
-                    >
-                        See More
-                    </Button>
                 </div>
             </CardHeader>
             <CardBody>
@@ -57,7 +49,7 @@ export default function BerlanggananForm() {
                                     22/2/2021
                                 </td>
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    -
+                                    <input className="items-center" type="checkbox" />
                                 </td>
                             </tr>
                             <tr>
@@ -74,7 +66,7 @@ export default function BerlanggananForm() {
                                     22/2/2021
                                 </td>
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    -
+                                    <input className="items-center" type="checkbox" />
                                 </td>
                             </tr>
                             <tr>
@@ -91,7 +83,7 @@ export default function BerlanggananForm() {
                                     22/2/2021
                                 </td>
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    -
+                                    <input className="items-center" type="checkbox" />
                                 </td>
                             </tr>
                             <tr>
@@ -108,7 +100,7 @@ export default function BerlanggananForm() {
                                     22/2/2021
                                 </td>
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    -
+                                    <input className="items-center" type="checkbox" />
                                 </td>
                             </tr>
                             <tr>
@@ -125,7 +117,7 @@ export default function BerlanggananForm() {
                                     22/2/2021
                                 </td>
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    -
+                                    <input className="items-center" type="checkbox" />
                                 </td>
                             </tr>
                         </tbody>

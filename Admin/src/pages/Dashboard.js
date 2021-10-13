@@ -14,7 +14,7 @@ export default function Dashboard() {
                         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4">
                                 <StatusCard
                                     color="pink"
-                                    icon="trending_up"
+                                    icon="groups"
                                     title="Pengguna"
                                     amount="2.350"
                                     percentage="15"
@@ -24,9 +24,9 @@ export default function Dashboard() {
                                 />
                                 <StatusCard
                                     color="orange"
-                                    icon="groups"
+                                    icon="paid"
                                     title="Pendapatan"
-                                    amount="$600.000"
+                                    amount="600.000"
                                     percentage="250.000"
                                     percentageIcon="arrow_upward"
                                     percentageColor="green"
@@ -34,7 +34,7 @@ export default function Dashboard() {
                                 />
                                 <StatusCard
                                     color="purple"
-                                    icon="paid"
+                                    icon="database"
                                     title="Data Kalori"
                                     amount="1.100"
                                     percentage="35"

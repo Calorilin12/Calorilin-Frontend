@@ -44,6 +44,7 @@
 .inputField, h6{
     font-family: 'Poppins', sans-serif;
     font-weight: 200;
+    border-radius: 8px;
 }
 
 label, ul{
@@ -63,7 +64,7 @@ h1 {
 
 #toggle {
     position: absolute;
-    top: 73%;
+    top: 74%;
     right: 20px;
     transform: translateY(-50%);
     cursor: pointer;

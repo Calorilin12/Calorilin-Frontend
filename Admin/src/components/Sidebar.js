@@ -32,7 +32,7 @@ export default function Sidebar() {
                                     className="flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg"
                                     activeClassName="bg-primary500 text-white shadow-md"
                                 >
-                                    <Icon name="dashboard" size="2xl" />
+                                    <Icon name="home" size="2xl" />
                                     Dashboard
                                 </NavLink>
                             </li>
@@ -42,7 +42,7 @@ export default function Sidebar() {
                                     className="flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg"
                                     activeClassName="bg-primary500 text-white shadow-md"
                                 >
-                                    <Icon name="settings" size="2xl" />
+                                    <Icon name="groups" size="2xl"/>
                                     Data Pengguna
                                 </NavLink>
                             </li>

@@ -9,17 +9,10 @@ export default function KaloriForm() {
         <Card>
             <CardHeader color="green" contentPosition="none">
                 <div className="w-full flex items-center justify-between">
-                    <h2 className="text-white text-2xl">Jadwal Makan Pengguna</h2>
-                    <Button
-                        color="transparent"
-                        buttonType="link"
-                        size="lg"
-                        style={{ padding: 0 }}
-                    >
-                        See More
-                    </Button>
+                    <h2 className="text-white text-2xl">Kalori Bahan Makanan</h2>
                 </div>
             </CardHeader>
+            <Button className="">Tambah data</Button>
             <CardBody>
                 <div className="overflow-x-auto">
                     <table className="items-center w-full bg-transparent border-collapse">
