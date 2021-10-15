@@ -1,15 +1,37 @@
 import React, { useState } from 'react';
+import {Link, useHistory} from "react-router-dom";
+import { login } from "utils/auth";
 import '../assets/styles/pages.css';
 import Logo from '../assets/img/logo.png'
-import {Link} from "react-router-dom";
 import showIcon from '../assets/img/eye.png';
 import showOffIcon from '../assets/img/eye_invisible.png';
 
 function Login() {
+    const [email, setEmail] = useState("");
+    const [error, setError] = useState(false);
+    const history = useHistory();
+
     const [pwd, setPwd] = useState('');
     const [isRevealPwd, setIsRevealPwd] = useState(false);
-    localStorage.setItem('name', 'Bob');
-    console.log(localStorage.getItem('name'))
+
+    React.useEffect(() => {
+        if (email || pwd) {
+        setError(false);
+        }
+        return () => {};
+    }, [email, pwd]);
+
+    const _onSubmit = () => {
+        if (email === "calorilin@gmail.com" && pwd === "12345") {
+        login({
+            email: email,
+        });
+        history.push("/dashboard");
+        } else {
+            setError(true);
+        }
+    };
+
     return (
         <>
         <div className="bg-white w-full h-screen">
@@ -24,7 +46,8 @@ function Login() {
                     <div className="Email mb-3">
                         <div className="">
                             <label className="text-secondary500 text-sm">Email Admin</label><br/>
-                            <input type="text" className="inputField p-4 w-full h-10 pl-4 mt-1 text-sm focus:outline-none border border-greyLight focus:border-green" placeholder="Masukkan email anda"/>
+                            <input type="email" className="inputField p-4 w-full h-10 rounded pl-4 mt-1 text-sm focus:outline-none border border-greyLight focus:border-green" placeholder="Masukkan email anda"
+                                value={email} onChange={(e) => setEmail(e.target.value)}/>    
                         </div>
                     </div>
                     <div className="Password">
@@ -35,7 +58,7 @@ function Login() {
                                             placeholder="Masukkan kata sandi" type={isRevealPwd ? "text" : "password"} value={pwd} onChange={e => setPwd(e.target.value)}/>
                                     <div id="toggle">
                                         <img
-                                            title={isRevealPwd ? "Hide password" : "Show password"}
+                                            alt={isRevealPwd ? "Hide password" : "Show password"}
                                             src={isRevealPwd ? showOffIcon : showIcon}
                                             onClick={() => setIsRevealPwd(prevState => !prevState)}
                                         />
@@ -43,8 +66,14 @@ function Login() {
                                 </div>
                         </div>
                     </div>
-                    <Link className="link bg-primary500 mt-8 focus:ring focus:ring-green-100 w-full h-10" to="/dashboard">Masuk</Link>
+                    <Link className="link bg-primary500 mt-8 focus:ring focus:ring-green-100 w-full h-10" onClick={_onSubmit}>Masuk</Link>
                 </form>
+                {error && 
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded relative mt-4" role="alert">
+                            <strong class="font-bold text-sm">Login Gagal! </strong>
+                            <span class="block sm:inline text-sm">Email atau password salah.</span>
+                        </div>
+                }
             </div>
         </div>
         </>

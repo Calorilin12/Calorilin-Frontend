@@ -1,11 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link, useHistory } from 'react-router-dom';
 import AdminNavbar from './AdminNavbar';
+import { logout } from "utils/auth";
 import Icon from '@material-tailwind/react/Icon';
 import Logo from '../assets/img/logo-fix.png'
 
 export default function Sidebar() {
+    const history = useHistory();
+    const _onLogout = () => {
+        logout();
+        history.replace("/");
+    };
     const [showSidebar, setShowSidebar] = useState('-left-64');
     return (
         <>
@@ -80,14 +86,13 @@ export default function Sidebar() {
 
                         <ul className="flex-col min-w-full flex list-none absolute bottom-0">
                             <li className="rounded-lg text-white">
-                                <NavLink
-                                    to="/"
-                                    className="flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg"
-                                    activeClassName="bg-warning500 text-white shadow-md"
+                                <Link
+                                    onClick={_onLogout}
+                                    className="flex bg-warning500 focus:ring focus:ring-red-200 items-center gap-4 text-sm text-white font-light px-4 py-3 rounded-lg"
                                 >
                                     <Icon name="logout" size="2xl" />
                                     Keluar
-                                </NavLink>
+                                </Link>
                             </li>
                         </ul>
                     </div>

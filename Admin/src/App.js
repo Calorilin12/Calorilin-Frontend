@@ -1,28 +1,40 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import Login from 'pages/Login';
-import Dashboard from 'pages/Dashboard';
-import Pengguna from 'pages/Data-Pengguna';
-import Jadwal from 'pages/Jadwal-Makan';
-import Resep from 'pages/Resep-Makanan';
-import Kalori from 'pages/Kalori-Makanan';
+import { Switch, BrowserRouter as Router } from 'react-router-dom';
+import { APP_ROUTE } from "./routes";
+import PrivateRoute from "components/PrivateRoute";
+import PublicRoute from "components/PublicRoute";
 
 // Tailwind CSS Style Sheet
 import 'assets/styles/tailwind.css';
 
 function App() {
     return (
-        <>
+        <Router>
             <Switch>
-                <Route exact path="/" component={Login} />
-                <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/data-pengguna" component={Pengguna} />
-                <Route exact path="/jadwal-makan" component={Jadwal} />
-                <Route exact path="/resep-makanan" component={Resep} />
-                <Route exact path="/kalori-makanan" component={Kalori} />
-                <Redirect from="*" to="/" />
+                {APP_ROUTE.map((value, index) => {
+                    if (value.private) {
+                    return (
+                        <PrivateRoute
+                            key={value.name}
+                            component={value.component}
+                            path={value.path}
+                            exact={value.exact}
+                        />
+                    );
+                    } else {
+                    return (
+                        <PublicRoute
+                            key={value.name}
+                            restricted={value.restricted}
+                            path={value.path}
+                            component={value.component}
+                            exact={value.exact}
+                        />
+                    );
+                    }
+                })}
             </Switch>
-        </>
+        </Router>
     );
 }
 
