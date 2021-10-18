@@ -34,7 +34,7 @@ export default function Dashboard() {
                                 />
                                 <StatusCard
                                     color="purple"
-                                    icon="database"
+                                    icon="folder"
                                     title="Data Kalori"
                                     amount="1.100"
                                     percentage="35"

@@ -28,10 +28,10 @@ export default function Sidebar() {
                         <h1 className="p-2 text-center text-netral500 text-2xl">Calorilin</h1>
                     </div>
                     <div className="flex flex-col">
-                        <hr className="my-4 min-w-full" />
+                        <hr className="my-4 min-w-full mb-4" />
 
                         <ul className="flex-col min-w-full flex list-none">
-                            <li className="rounded-lg mb-4">
+                            <li className="rounded-lg mb-2">
                                 <NavLink
                                     to="/dashboard"
                                     exact

@@ -23,10 +23,16 @@ function Login() {
 
     const _onSubmit = () => {
         if (email === "calorilin@gmail.com" && pwd === "12345") {
-        login({
-            email: email,
-        });
-        history.push("/dashboard");
+            /**const data = {
+                emailAdmin: email,
+                passwordAdmin: pwd
+            };
+            console.log(data);
+            */
+            login({
+                email: email,
+            });
+            history.push("/dashboard");
         } else {
             setError(true);
         }
