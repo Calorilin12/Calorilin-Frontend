@@ -5,7 +5,12 @@ import '../assets/styles/pages.css';
 import Logo from '../assets/img/logo.png'
 import showIcon from '../assets/img/eye.png';
 import showOffIcon from '../assets/img/eye_invisible.png';
+import axios from 'axios';
+//const qs = require("querystring");                              // Jika menggunakan _onSumbit dengan parameter event
+//const api = "https://calorilin.000webhostapp.com/api/login";    // Jika menggunakan _onSumbit dengan parameter event
 
+
+//function Login(props) {       // Jika menggunakan _onSumbit dengan parameter event
 function Login() {
     const [email, setEmail] = useState("");
     const [error, setError] = useState(false);
@@ -30,6 +35,56 @@ function Login() {
         } else {
             setError(true);
         }
+
+    //====================== Submit with API ============================
+    // ############# Cara pertama masih error ############
+    /**const _onSubmit = () => {
+            const data = {
+                email: email,
+                password: pwd
+            };
+            axios.post('https://calorilin.000webhostapp.com/api/login', data).then (
+                res => {
+                    login({
+                        email: email,
+                    });
+                    console.log(res);
+                    props.history.push("/dashboard");
+                }
+            ).catch (
+                err => {
+                    console.log(err);
+                }
+            )
+    */
+
+    // ########## Cara kedua masih error ##############
+        /**
+        const _onSubmit = (event) => {
+        event.preventDefault(event);
+        const requestBody = {
+            email: email,
+            password: pwd,
+        };
+
+        const config = {
+            headers: {
+                Accept: 'application/json',
+            },
+        };
+
+        axios.post(api, qs.stringify(requestBody), config).then((res) =>{
+            if (res.data.meta.code === 200){
+                login({
+                    email: email,
+                });
+                console.log(res);
+                props.history.push("/dashboard");
+            } else{
+                setError(true);
+            }
+        });
+        */
     };
 
     return (
