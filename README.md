@@ -1,6 +1,12 @@
 # Calorilin-Frontend
 Aplikasi Calorilin untuk bagian Frontend
 
+Untuk menjalankan aplikasi Frontend sementara ada dua pilihan yaitu tanpa backend atau dengan backend. Namun menjalankan Frontend with API masih error.
+Jika ingin mencoba dengan API bisa langsung diuncomment code yang telah tersedia dan mengcomment kode yang tidak perlu. Alamat URL backend yang berada di code telah dihosting. 
+
+Link github backend jika diperlukan :
+https://github.com/Calorilin12/Calorilin-Backend.git
+
 # React JS
 React JS adalah sebuah pustaka/library javascript yang bersifat open source untuk membangun User Interface yang dibuat oleh Facebook. React JS hanya mengurusi semua hal yang berkaitan dengan tampilan dan logika di sekitarnya.
 
