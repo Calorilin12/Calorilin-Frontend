@@ -12,6 +12,10 @@ import Pengguna from "pages/Data-Pengguna";
 import Jadwal from "pages/Jadwal-Makan";
 import Kalori from "pages/Kalori-Makanan";
 import Resep from "pages/Resep-Makanan";
+import TambahResep from "pages/Tambah-Resep-Makanan";
+import LihatResep from "pages/Lihat-Resep-Makanan";
+import EditResep from "pages/Edit-Resep-Makanan";
+import LihatJadwal from "pages/Lihat-Jadwal";
 
 export const APP_ROUTE = [
   {
@@ -54,6 +58,34 @@ export const APP_ROUTE = [
     path: "/resep-makanan",
     exact: true,
     component: Resep,
+    private: true,
+  },
+  {
+    name: "Tambah Resep Makanan",
+    path: "/tambah-resep-makanan",
+    exact: true,
+    component: TambahResep,
+    private: true,
+  },
+  {
+    name: "Lihat Resep Makanan",
+    path: "/lihat-resep-makanan",
+    exact: true,
+    component: LihatResep,
+    private: true,
+  },
+  {
+    name: "Edit Resep Makanan",
+    path: "/edit-resep-makanan",
+    exact: true,
+    component: EditResep,
+    private: true,
+  },
+  {
+    name: "Lihat Jadwal",
+    path: "/lihat-jadwal",
+    exact: true,
+    component: LihatJadwal,
     private: true,
   },
 ];

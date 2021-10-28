@@ -1,33 +1,30 @@
 import React, { useState } from 'react';
 import {Link, useHistory} from "react-router-dom";
 import { login } from "utils/auth";
+import { LOGIN } from 'utils/url'
 import '../assets/styles/pages.css';
 import Logo from '../assets/img/logo.png'
 import showIcon from '../assets/img/eye.png';
 import showOffIcon from '../assets/img/eye_invisible.png';
 import axios from 'axios';
-//const qs = require("querystring");                              // Jika menggunakan _onSumbit dengan parameter event
-//const api = "https://calorilin.000webhostapp.com/api/login";    // Jika menggunakan _onSumbit dengan parameter event
 
-
-//function Login(props) {       // Jika menggunakan _onSumbit dengan parameter event
 function Login() {
     const [email, setEmail] = useState("");
     const [error, setError] = useState(false);
     const history = useHistory();
 
-    const [pwd, setPwd] = useState('');
+    const [password, setPassword] = useState('');
     const [isRevealPwd, setIsRevealPwd] = useState(false);
 
     React.useEffect(() => {
-        if (email || pwd) {
+        if (email || password) {
         setError(false);
         }
         return () => {};
-    }, [email, pwd]);
+    }, [email, password]);
 
     const _onSubmit = () => {
-        if (email === "calorilin@gmail.com" && pwd === "12345") {
+        if (email === "calorilin@gmail.com" && password === "12345") {
             login({
                 email: email,
             });
@@ -35,55 +32,18 @@ function Login() {
         } else {
             setError(true);
         }
-
-    //====================== Submit with API ============================
-    // ############# Cara pertama masih error ############
-    /**const _onSubmit = () => {
-            const data = {
+        /**axios
+            .post(LOGIN, {
                 email: email,
-                password: pwd
-            };
-            axios.post('https://calorilin.000webhostapp.com/api/login', data).then (
-                res => {
-                    login({
-                        email: email,
-                    });
-                    console.log(res);
-                    props.history.push("/dashboard");
-                }
-            ).catch (
-                err => {
-                    console.log(err);
-                }
-            )
-    */
-
-    // ########## Cara kedua masih error ##############
-        /**
-        const _onSubmit = (event) => {
-        event.preventDefault(event);
-        const requestBody = {
-            email: email,
-            password: pwd,
-        };
-
-        const config = {
-            headers: {
-                Accept: 'application/json',
-            },
-        };
-
-        axios.post(api, qs.stringify(requestBody), config).then((res) =>{
-            if (res.data.meta.code === 200){
-                login({
-                    email: email,
-                });
+                password: password
+            })
+            .then((res) => {
                 console.log(res);
-                props.history.push("/dashboard");
-            } else{
-                setError(true);
-            }
-        });
+                login(res.data.token);
+                history.push("/dashboard");
+            }).catch((err) => {
+                console.log(err);
+            });
         */
     };
 
@@ -109,8 +69,8 @@ function Login() {
                         <div className="">
                             <label className="text-secondary500 text-sm">Kata Sandi Admin</label><br/>
                                 <div className="inputBox">
-                                    <input className="inputField p-4 w-full h-10 pl-4 mt-1 text-sm focus:outline-none border border-greyLight focus:border-green" name="pwd" 
-                                            placeholder="Masukkan kata sandi" type={isRevealPwd ? "text" : "password"} value={pwd} onChange={e => setPwd(e.target.value)}/>
+                                    <input className="inputField p-4 w-full h-10 pl-4 mt-1 text-sm focus:outline-none border border-greyLight focus:border-green" name="password" 
+                                            placeholder="Masukkan kata sandi" type={isRevealPwd ? "text" : "password"} value={password} onChange={e => setPassword(e.target.value)}/>
                                     <div id="toggle">
                                         <img
                                             alt={isRevealPwd ? "Hide password" : "Show password"}

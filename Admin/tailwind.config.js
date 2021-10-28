@@ -6,6 +6,7 @@ module.exports = {
             'white': '#FFFFFF',
             'black': '#000000',
             'primary100': '#D4FAD5',
+            'primary300': '#7BE694',
             'primary500': '#27AE61',
             'secondary100': '#F8F8F8',
             'secondary300': '#DADADA',
@@ -13,6 +14,7 @@ module.exports = {
             'netral100': '#E3F0F4',
             'success300': '#7BEA83',
             'warning500': '#E23647',
+            'info500': '#1367EF',
         }),
         borderColor: theme => ({
             DEFAULT: theme('colors.red.400', 'currentColor'),
