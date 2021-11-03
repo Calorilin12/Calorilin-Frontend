@@ -16,6 +16,8 @@ import TambahResep from "pages/Tambah-Resep-Makanan";
 import LihatResep from "pages/Lihat-Resep-Makanan";
 import EditResep from "pages/Edit-Resep-Makanan";
 import LihatJadwal from "pages/Lihat-Jadwal";
+import LihatPengguna from "pages/Lihat-Pengguna";
+import LihatKalori from "pages/Lihat-Kalori";
 
 export const APP_ROUTE = [
   {
@@ -86,6 +88,20 @@ export const APP_ROUTE = [
     path: "/lihat-jadwal",
     exact: true,
     component: LihatJadwal,
+    private: true,
+  },
+  {
+    name: "Lihat Pengguna",
+    path: "/lihat-pengguna",
+    exact: true,
+    component: LihatPengguna,
+    private: true,
+  },
+  {
+    name: "Lihat Kalori",
+    path: "/lihat-kalori",
+    exact: true,
+    component: LihatKalori,
     private: true,
   },
 ];

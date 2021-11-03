@@ -1,15 +1,14 @@
 import React , {useState} from 'react';
+import { Link } from 'react-router-dom';
 import Card from '@material-tailwind/react/Card';
 import CardHeader from '@material-tailwind/react/CardHeader';
 import CardBody from '@material-tailwind/react/CardBody';
 import View from '../assets/img/view.png';
 import Delete from '../assets/img/delete.png';
 import ModalDelete from './ModalPenggunaDelete';
-import ModalView from './ModalPenggunaView';
 
 export default function PenggunaForm() {
     const [showModalDelete, setShowModalDelete] = useState(false);
-    const [showModalView, setShowModalView] = useState(false);
     return (
         <>
             <Card>
@@ -55,91 +54,11 @@ export default function PenggunaForm() {
                                         22/2/2021
                                     </td>
                                     <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        <div className="space-x-1 sm:space-x-4">
-                                            <button className="" onClick={() => setShowModalView(true)}><img src={View} alt="Tombol Lihat" /></button>
+                                        <div className="flex flex-col space-y-2 lg:space-x-4 lg:flex-row lg:items-end">
+                                            <Link className="" to="/lihat-pengguna"><img src={View} alt="Tombol Lihat"/></Link>
                                             <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
                                         </div>
                                     </td> 
-                                </tr>
-                                <tr>
-                                    <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        001
-                                    </th>
-                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        Stefanus Irgy Hananto
-                                    </td>
-                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        stefanusirgy2202@gmail.com
-                                    </td>
-                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        22/2/2021
-                                    </td>
-                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        <div className="space-x-1 sm:space-x-4">
-                                            <button className="" onClick={() => setShowModalView(true)}><img src={View} alt="Tombol Lihat" /></button>
-                                            <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        001
-                                    </th>
-                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        Stefanus Irgy Hananto
-                                    </td>
-                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        stefanusirgy2202@gmail.com
-                                    </td>
-                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        22/2/2021
-                                    </td>
-                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        <div className="space-x-1 sm:space-x-4">
-                                            <button className="" onClick={() => setShowModalView(true)}><img src={View} alt="Tombol Lihat" /></button>
-                                            <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        001
-                                    </th>
-                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        Stefanus Irgy Hananto
-                                    </td>
-                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        stefanusirgy2202@gmail.com
-                                    </td>
-                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        22/2/2021
-                                    </td>
-                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        <div className="space-x-1 sm:space-x-4">
-                                            <button className="" onClick={() => setShowModalView(true)}><img src={View} alt="Tombol Lihat" /></button>
-                                            <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        001
-                                    </th>
-                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        Stefanus Irgy Hananto
-                                    </td>
-                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        stefanusirgy2202@gmail.com
-                                    </td>
-                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        22/2/2021
-                                    </td>
-                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        <div className="space-x-1 sm:space-x-4">
-                                            <button className="" onClick={() => setShowModalView(true)}><img src={View} alt="Tombol Lihat" /></button>
-                                            <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
-                                        </div>
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -147,7 +66,6 @@ export default function PenggunaForm() {
                 </CardBody>
             </Card>
             {showModalDelete && <ModalDelete closeModalDelete={setShowModalDelete}/>}
-            {showModalView && <ModalView closeModalView={setShowModalView}/>}
         </>
     );
 }
