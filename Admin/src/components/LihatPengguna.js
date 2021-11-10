@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import Gambar from '../assets/img/team-1-800x800.jpg';
+import { USERS } from 'utils/url';
+import { getToken } from 'utils/auth'
+import axios from 'axios';
 
 function LihatPengguna() {
+    const config = {
+        headers: { Authorization: `Bearer ${getToken()}` }
+    };
+    useEffect(() => {
+        axios
+            .get(USERS, config)
+            .then((res) => {
+                console.log(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            }); 
+    }, []);
     return (
         <>
         <div className="bg-white shadow-lg max-w-full mx-2 p-4 mt-4">
