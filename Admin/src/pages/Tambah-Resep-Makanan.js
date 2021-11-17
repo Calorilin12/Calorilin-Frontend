@@ -3,7 +3,7 @@ import Sidebar from 'components/Sidebar';
 import Footer from 'components/Footer';
 import TambahResepForm from 'components/TambahResep';
 
-export default function tambahResepMakan() {
+export default function tambahResepMakanan() {
     return (
         <>
             <Sidebar />

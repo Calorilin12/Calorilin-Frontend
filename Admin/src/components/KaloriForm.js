@@ -3,18 +3,13 @@ import { Link } from 'react-router-dom';
 import Card from '@material-tailwind/react/Card';
 import CardHeader from '@material-tailwind/react/CardHeader';
 import CardBody from '@material-tailwind/react/CardBody';
-import Button from '@material-tailwind/react/Button';
 import View from '../assets/img/view.png';
 import Delete from '../assets/img/delete.png';
 import Edit from '../assets/img/edit.png';
-import ModalEdit from './ModalKaloriEdit';
 import ModalDelete from './ModalKaloriDelete';
-import ModalTambah from './ModalKaloriTambah';
 
 export default function KaloriForm() {
     const [showModalDelete, setShowModalDelete] = useState(false);
-    const [showModalEdit, setShowModalEdit] = useState(false);
-    const [showModalTambah, setShowModalTambah] = useState(false);
 
     return (
         <>
@@ -25,18 +20,12 @@ export default function KaloriForm() {
                 </div>
             </CardHeader>
             <div className="mt-7 ml-4">
-                <Button
-                    color="blue"
-                    buttonType="filled"
-                    size="regular"
-                    rounded={false}
-                    block={false}
-                    iconOnly={false}
-                    ripple="light"
-                    onClick={() => setShowModalTambah(true)}
+                <Link
+                    to="/tambah-kalori"
+                    className="flex bg-info500 focus:ring focus:ring-blue-200 items-center justify-center gap-4 text-sm text-white font-light px-4 py-2 rounded-lg w-32"
                 >
-                    Tambah Data
-                </Button>
+                    Tambah Resep
+                </Link>
             </div>
             <CardBody>
                 <div className="overflow-x-auto">
@@ -77,7 +66,7 @@ export default function KaloriForm() {
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                     <div className="flex flex-col space-y-2 lg:space-x-4 lg:flex-row lg:items-end">
                                         <Link className="" to="/lihat-kalori"><img src={View} alt="Tombol Lihat"/></Link>
-                                        <button className="" onClick={() => setShowModalEdit(true)}><img src={Edit} alt="Tombol Edit"/></button>
+                                        <Link className="" to="/edit-kalori-makanan"><img src={Edit} alt="Tombol Edit"/></Link>
                                         <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
                                     </div>
                                 </td>
@@ -88,8 +77,6 @@ export default function KaloriForm() {
             </CardBody>
         </Card>
         {showModalDelete && <ModalDelete closeModalDelete={setShowModalDelete}/>}
-        {showModalEdit && <ModalEdit closeModalEdit={setShowModalEdit}/>}
-        {showModalTambah && <ModalTambah closeModalTambah={setShowModalTambah}/>}
         </>
     );
 }

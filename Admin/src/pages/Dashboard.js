@@ -14,15 +14,6 @@ export default function Dashboard() {
                         <StatusCard />
                     </div>
                 </div>
-
-                <div className="px-3 md:px-8 h-auto -mt-24">
-                    <div className="container mx-auto max-w-full">
-                        <div className="grid grid-cols-1">
-                            <BerlanggananForm />
-                        </div>
-                    </div>
-                </div>
-                <Footer />
             </div>
         </>
     );

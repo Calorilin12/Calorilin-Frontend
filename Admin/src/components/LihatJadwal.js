@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import Gambar from '../assets/img/team-1-800x800.jpg';
 
 function LihatJadwal() {

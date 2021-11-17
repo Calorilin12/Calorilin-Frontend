@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Link, useHistory} from "react-router-dom";
 import { login } from "utils/auth";
-import { LOGIN } from 'utils/url'
+import { LOGIN } from 'utils/url';
 import '../assets/styles/pages.css';
 import Logo from '../assets/img/logo.png'
 import showIcon from '../assets/img/eye.png';
@@ -38,13 +38,18 @@ function Login() {
                 password: password
             })
             .then((res) => {
-                console.log(res);
-                login(res.data.token);
-                history.push("/dashboard");
+                console.log(res.data);
+                if(res.data.user.check === 1){
+                    login(res.data.token);
+                    history.push("/dashboard");
+                } else{
+                    console.log("eror Cuyy");
+                    setError(true);
+                }
             }).catch((err) => {
                 console.log(err);
+                setError(true);
             });
-        
     };
 
     return (

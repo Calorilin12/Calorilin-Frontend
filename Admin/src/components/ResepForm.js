@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useEffect, useState} from 'react';
 import Card from '@material-tailwind/react/Card';
 import CardHeader from '@material-tailwind/react/CardHeader';
 import CardBody from '@material-tailwind/react/CardBody';
@@ -7,9 +7,27 @@ import Delete from '../assets/img/delete.png';
 import Edit from '../assets/img/edit.png';
 import ModalDelete from './ModalResepDelete';
 import { Link } from 'react-router-dom';
+import { RECIPES } from 'utils/url';
+import { getToken } from 'utils/auth'
+import axios from 'axios';
 
 export default function ResepForm() {
     const [showModalDelete, setShowModalDelete] = useState(false);
+    const [apiData, setApiData] = useState([]);
+    const config = {
+        headers: { Authorization: `Bearer ${getToken()}` }
+    };
+    useEffect(() => {
+        axios
+            .get(RECIPES, config)
+            .then((res) => {
+                console.log(res.data);
+                setApiData(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            }); 
+    }, []);
     return (
     <>
         <Card>
@@ -38,143 +56,47 @@ export default function ResepForm() {
                                     Nama Makanan
                                 </th>
                                 <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
-                                    Kategori
+                                    Sumber Resep
                                 </th>
                                 <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
-                                    Tanggal dibuat
+                                    Level Pembuatan
+                                </th>
+                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
+                                    Tanggal Dibuat
                                 </th>
                                 <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
                                     Aksi
                                 </th>
                             </tr>
                         </thead>
+                        {apiData.map((recipes, index) =>
                         <tbody className="">
                             <tr>
                                 <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    001
+                                    {index+1}
                                 </th>
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    Nasi Ayam Panggang
+                                    {recipes.name}
                                 </td>
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <ul>
-                                        <li>Nasi</li>
-                                        <li>Ayam</li>
-                                        <li>Makanan Utama</li>
-                                    </ul> 
+                                    {recipes.made_by}
                                 </td>
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    22/2/2021
+                                    {recipes.level_of_difficult}
+                                </td>
+                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                    {recipes.created_at}
                                 </td>
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                     <div className="flex flex-col space-y-1 lg:space-x-4 lg:flex-row lg:items-end">
-                                        <Link className="" to="/lihat-resep-makanan"><img src={View} alt="Tombol Lihat"/></Link>
-                                        <Link className="" to="/edit-resep-makanan"><img src={Edit} alt="Tombol Edit"/></Link>
-                                        <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                            <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    001
-                                </th>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    Nasi Ayam Panggang
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <ul>
-                                        <li>Nasi</li>
-                                        <li>Ayam</li>
-                                        <li>Makanan Utama</li>
-                                    </ul> 
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    22/2/2021
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <div className="flex flex-col space-y-1 lg:space-x-4 lg:flex-row lg:items-end">
-                                        <Link className="" to="/lihat-resep-makanan"><img src={View} alt="Tombol Lihat"/></Link>
-                                        <Link className="" to="/edit-resep-makanan"><img src={Edit} alt="Tombol Edit"/></Link>
-                                        <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                            <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    001
-                                </th>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    Nasi Ayam Panggang
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <ul>
-                                        <li>Nasi</li>
-                                        <li>Ayam</li>
-                                        <li>Makanan Utama</li>
-                                    </ul> 
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    22/2/2021
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <div className="flex flex-col space-y-1 lg:space-x-4 lg:flex-row lg:items-end">
-                                        <Link className="" to="/lihat-resep-makanan"><img src={View} alt="Tombol Lihat"/></Link>
-                                        <Link className="" to="/edit-resep-makanan"><img src={Edit} alt="Tombol Edit"/></Link>
-                                        <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                            <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    001
-                                </th>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    Nasi Ayam Panggang
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <ul>
-                                        <li>Nasi</li>
-                                        <li>Ayam</li>
-                                        <li>Makanan Utama</li>
-                                    </ul> 
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    22/2/2021
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <div className="flex flex-col space-y-1 lg:space-x-4 lg:flex-row lg:items-end">
-                                        <Link className="" to="/lihat-resep-makanan"><img src={View} alt="Tombol Lihat"/></Link>
-                                        <Link className="" to="/edit-resep-makanan"><img src={Edit} alt="Tombol Edit"/></Link>
-                                        <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                            <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    001
-                                </th>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    Nasi Ayam Panggang
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <ul>
-                                        <li>Nasi</li>
-                                        <li>Ayam</li>
-                                        <li>Makanan Utama</li>
-                                    </ul> 
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    22/2/2021
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <div className="flex flex-col space-y-1 lg:space-x-4 lg:flex-row lg:items-end">
-                                        <Link className="" to="/lihat-resep-makanan"><img src={View} alt="Tombol Lihat"/></Link>
+                                        <Link className="" to={`/lihat-resep-makanan/${recipes.id}`}><img src={View} alt="Tombol Lihat"/></Link>
                                         <Link className="" to="/edit-resep-makanan"><img src={Edit} alt="Tombol Edit"/></Link>
                                         <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
+                        )}
                     </table>
                 </div>
             </CardBody>
