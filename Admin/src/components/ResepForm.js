@@ -69,11 +69,11 @@ export default function ResepForm() {
                                 </th>
                             </tr>
                         </thead>
-                        {apiData.map((recipes, index) =>
+                        {apiData.map(recipes =>
                         <tbody className="">
                             <tr>
                                 <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    {index+1}
+                                    {recipes.id}
                                 </th>
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                     {recipes.name}
