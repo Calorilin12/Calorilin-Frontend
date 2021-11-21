@@ -5,27 +5,6 @@ import { getToken } from 'utils/auth';
 import axios from 'axios';
 
 function TambahResep() {
-    //const [data, setData] = useState();
-    //const [namaMakanan, setNama] = useState('');
-    //const [sumber, setSumber] = useState('');
-    //const [kesulitan, setKesulitan] = useState('');
-
-    // const [data, setData] = useState({
-    //     recipe_image: "",
-    //     name: "",
-    //     made_by: "",
-    //     total_calory: "",
-    //     level_of_difficult: "",
-    //     publish_date: "",
-    //     duration: "",
-    //     compositions: "",
-    //     steps_of_make: "",
-    //     cholesterol: "",
-    //     diabetes: "",
-    //     hyper_tension: "",
-    //     uric_acid: "",
-    //     stomach_acid: "",
-    // })
 
     const [saveImage, setSaveImage] = useState(null);
     const [publishDate, setPublishDate] = useState("");
@@ -84,47 +63,6 @@ function TambahResep() {
         headers: { 'Authorization': `Bearer ${getToken()}`, 'content-type': `multipart/form-data` }
     };
 
-    // const _onSubmit = () => {
-    //     axios
-    //     .post(RECIPES, data, config)
-    //     .then((res) => {
-    //         console.log(res.data);
-    //     }).catch((err) => {
-    //         console.log(err);
-    //     });
-    // };
-
-    // function handle(e){
-    //     const newdata={...data}
-    //     newdata[e.target.id] = e.target.value
-    //     setData(newdata)
-    //     console.log(newdata)
-    // }
-
-    // function handleImage(e){
-    //     const newdata={...data}
-    //     newdata[e.target.id] = e.target.files[0]
-    //     setData(newdata)
-    //     console.log(newdata)
-    // }
-
-    /**const _onSubmit = () => {
-        console.log(namaMakanan);
-        console.log(sumber);
-        console.log(kesulitan);
-        axios
-        .post(RECIPES, config, {
-            namaMakanan,
-            sumber,
-            kesulitan,
-        })
-        .then((res) => {
-            console.log(res.data);
-        }).catch((err) => {
-            console.log(err);
-        });
-    };
-    */
     return (
         <>
             <div className="">

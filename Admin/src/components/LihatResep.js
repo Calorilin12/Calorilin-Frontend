@@ -15,7 +15,7 @@ function LihatResep() {
             .get(RECIPES + id, config)
             .then((res) => {
                 console.log(res);
-                console.log(res.data)
+                console.log(res.data);
                 setApiData(res.data);
             })
             .catch((err) => {
@@ -40,27 +40,27 @@ function LihatResep() {
                             <div className="grid grid-cols-10 h-20">
                                 <div className="col-start-1 col-end-6 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="kalori">Kalori Per Porsi</label><br/>
-                                    <input type="text" name="kalori" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.total_calory + " kKal"} readonly />
+                                    <input type="text" name="kalori" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.total_calory + " kKal"} />
                                 </div>
                                 <div className="col-start-6 col-end-11 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="porsi">Porsi</label><br/>
-                                    <input type="text" name="porsi" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.total_eater} readonly />
+                                    <input type="text" name="porsi" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.total_eater} />
                                 </div>
                             </div>
                             <div className="grid grid-cols-10 h-20">
                                 <div className="col-start-1 col-end-6 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="waktu">Durasi Masak</label><br/>
-                                    <input type="text" name="waktu" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.duration + " menit"} readonly />
+                                    <input type="text" name="waktu" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.duration + " menit"} />
                                 </div>
                                 <div className="col-start-6 col-end-11 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="sumber">Level Pembuatan</label><br/>
-                                    <input type="text" name="kesulitan" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.level_of_difficult} readonly />
+                                    <input type="text" name="kesulitan" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.level_of_difficult} />
                                 </div>
                             </div>
                             <div className="grid grid-cols-10 h-48 mt-2">
                                 <div className="col-start-1 col-end-11 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="komposisi">Komposisi</label><br/>
-                                    <textarea className="resize-none mt-1 pl-4 border focus:outline-none focus:border-gray-500 rounded-md w-full h-36" name="komposisi" readonly>
+                                    <textarea className="resize-none mt-1 pl-4 border focus:outline-none focus:border-gray-500 rounded-md w-full h-36" name="komposisi">
                                         {recipes.compositions}
                                     </textarea>
                                 </div>
@@ -68,7 +68,7 @@ function LihatResep() {
                             <div className="grid grid-cols-10 h-60">
                                 <div className="col-start-1 col-end-11 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="langkah">Langkah Pembuatan</label><br/>
-                                    <textarea className="resize-none mt-1 pl-4 border focus:outline-none focus:border-gray-500 rounded-md w-full h-52" name="langkah" readonly>
+                                    <textarea className="resize-none mt-1 pl-4 border focus:outline-none focus:border-gray-500 rounded-md w-full h-52" name="langkah">
                                         {recipes.steps_of_make}
                                     </textarea>
                                 </div>

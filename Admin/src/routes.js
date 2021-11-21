@@ -115,7 +115,7 @@ export const APP_ROUTE = [
   },
   {
     name: "Edit Resep Makanan",
-    path: "/edit-resep-makanan",
+    path: "/edit-resep-makanan/:id",
     exact: true,
     component: EditResep,
     private: true,
