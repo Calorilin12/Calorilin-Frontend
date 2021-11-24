@@ -1,10 +1,30 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import Gambar from '../assets/img/team-1-800x800.jpg';
+import React, { useEffect, useState } from 'react';
+import {Link, useParams} from "react-router-dom";
+import { FOOD_MATERIALS } from 'utils/url';
+import { getToken } from 'utils/auth'
+import axios from 'axios';
 
 function LihatKalori() {
+    const { id } = useParams();
+    const [apiData, setApiData] = useState([]);
+    const config = {
+        headers: { Authorization: `Bearer ${getToken()}` }
+    };
+    useEffect(() => {
+        axios
+            .get(FOOD_MATERIALS + id, config)
+            .then((res) => {
+                console.log(res);
+                console.log(res.data)
+                setApiData(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            }); 
+    }, []);
     return (
         <>
+        {apiData.map(materials =>
             <div className="bg-white shadow-lg max-w-full mx-2 p-4 mt-4">
                 <div className="flex">
                     <div className="w-full p-4 px-5 py-5">
@@ -13,45 +33,45 @@ function LihatKalori() {
                         </div>
                         <hr className="mt-4 mb-6 min-w-full" />
                         <div className="w-36 h-32 ml-4 mb-4">
-                            <img src={Gambar} alt="Foto Profil" className="shadow rounded-full w-32 h-32 align-middle border-none"/>
+                            <img src={materials.image} alt="Gambar Makanan" className="shadow rounded-full w-32 h-32 align-middle border-none"/>
                         </div>
                         <div className="grid grid-cols-10 h-24">
                             <div className="col-start-1 col-end-6 px-4 mb-2">
-                                <label className="text-secondary500 text-sm" for="menu">Nama Bahan</label><br/>
+                                <label className="text-secondary500 text-sm" for="menu">{materials.name}</label><br/>
                                 <input type="text" name="menu" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value="Telur" readonly />
                             </div>
                             <div className="col-start-6 col-end-11 px-4 mb-2">
-                                <label className="text-secondary500 text-sm" for="jumlah">Tanggal Dibuat</label><br/>
+                                <label className="text-secondary500 text-sm" for="jumlah">{materials.created_at}</label><br/>
                                 <input type="text" name="jumlah" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value="04 / 04 / 2021" readonly/>
                             </div>
                         </div>
                         <div className="grid grid-cols-10 h-20">
                             <div className="col-start-1 col-end-6 px-4 mb-2">
-                                <label className="text-secondary500 text-sm" for="menu">Jumlah Bahan</label><br/>
+                                <label className="text-secondary500 text-sm" for="menu">{materials.type}</label><br/>
                                 <input type="text" name="menu" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value="1 Butir" readonly />
                             </div>
                             <div className="col-start-6 col-end-11 px-4 mb-2">
-                                <label className="text-secondary500 text-sm" for="jumlah">Penyajian</label><br/>
+                                <label className="text-secondary500 text-sm" for="jumlah">{materials.serve}</label><br/>
                                 <input type="text" name="jumlah" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value="Ceplok" readonly/>
                             </div>
                         </div>
                         <div className="grid grid-cols-10 h-20">
                             <div className="col-start-1 col-end-6 px-4 mb-2">
-                                <label className="text-secondary500 text-sm" for="menu">Kalori</label><br/>
+                                <label className="text-secondary500 text-sm" for="menu">{materials.calory}</label><br/>
                                 <input type="text" name="menu" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value="128 kal" readonly />
                             </div>
                             <div className="col-start-6 col-end-11 px-4 mb-2">
-                                <label className="text-secondary500 text-sm" for="jumlah">Karbo</label><br/>
+                                <label className="text-secondary500 text-sm" for="jumlah">{materials.carbo}Karbo</label><br/>
                                 <input type="text" name="jumlah" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value="28.5 g" readonly/>
                             </div>
                         </div>
                         <div className="grid grid-cols-10 h-24">
                             <div className="col-start-1 col-end-6 px-4 mb-2">
-                                <label className="text-secondary500 text-sm" for="menu">Lemak</label><br/>
+                                <label className="text-secondary500 text-sm" for="menu">{materials.fat}</label><br/>
                                 <input type="text" name="menu" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value="28.5 g" readonly />
                             </div>
                             <div className="col-start-6 col-end-11 px-4 mb-2">
-                                <label className="text-secondary500 text-sm" for="jumlah">Protein</label><br/>
+                                <label className="text-secondary500 text-sm" for="jumlah">{materials.protein}</label><br/>
                                 <input type="text" name="jumlah" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value="28.5 g" readonly/>
                             </div>
                         </div>
@@ -74,7 +94,8 @@ function LihatKalori() {
                             </div>
                     </div>
                 </div>
-            </div> 
+            </div>
+        )} 
         </>
     );
 }

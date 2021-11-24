@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import {Link, useParams} from "react-router-dom";
-import Gambar from '../assets/img/ayam.jpg';
 import { RECIPES } from 'utils/url';
 import { getToken } from 'utils/auth'
 import axios from 'axios';

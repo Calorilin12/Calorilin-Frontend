@@ -24,14 +24,14 @@ function Login() {
     }, [email, password]);
 
     const _onSubmit = () => {
-        /**if (email === "calorilin@gmail.com" && password === "12345") {
-            login({
-                email: email,
-            });
-            history.push("/dashboard");
-        } else {
-            setError(true);
-        }*/
+        // if (email === "calorilin@gmail.com" && password === "12345") {
+        //     login({
+        //         email: email,
+        //     });
+        //     history.push("/dashboard");
+        // } else {
+        //     setError(true);
+        // }
         axios
             .post(LOGIN, {
                 email: email,
