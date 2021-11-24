@@ -69,11 +69,11 @@ export default function ResepForm() {
                                 </th>
                             </tr>
                         </thead>
-                        {apiData.map((recipes, index) =>
+                        {apiData.map(recipes =>
                         <tbody className="">
                             <tr>
                                 <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    {index+1}
+                                    {recipes.id}
                                 </th>
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                     {recipes.name}
@@ -90,7 +90,7 @@ export default function ResepForm() {
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                     <div className="flex flex-col space-y-1 lg:space-x-4 lg:flex-row lg:items-end">
                                         <Link className="" to={`/lihat-resep-makanan/${recipes.id}`}><img src={View} alt="Tombol Lihat"/></Link>
-                                        <Link className="" to="/edit-resep-makanan"><img src={Edit} alt="Tombol Edit"/></Link>
+                                        <Link className="" to={`/edit-resep-makanan/${recipes.id}`}><img src={Edit} alt="Tombol Edit"/></Link>
                                         <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
                                     </div>
                                 </td>

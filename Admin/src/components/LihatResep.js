@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {Link, useParams} from "react-router-dom";
-import { RECIPES } from 'utils/url';
+import { BASE_URL, RECIPES } from 'utils/url';
 import { getToken } from 'utils/auth'
 import axios from 'axios';
 
@@ -15,7 +15,7 @@ function LihatResep() {
             .get(RECIPES + id, config)
             .then((res) => {
                 console.log(res);
-                console.log(res.data)
+                console.log(res.data);
                 setApiData(res.data);
             })
             .catch((err) => {
@@ -29,40 +29,38 @@ function LihatResep() {
                 <div className="bg-white shadow-lg rounded-lg max-w-full mx-2 p-4">
                     <div className="flex">
                         <div className="w-full p-4 px-5 py-5">
-                            <div className="flex flex-row">
-                                <h2 className="text-2xl font-semibold">{recipes.name}<sub>{" by " + recipes.made_by}</sub></h2>
+                            <div className="flex flex-row mt-2">
+                                <sup className="text-2xl font-semibold">{recipes.name}</sup>
+                                <p className="ml-1">{"by " + recipes.made_by}</p>
                             </div>
                             <hr className="mt-3 mb-6 min-w-full" />
-                            <div className="grid grid-cols-10">
-                                <div className="col-start-1 col-end-11 px-4 mb-2">
-                                    <label className="text-secondary500 text-sm" for="gambar">Gambar Makanan</label><br/>
-                                    <img src={recipes.recipe_image} alt="Gambar Makanan" className="mt-2 mb-1 w-48 h-32"/>
-                                </div>
+                            <div className="ml-4 mb-4 w-64 h-40">
+                                <img src={`${BASE_URL}/recipe-detail-images/${recipes.recipe_image}`} alt={recipes.name} className="w-64 h-40"/>
                             </div>
                             <div className="grid grid-cols-10 h-20">
                                 <div className="col-start-1 col-end-6 px-4 mb-2">
-                                    <label className="text-secondary500 text-sm" for="kalori">Kalori</label><br/>
-                                    <input type="text" name="kalori" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.total_calory} readonly />
+                                    <label className="text-secondary500 text-sm" for="kalori">Kalori Per Porsi</label><br/>
+                                    <input type="text" name="kalori" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.total_calory + " kKal"} />
                                 </div>
                                 <div className="col-start-6 col-end-11 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="porsi">Porsi</label><br/>
-                                    <input type="text" name="porsi" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.total_eater} readonly />
+                                    <input type="text" name="porsi" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.total_eater} />
                                 </div>
                             </div>
                             <div className="grid grid-cols-10 h-20">
                                 <div className="col-start-1 col-end-6 px-4 mb-2">
-                                    <label className="text-secondary500 text-sm" for="waktu">Lama Masak</label><br/>
-                                    <input type="text" name="waktu" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.duration + " menit"} readonly />
+                                    <label className="text-secondary500 text-sm" for="waktu">Durasi Masak</label><br/>
+                                    <input type="text" name="waktu" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.duration + " menit"} />
                                 </div>
                                 <div className="col-start-6 col-end-11 px-4 mb-2">
-                                    <label className="text-secondary500 text-sm" for="sumber">Kesulitan</label><br/>
-                                    <input type="text" name="kesulitan" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.level_of_difficult} readonly />
+                                    <label className="text-secondary500 text-sm" for="sumber">Level Pembuatan</label><br/>
+                                    <input type="text" name="kesulitan" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.level_of_difficult} />
                                 </div>
                             </div>
                             <div className="grid grid-cols-10 h-48 mt-2">
                                 <div className="col-start-1 col-end-11 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="komposisi">Komposisi</label><br/>
-                                    <textarea className="resize-none mt-1 pl-4 border focus:outline-none focus:border-gray-500 rounded-md w-full h-36" name="komposisi" readonly>
+                                    <textarea className="resize-none mt-1 pl-4 border focus:outline-none focus:border-gray-500 rounded-md w-full h-36" name="komposisi">
                                         {recipes.compositions}
                                     </textarea>
                                 </div>
@@ -70,7 +68,7 @@ function LihatResep() {
                             <div className="grid grid-cols-10 h-60">
                                 <div className="col-start-1 col-end-11 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="langkah">Langkah Pembuatan</label><br/>
-                                    <textarea className="resize-none mt-1 pl-4 border focus:outline-none focus:border-gray-500 rounded-md w-full h-52" name="langkah" readonly>
+                                    <textarea className="resize-none mt-1 pl-4 border focus:outline-none focus:border-gray-500 rounded-md w-full h-52" name="langkah">
                                         {recipes.steps_of_make}
                                     </textarea>
                                 </div>
