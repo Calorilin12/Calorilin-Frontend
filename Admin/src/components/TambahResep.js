@@ -1,10 +1,61 @@
 import React, { useEffect, useState } from 'react';
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import { RECIPES } from 'utils/url';
 import { getToken } from 'utils/auth';
 import axios from 'axios';
 
 function TambahResep() {
+
+    const history = useHistory();
+
+    const [checkedKolesterol, setCheckedKolesterol] = useState(false);
+    const [checkedDiabetes, setCheckedDiabetes] = useState(false);
+    const [checkedHipertensi, setCheckedHipertensi] = useState(false);
+    const [checkedAsamUrat, setCheckedAsamUrat] = useState(false);
+    const [checkedAsamLambung, setCheckedAsamLambung] = useState(false);
+
+    const handleKolesterol = () => {
+        setCheckedKolesterol(!checkedKolesterol);
+        if(!checkedKolesterol === true){
+            console.log("audy")
+            setKolesterol("0");
+        } else {
+            console.log("brenda")
+            setKolesterol("1");
+        }
+    };
+    const handleDiabetes = () => {
+        setCheckedDiabetes(!checkedDiabetes);
+        if(!checkedDiabetes === true){
+            setDiabetes("0");
+        } else {
+            setDiabetes("1");
+        }
+    };
+    const handleHipertensi = () => {
+        setCheckedHipertensi(!checkedHipertensi);
+        if(!checkedHipertensi === true){
+            setHipertensi("0");
+        } else {
+            setHipertensi("1");
+        }
+    };
+    const handleAsamUrat = () => {
+        setCheckedAsamUrat(!checkedAsamUrat);
+        if(!checkedAsamUrat === true){
+            setAsamUrat("0");
+        } else {
+            setAsamUrat("1");
+        }
+    };
+    const handleAsamLambung = () => {
+        setCheckedAsamLambung(!checkedAsamLambung);
+        if(!checkedAsamLambung === true){
+            setAsamLambung("0");
+        } else {
+            setAsamLambung("1");
+        }
+    };
 
     const [saveImage, setSaveImage] = useState(null);
     const [publishDate, setPublishDate] = useState("");
@@ -16,11 +67,18 @@ function TambahResep() {
     const [level, setLevel] = useState("");
     const [compositions, setCompositions] = useState("");
     const [steps, setSteps] = useState("");
-    const [kolesterol, setKolesterol] = useState("");
-    const [diabetes, setDiabetes] = useState("");
-    const [hipertensi, setHipertensi] = useState("");
-    const [asamUrat, setAsamUrat] = useState("");
-    const [asamLambung, setAsamLambung] = useState("");
+    const [kolesterol, setKolesterol] = useState("1");
+    const [diabetes, setDiabetes] = useState("1");
+    const [hipertensi, setHipertensi] = useState("1");
+    const [asamUrat, setAsamUrat] = useState("1");
+    const [asamLambung, setAsamLambung] = useState("1");
+
+    console.log(checkedKolesterol)
+    console.log(kolesterol)
+    console.log(diabetes)
+    console.log(hipertensi)
+    console.log(asamUrat)
+    console.log(asamLambung)
 
     function handleUploadChange(e){
         console.log(e.target.files[0]);
@@ -53,6 +111,7 @@ function TambahResep() {
             .then((res) => {
                 console.log("sukses");
                 console.log(res.data);
+                history.replace('/resep-makanan');
             }).catch((err) => {
                 console.log(err);
             });
@@ -155,6 +214,29 @@ function TambahResep() {
                                     </div>
                                 </div>
                                 <p className="text-lg font-medium mt-10 mb-4 ml-4">Bisa dikonsumsi untuk penderita :</p> 
+                                <div className="space-y-2">
+                                    <div className="ml-6">
+                                        <input type="checkbox" checked={checkedKolesterol} onChange={handleKolesterol} />
+                                        <label className="text-secondary500 text-sm ml-2">Kolesterol</label>
+                                    </div>
+                                    <div className="ml-6">
+                                        <input type="checkbox" checked={checkedDiabetes} onChange={handleDiabetes} />
+                                        <label className="text-secondary500 text-sm ml-2">Diabetes</label>
+                                    </div>
+                                    <div className="ml-6">
+                                        <input type="checkbox" checked={checkedHipertensi} onChange={handleHipertensi} />
+                                        <label className="text-secondary500 text-sm ml-2">Hipertensi</label>
+                                    </div>
+                                    <div className="ml-6">
+                                        <input type="checkbox" checked={checkedAsamUrat} onChange={handleAsamUrat} />
+                                        <label className="text-secondary500 text-sm ml-2">Asam Urat</label>
+                                    </div>
+                                    <div className="ml-6">
+                                        <input type="checkbox" checked={checkedAsamLambung} onChange={handleAsamLambung} />
+                                        <label className="text-secondary500 text-sm ml-2">Asam Lambung</label>
+                                    </div>
+                                </div>
+                                {/* <p className="text-lg font-medium mt-10 mb-4 ml-4">Bisa dikonsumsi untuk penderita :</p> 
                                 <ul className="list-disc ml-7 mb-2" >
                                     <li className="text-secondary500 text-sm">Beri angka 1 jika TIDAK</li>  
                                     <li className="text-secondary500 text-sm">Beri angka 0 jika YA</li> 
@@ -194,20 +276,20 @@ function TambahResep() {
                                                 value={asamLambung} onChange={(e) => setAsamLambung(e.target.value)}
                                         />
                                     </div>
-                                </div>     
+                                </div>      */}
                                 <div className="flex justify-between items-center mt-12 ml-4 mr-4"> 
                                     <Link
                                         to="/resep-makanan"
                                         className="flex bg-secondary500 focus:ring focus:ring-gray-200 items-center justify-center gap-4 text-sm text-white font-light px-4 py-2 rounded-lg w-32"
                                     >
-                                        Kembali
+                                        Batal
                                     </Link>
                                     <Link
-                                        to="/resep-makanan"
+                                        //to="/resep-makanan"
                                         onClick={uploadData}
                                         className="flex bg-info500 focus:ring focus:ring-blue-200 items-center justify-center gap-4 text-sm text-white font-light px-4 py-2 rounded-lg w-32"
                                     >
-                                        Simpan
+                                        Tambah
                                     </Link>
                                 </div>            
                             </form>

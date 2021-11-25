@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import {Link, useParams} from "react-router-dom";
-import { BASE_URL, RECIPES } from 'utils/url';
+import {Link, useParams, useHistory} from "react-router-dom";
+import { RECIPES } from 'utils/url';
 import { getToken } from 'utils/auth';
 import axios from 'axios';
 
 function EditResep() {
+    const history = useHistory();
     const { id } = useParams();
-    //const [apiData, setApiData] = useState([]);
     const config = {
-        headers: { Authorization: `Bearer ${getToken()}`, 'content-type': `multipart/form-data` }
+        headers: { Authorization: `Bearer ${getToken()}`, 'Content-Type': `multipart/form-data` }
     };
 
     const [saveImage, setSaveImage] = useState(null);
@@ -27,38 +27,118 @@ function EditResep() {
     const [asamUrat, setAsamUrat] = useState("");
     const [asamLambung, setAsamLambung] = useState("");
 
+    const [checkedKolesterol, setCheckedKolesterol] = useState(false);
+    const [checkedDiabetes, setCheckedDiabetes] = useState(false);
+    const [checkedHipertensi, setCheckedHipertensi] = useState(false);
+    const [checkedAsamUrat, setCheckedAsamUrat] = useState(false);
+    const [checkedAsamLambung, setCheckedAsamLambung] = useState(false);
+
+    const handleKolesterol = () => {
+        setCheckedKolesterol(!checkedKolesterol);
+        if(!checkedKolesterol === true){
+            setKolesterol("0");
+        } else {
+            console.log("brenda")
+        }
+    };
+    const handleDiabetes = () => {
+        setCheckedDiabetes(!checkedDiabetes);
+        if(!checkedDiabetes === true){
+            setDiabetes("0");
+        } else {
+            setDiabetes("1");
+        }
+    };
+    const handleHipertensi = () => {
+        setCheckedHipertensi(!checkedHipertensi);
+        if(!checkedHipertensi === true){
+            setHipertensi("0");
+        } else {
+            setHipertensi("1");
+        }
+    };
+    const handleAsamUrat = () => {
+        setCheckedAsamUrat(!checkedAsamUrat);
+        if(!checkedAsamUrat === true){
+            setAsamUrat("0");
+        } else {
+            setAsamUrat("1");
+        }
+    };
+    const handleAsamLambung = () => {
+        setCheckedAsamLambung(!checkedAsamLambung);
+        if(!checkedAsamLambung === true){
+            setAsamLambung("0");
+        } else {
+            setAsamLambung("1");
+        }
+    };
+
     useEffect(() => {
         axios
             .get(RECIPES + id, config)
             .then((res) => {
                 console.log(res);
                 console.log(res.data);
-                //setApiData(res.data);
                 setPublishDate(res.data[0].publish_date);
                 setName(res.data[0].name);
-                let data = res.data[0].made_by
-                setMadeBy(data);
+                setMadeBy(res.data[0].made_by);
                 setCalory(res.data[0].total_calory);
                 setEater(res.data[0].total_eater);
                 setDuration(res.data[0].duration);
                 setLevel(res.data[0].level_of_difficult);
                 setCompositions(res.data[0].compositions);
                 setSteps(res.data[0].steps_of_make);
-                setKolesterol(res.data[0].cholesterol);
-                setDiabetes(res.data[0].diabetes);
-                setHipertensi(res.data[0].hyper_tension);
-                setAsamUrat(res.data[0].uric_acid);
-                setAsamLambung(res.data[0].stomach_acid);
-                console.log(madeBy)
+                // setKolesterol(res.data[0].cholesterol);
+                // setDiabetes(res.data[0].diabetes);
+                // setHipertensi(res.data[0].hyper_tension);
+                // setAsamUrat(res.data[0].uric_acid);
+                // setAsamLambung(res.data[0].stomach_acid);
+
+                if(res.data[0].cholesterol === 1){
+                    setCheckedKolesterol(false);
+                } else {
+                    setCheckedKolesterol(true);
+                }
+
+                if(res.data[0].diabetes === 1){
+                    setCheckedDiabetes(false);
+                } else {
+                    setCheckedDiabetes(true);
+                }
+
+                if(res.data[0].hyper_tension === 1){
+                    setCheckedHipertensi(false);
+                } else {
+                    setCheckedHipertensi(true);
+                }
+
+                if(res.data[0].uric_acid === 1){
+                    setCheckedAsamUrat(false);
+                } else {
+                    setCheckedAsamUrat(true);
+                }
+                
+                if(res.data[0].stomach_acid === 1){
+                    setCheckedAsamLambung(false);
+                } else {
+                    setCheckedAsamLambung(true);
+                }
             })
             .catch((err) => {
                 console.log(err);
             }); 
     }, []);
 
+    // console.log(kolesterol)
+    // console.log(diabetes)
+    // console.log(hipertensi)
+    // console.log(asamUrat)
+    // console.log(asamLambung)
+
     const updateData = () => {
         let formData = new FormData();
-            //formData.append("recipe_image", saveImage);
+            formData.append("recipe_image", saveImage);
             formData.append("name", name);
             formData.append("made_by", madeBy);
             formData.append("level_of_difficult", level);
@@ -74,10 +154,11 @@ function EditResep() {
             formData.append("uric_acid", asamUrat);
             formData.append("stomach_acid", asamLambung);
         axios
-            .put(RECIPES + id, formData, config)
+            .post(RECIPES + id + '?_method=PUT', formData, config)
             .then((res) => {
                 console.log("sukses edit data");
                 console.log(res.data);
+                history.replace('/resep-makanan');
             }).catch((err) => {
                 console.log(err);
             });
@@ -116,7 +197,7 @@ function EditResep() {
                             <div className="grid grid-cols-10 h-20">
                                 <div className="col-start-1 col-end-6 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="nama">Nama Makanan</label><br/>
-                                    <input type="text" name="name" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={name} onChange={(e) => setName(e.target.value)}/>
+                                    <input type="text" name="name" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={name} onChange={(e) => setName(e.target.value)} />
                                 </div>
                                 <div className="col-start-6 col-end-11 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="sumber">Sumber</label><br/>
@@ -162,6 +243,29 @@ function EditResep() {
                                 </div>
                             </div>
                             <p className="text-lg font-medium mt-10 mb-4 ml-4">Bisa dikonsumsi untuk penderita :</p> 
+                                <div className="space-y-2">
+                                    <div className="ml-6">
+                                        <input type="checkbox" checked={checkedKolesterol} onChange={handleKolesterol} />
+                                        <label className="text-secondary500 text-sm ml-2">Kolesterol</label>
+                                    </div>
+                                    <div className="ml-6">
+                                        <input type="checkbox" checked={checkedDiabetes} onChange={handleDiabetes} />
+                                        <label className="text-secondary500 text-sm ml-2">Diabetes</label>
+                                    </div>
+                                    <div className="ml-6">
+                                        <input type="checkbox" checked={checkedHipertensi} onChange={handleHipertensi} />
+                                        <label className="text-secondary500 text-sm ml-2">Hipertensi</label>
+                                    </div>
+                                    <div className="ml-6">
+                                        <input type="checkbox" checked={checkedAsamUrat} onChange={handleAsamUrat} />
+                                        <label className="text-secondary500 text-sm ml-2">Asam Urat</label>
+                                    </div>
+                                    <div className="ml-6">
+                                        <input type="checkbox" checked={checkedAsamLambung} onChange={handleAsamLambung} />
+                                        <label className="text-secondary500 text-sm ml-2">Asam Lambung</label>
+                                    </div>
+                                </div>
+                            {/* <p className="text-lg font-medium mt-10 mb-4 ml-4">Bisa dikonsumsi untuk penderita :</p> 
                                 <ul className="list-disc ml-7 mb-2" >
                                     <li className="text-secondary500 text-sm">Beri angka 1 jika TIDAK</li>  
                                     <li className="text-secondary500 text-sm">Beri angka 0 jika YA</li> 
@@ -201,16 +305,16 @@ function EditResep() {
                                                 value={asamLambung} onChange={(e) => setAsamLambung(e.target.value)}
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                             <div className="flex justify-between items-center mt-12 ml-4 mr-4"> 
                                 <Link
                                     to="/resep-makanan"
                                     className="flex bg-secondary500 focus:ring focus:ring-gray-200 items-center justify-center gap-4 text-sm text-white font-light px-4 py-2 rounded-lg w-32"
                                 >
-                                    Kembali
+                                    Batal
                                 </Link>
                                 <Link
-                                    to="/resep-makanan"
+                                    //to="/resep-makanan"
                                     onClick={updateData}
                                     className="flex bg-info500 focus:ring focus:ring-blue-200 items-center justify-center gap-4 text-sm text-white font-light px-4 py-2 rounded-lg w-32"
                                 >
