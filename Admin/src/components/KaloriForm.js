@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import Card from '@material-tailwind/react/Card';
 import CardHeader from '@material-tailwind/react/CardHeader';
@@ -7,10 +7,27 @@ import View from '../assets/img/view.png';
 import Delete from '../assets/img/delete.png';
 import Edit from '../assets/img/edit.png';
 import ModalDelete from './ModalKaloriDelete';
+import { FOOD_MATERIALS } from 'utils/url';
+import { getToken } from 'utils/auth'
+import axios from 'axios';
 
 export default function KaloriForm() {
     const [showModalDelete, setShowModalDelete] = useState(false);
-
+    const [apiData, setApiData] = useState([]);
+    const config = {
+        headers: { Authorization: `Bearer ${getToken()}` }
+    };
+    useEffect(() => {
+        axios
+            .get(FOOD_MATERIALS, config)
+            .then((res) => {
+                console.log(res.data);
+                setApiData(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            }); 
+    }, []);
     return (
         <>
         <Card>
@@ -49,7 +66,7 @@ export default function KaloriForm() {
                                 </th>
                             </tr>
                         </thead>
-                        <tbody className="">
+                        {/* <tbody className="">
                             <tr>
                                 <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                     001
@@ -71,7 +88,34 @@ export default function KaloriForm() {
                                     </div>
                                 </td>
                             </tr>
+                        </tbody> */}
+
+                        {apiData.map((materials, index) =>
+                        <tbody className="">
+                            <tr>
+                            <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                    {index+1}
+                                </th>
+                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                    {materials.name}
+                                </td>
+                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                    {materials.calory}
+                                </td>
+                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                    {materials.created_at}
+                                </td>
+                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                    <div className="flex flex-col space-y-1 lg:space-x-4 lg:flex-row lg:items-end">
+                                        <Link className="" to={`/lihat-kalori/${materials.id}`}><img src={View} alt="Tombol Lihat"/></Link>
+                                        <Link className="" to="/edit-kalori"><img src={Edit} alt="Tombol Edit"/></Link>
+                                        <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
+                        )}
+
                     </table>
                 </div>
             </CardBody>
