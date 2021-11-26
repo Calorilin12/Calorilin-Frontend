@@ -118,7 +118,7 @@ function LihatResep() {
                                     </textarea>
                                 </div>
                             </div>
-                            <p className="text-lg font-medium mt-10 mb-4 ml-4">Bisa dikonsumsi untuk penderita :</p> 
+                            <p className="text-lg font-medium mt-10 mb-4 ml-4">Bisa dikonsumsi untuk penderita</p> 
                                 <div className="space-y-2">
                                     <div className="ml-6">
                                         <input type="checkbox" checked={checkedKolesterol} />
@@ -141,6 +141,14 @@ function LihatResep() {
                                         <label className="text-secondary500 text-sm ml-2">Asam Lambung</label>
                                     </div>
                                 </div>
+                            <div className="grid grid-cols-10 h-60 mt-9">
+                                <div className="col-start-1 col-end-11 px-4 mb-2">
+                                    <p className="text-lg font-medium mb-3">Deskripsi Resep</p> 
+                                    <textarea className="resize-none mt-1 pl-4 border focus:outline-none focus:border-gray-500 rounded-md w-full h-40" name="description" readOnly>
+                                        {recipes.short_description}
+                                    </textarea>
+                                </div>
+                            </div>
                             <div className="flex justify-end items-center mt-12 ml-4 mr-4"> 
                                 <Link
                                     to="/resep-makanan"

@@ -8,11 +8,14 @@ import Edit from '../assets/img/edit.png';
 import ModalDelete from './ModalResepDelete';
 import { Link } from 'react-router-dom';
 import { RECIPES } from 'utils/url';
-import { getToken } from 'utils/auth'
+import { getToken } from 'utils/auth';
 import axios from 'axios';
 
 export default function ResepForm() {
     const [showModalDelete, setShowModalDelete] = useState(false);
+    const [deleteItem, setDeleteItem] = useState();
+    const [nameItem, setNameItem] = useState();
+    const [refreshData, setRefreshData] = useState(0)
     const [apiData, setApiData] = useState([]);
     const config = {
         headers: { Authorization: `Bearer ${getToken()}` }
@@ -27,7 +30,7 @@ export default function ResepForm() {
             .catch((err) => {
                 console.log(err);
             }); 
-    }, []);
+    }, [refreshData]);
     return (
     <>
         <Card>
@@ -50,7 +53,7 @@ export default function ResepForm() {
                         <thead className="bg-secondary100">
                             <tr>
                                 <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
-                                    ID
+                                    No
                                 </th>
                                 <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
                                     Nama Makanan
@@ -69,40 +72,46 @@ export default function ResepForm() {
                                 </th>
                             </tr>
                         </thead>
-                        {apiData.map((recipes, index) =>
                         <tbody className="">
-                            <tr>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    {index+1}
-                                </th>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    {recipes.name}
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    {recipes.made_by}
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    {recipes.level_of_difficult}
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    {recipes.created_at}
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <div className="flex flex-col space-y-1 lg:space-x-4 lg:flex-row lg:items-end">
-                                        <Link className="" to={`/lihat-resep-makanan/${recipes.id}`}><img src={View} alt="Tombol Lihat"/></Link>
-                                        <Link className="" to={`/edit-resep-makanan/${recipes.id}`}><img src={Edit} alt="Tombol Edit"/></Link>
-                                        {/* <button className="" onClick={() => handleClick(recipes.id)}><img src={Delete} alt="Tombol Hapus"/></button> */}
-                                        <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
-                                    </div>
-                                </td>
-                            </tr>
+                            {apiData.map((recipes, index) =>
+                                <tr key={recipes.id}>
+                                    <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        {index+1}
+                                    </th>
+                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        {recipes.name}
+                                    </td>
+                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        {recipes.made_by}
+                                    </td>
+                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        {recipes.level_of_difficult}
+                                    </td>
+                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        {recipes.created_at}
+                                    </td>
+                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        <div className="flex flex-col space-y-1 lg:space-x-4 lg:flex-row lg:items-end">
+                                            <Link className="" to={`/lihat-resep-makanan/${recipes.id}`}><img src={View} alt="Tombol Lihat"/></Link>
+                                            <Link className="" to={`/edit-resep-makanan/${recipes.id}`}><img src={Edit} alt="Tombol Edit"/></Link>
+                                            {/* <button className="" onClick={() => handleClick(recipes.id)}><img src={Delete} alt="Tombol Hapus"/></button> */}
+                                            <button className="" 
+                                                onClick={() => {
+                                                    setShowModalDelete(true);
+                                                    setDeleteItem(recipes.id);
+                                                    setNameItem(recipes.name);
+                                                }}>
+                                            <img src={Delete} alt="Tombol Hapus"/></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            )}
                         </tbody>
-                        )}
                     </table>
                 </div>
             </CardBody>
         </Card>
-        {showModalDelete && <ModalDelete closeModalDelete={setShowModalDelete}/>}
+        {showModalDelete && <ModalDelete closeModalDelete={setShowModalDelete} onSuccess={setRefreshData} deleteItem={deleteItem} nameItem={nameItem}/>}
     </>
     ); 
 }

@@ -1,8 +1,29 @@
 import React from 'react';
 import Cancel from '../assets/img/cancel.png';
 import Button from "@material-tailwind/react/Button";
+import {useHistory} from "react-router-dom";
+import { RECIPES } from 'utils/url';
+import { getToken } from 'utils/auth';
+import axios from 'axios';
 
-function ModalResepDelete({closeModalDelete}) {
+function ModalResepDelete({closeModalDelete, onSuccess, deleteItem, nameItem}) {
+    const history = useHistory();
+    const config = {
+        headers: { 'Authorization': `Bearer ${getToken()}`, 'content-type': `multipart/form-data` }
+    };
+    const handleDelete = () => {
+        axios
+            .delete(RECIPES + deleteItem, config)
+            .then((res) => {
+                console.log(res);
+                console.log("sukses");
+                onSuccess(oldKey => oldKey +1);
+                closeModalDelete();
+            }).catch((err) => {
+                console.log(err);
+                console.log("gagal");
+            });
+    };
     return (
         <>
             <div
@@ -17,10 +38,10 @@ function ModalResepDelete({closeModalDelete}) {
                         </div>
                         <div className="relative p-8 flex-auto">
                             <h3 className="text-lg font-semibold flex justify-center">
-                                Apakah anda yakin ingin menghapus data?
+                                Apakah Anda yakin menghapus data "{nameItem}" ?
                             </h3>
                             <p className="my-2 text-blueGray-500 text-md leading-relaxed flex justify-center">
-                                Data akan dihapus dari sistem aplikasi
+                                Data akan dihapus secara permanen dari sistem aplikasi
                             </p>
                         </div>
                         {/*footer*/}
@@ -45,7 +66,7 @@ function ModalResepDelete({closeModalDelete}) {
                                 block={false}
                                 iconOnly={false}
                                 ripple="light"
-                                onClick={() => closeModalDelete(false)}
+                                onClick={() => handleDelete()}
                             >
                                 Hapus
                             </Button>

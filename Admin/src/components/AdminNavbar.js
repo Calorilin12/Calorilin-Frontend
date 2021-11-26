@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import Button from '@material-tailwind/react/Button';
 import Icon from '@material-tailwind/react/Icon';
 import NavbarInput from '@material-tailwind/react/NavbarInput';
@@ -9,8 +9,11 @@ import DropdownItem from '@material-tailwind/react/DropdownItem';
 import ProfilePicture from 'assets/img/team-1-800x800.jpg';
 
 export default function AdminNavbar({ showSidebar, setShowSidebar }) {
+    const history = useHistory();
     const location = useLocation().pathname;
-
+    const handleProfile = () => {
+        history.replace('/profile-admin/1');
+    };
     return (
         <nav className="bg-primary500 md:ml-64 py-6 px-3">
             <div className="container max-w-full mx-auto flex items-center justify-between md:pr-8 md:pl-10">
@@ -69,14 +72,8 @@ export default function AdminNavbar({ showSidebar, setShowSidebar }) {
                                     color: 'transparent',
                                 }}
                             >
-                                <DropdownItem color="lightBlue">
-                                    Action
-                                </DropdownItem>
-                                <DropdownItem color="lightBlue">
-                                    Another Action
-                                </DropdownItem>
-                                <DropdownItem color="lightBlue">
-                                    Something Else
+                                <DropdownItem color="lightBlue" onClick={() => handleProfile()}>
+                                    Profile
                                 </DropdownItem>
                             </Dropdown>
                         </div>

@@ -55,9 +55,9 @@ export default function PenggunaForm() {
                                     </th>
                                 </tr>
                             </thead>
-                            {apiData.map(user =>
-                                <tbody className="">
-                                    <tr>
+                            <tbody className="">
+                                {apiData.map(user =>
+                                    <tr key={user.id}>
                                         <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                             {user.id}
                                         </th>
@@ -74,8 +74,8 @@ export default function PenggunaForm() {
                                             </div>
                                         </td> 
                                     </tr>
-                                </tbody>
-                            )}
+                                )}
+                            </tbody>
                         </table>
                     </div>
                 </CardBody>

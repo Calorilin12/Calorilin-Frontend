@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import Card from '@material-tailwind/react/Card';
 import CardHeader from '@material-tailwind/react/CardHeader';
@@ -6,9 +6,27 @@ import CardBody from '@material-tailwind/react/CardBody';
 import View from '../assets/img/view.png';
 import Delete from '../assets/img/delete.png';
 import ModalDelete from './ModalJadwalDelete';
+import { FOOD_MATERIALS_FAVORITES } from 'utils/url';
+import { getToken } from 'utils/auth'
+import axios from 'axios';
 
 export default function JadwalForm() {
     const [showModalDelete, setShowModalDelete] = useState(false);
+    const [apiData, setApiData] = useState([]);
+    const config = {
+        headers: { Authorization: `Bearer ${getToken()}` }
+    };
+    useEffect(() => {
+        axios
+            .get(FOOD_MATERIALS_FAVORITES, config)
+            .then((res) => {
+                console.log(res.data);
+                setApiData(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            }); 
+    }, []);
     return (
     <>
         <Card>
@@ -40,126 +58,32 @@ export default function JadwalForm() {
                             </tr>
                         </thead>
                         <tbody className="">
-                            <tr>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    001
-                                </th>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    Stefanus Irgy Hananto
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <ul>
-                                        <li>Roti</li>
-                                        <li>Susu</li>
-                                        <li>Telur</li>
-                                    </ul> 
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    1530 Kcal
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <div className="flex flex-col space-y-2 lg:space-x-4 lg:flex-row lg:items-end">
-                                        <Link className="" to="/lihat-jadwal"><img src={View} alt="Tombol Lihat"/></Link>
-                                        <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    001
-                                </th>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    Stefanus Irgy Hananto
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <ul>
-                                        <li>Roti</li>
-                                        <li>Susu</li>
-                                        <li>Telur</li>
-                                    </ul> 
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    1530 Kcal
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <div className="flex flex-col space-y-2 lg:space-x-4 lg:flex-row lg:items-end">
-                                        <Link className="" to="/lihat-jadwal"><img src={View} alt="Tombol Lihat"/></Link>
-                                        <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    001
-                                </th>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    Stefanus Irgy Hananto
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <ul>
-                                        <li>Roti</li>
-                                        <li>Susu</li>
-                                        <li>Telur</li>
-                                    </ul> 
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    1530 Kcal
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <div className="flex flex-col space-y-2 lg:space-x-4 lg:flex-row lg:items-end">
-                                        <Link className="" to="/lihat-jadwal"><img src={View} alt="Tombol Lihat"/></Link>
-                                        <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    001
-                                </th>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    Stefanus Irgy Hananto
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <ul>
-                                        <li>Roti</li>
-                                        <li>Susu</li>
-                                        <li>Telur</li>
-                                    </ul> 
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    1530 Kcal
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <div className="flex flex-col space-y-2 lg:space-x-4 lg:flex-row lg:items-end">
-                                        <Link className="" to="/lihat-jadwal"><img src={View} alt="Tombol Lihat"/></Link>
-                                        <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    001
-                                </th>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    Stefanus Irgy Hananto
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <ul>
-                                        <li>Roti</li>
-                                        <li>Susu</li>
-                                        <li>Telur</li>
-                                    </ul> 
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    1530 Kcal
-                                </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                    <div className="flex flex-col space-y-2 lg:space-x-4 lg:flex-row lg:items-end">
-                                        <Link className="" to="/lihat-jadwal"><img src={View} alt="Tombol Lihat"/></Link>
-                                        <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
-                                    </div>
-                                </td>
-                            </tr>
+                            {apiData.map(jadwal =>
+                                <tr>
+                                    <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        {jadwal.id}
+                                    </th>
+                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        {jadwal.name}
+                                    </td>
+                                    {/* <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        <ul>
+                                            <li>Roti</li>
+                                            <li>Susu</li>
+                                            <li>Telur</li>
+                                        </ul> 
+                                    </td>
+                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        1530 Kcal
+                                    </td> */}
+                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        <div className="flex flex-col space-y-2 lg:space-x-4 lg:flex-row lg:items-end">
+                                            <Link className="" to="/lihat-jadwal"><img src={View} alt="Tombol Lihat"/></Link>
+                                            <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            )}
                         </tbody>
                     </table>
                 </div>

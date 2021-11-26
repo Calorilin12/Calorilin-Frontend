@@ -21,6 +21,7 @@ function EditResep() {
     const [level, setLevel] = useState("");
     const [compositions, setCompositions] = useState("");
     const [steps, setSteps] = useState("");
+    const [description, setDescription] = useState("");
     const [kolesterol, setKolesterol] = useState("");
     const [diabetes, setDiabetes] = useState("");
     const [hipertensi, setHipertensi] = useState("");
@@ -38,7 +39,7 @@ function EditResep() {
         if(!checkedKolesterol === true){
             setKolesterol("0");
         } else {
-            console.log("brenda")
+            setKolesterol("1")
         }
     };
     const handleDiabetes = () => {
@@ -80,6 +81,7 @@ function EditResep() {
             .then((res) => {
                 console.log(res);
                 console.log(res.data);
+                console.log(res.data[0].cholesterol);
                 setPublishDate(res.data[0].publish_date);
                 setName(res.data[0].name);
                 setMadeBy(res.data[0].made_by);
@@ -89,6 +91,7 @@ function EditResep() {
                 setLevel(res.data[0].level_of_difficult);
                 setCompositions(res.data[0].compositions);
                 setSteps(res.data[0].steps_of_make);
+                setDescription(res.data[0].short_description);
                 // setKolesterol(res.data[0].cholesterol);
                 // setDiabetes(res.data[0].diabetes);
                 // setHipertensi(res.data[0].hyper_tension);
@@ -97,32 +100,42 @@ function EditResep() {
 
                 if(res.data[0].cholesterol === 1){
                     setCheckedKolesterol(false);
+                    setKolesterol("1");
                 } else {
                     setCheckedKolesterol(true);
+                    setKolesterol("0");
                 }
 
                 if(res.data[0].diabetes === 1){
                     setCheckedDiabetes(false);
+                    setDiabetes("1");
                 } else {
                     setCheckedDiabetes(true);
+                    setDiabetes("0");
                 }
 
                 if(res.data[0].hyper_tension === 1){
                     setCheckedHipertensi(false);
+                    setHipertensi("1");
                 } else {
                     setCheckedHipertensi(true);
+                    setHipertensi("0");
                 }
 
                 if(res.data[0].uric_acid === 1){
                     setCheckedAsamUrat(false);
+                    setAsamUrat("1");
                 } else {
                     setCheckedAsamUrat(true);
+                    setAsamUrat("0");
                 }
                 
                 if(res.data[0].stomach_acid === 1){
                     setCheckedAsamLambung(false);
+                    setAsamLambung("1");
                 } else {
                     setCheckedAsamLambung(true);
+                    setAsamLambung("0");
                 }
             })
             .catch((err) => {
@@ -130,11 +143,11 @@ function EditResep() {
             }); 
     }, []);
 
-    // console.log(kolesterol)
-    // console.log(diabetes)
-    // console.log(hipertensi)
-    // console.log(asamUrat)
-    // console.log(asamLambung)
+    console.log(kolesterol)
+    console.log(diabetes)
+    console.log(hipertensi)
+    console.log(asamUrat)
+    console.log(asamLambung)
 
     const updateData = () => {
         let formData = new FormData();
@@ -148,6 +161,7 @@ function EditResep() {
             formData.append("total_calory", calory);
             formData.append("compositions", compositions);
             formData.append("steps_of_make", steps);
+            formData.append("short_description", description);
             formData.append("cholesterol", kolesterol);
             formData.append("diabetes", diabetes);
             formData.append("hyper_tension", hipertensi);
@@ -306,6 +320,15 @@ function EditResep() {
                                         />
                                     </div>
                                 </div> */}
+                            <div className="grid grid-cols-10 h-60 mt-9">
+                                <div className="col-start-1 col-end-11 px-4 mb-2">
+                                    <p className="text-lg font-medium mb-3">Deskripsi Resep</p> 
+                                    <textarea className="resize-none mt-1 pl-4 border focus:outline-none focus:border-gray-500 rounded-md w-full h-40" name="description" 
+                                                value={description} onChange={(e) => setDescription(e.target.value)}
+                                                placeholder="Deskripsi Resep">
+                                    </textarea>
+                                </div>
+                            </div>
                             <div className="flex justify-between items-center mt-12 ml-4 mr-4"> 
                                 <Link
                                     to="/resep-makanan"

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {Link, useHistory} from "react-router-dom";
 import { RECIPES } from 'utils/url';
 import { getToken } from 'utils/auth';
@@ -7,6 +7,10 @@ import axios from 'axios';
 function TambahResep() {
 
     const history = useHistory();
+
+    const config = {
+        headers: { 'Authorization': `Bearer ${getToken()}`, 'content-type': `multipart/form-data` }
+    };
 
     const [checkedKolesterol, setCheckedKolesterol] = useState(false);
     const [checkedDiabetes, setCheckedDiabetes] = useState(false);
@@ -67,12 +71,12 @@ function TambahResep() {
     const [level, setLevel] = useState("");
     const [compositions, setCompositions] = useState("");
     const [steps, setSteps] = useState("");
+    const [description, setDescription] = useState("");
     const [kolesterol, setKolesterol] = useState("1");
     const [diabetes, setDiabetes] = useState("1");
     const [hipertensi, setHipertensi] = useState("1");
     const [asamUrat, setAsamUrat] = useState("1");
     const [asamLambung, setAsamLambung] = useState("1");
-
     console.log(checkedKolesterol)
     console.log(kolesterol)
     console.log(diabetes)
@@ -101,6 +105,7 @@ function TambahResep() {
             formData.append("total_calory", calory);
             formData.append("compositions", compositions);
             formData.append("steps_of_make", steps);
+            formData.append("short_description", description);
             formData.append("cholesterol", kolesterol);
             formData.append("diabetes", diabetes);
             formData.append("hyper_tension", hipertensi);
@@ -117,10 +122,6 @@ function TambahResep() {
             });
         }
     }
-
-    const config = {
-        headers: { 'Authorization': `Bearer ${getToken()}`, 'content-type': `multipart/form-data` }
-    };
 
     return (
         <>
@@ -277,6 +278,15 @@ function TambahResep() {
                                         />
                                     </div>
                                 </div>      */}
+                                <div className="grid grid-cols-10 h-60 mt-9">
+                                    <div className="col-start-1 col-end-11 px-4 mb-2">
+                                        <p className="text-lg font-medium mb-3">Deskripsi Resep</p> 
+                                        <textarea className="resize-none mt-1 pl-4 border focus:outline-none focus:border-gray-500 rounded-md w-full h-40" name="description" 
+                                                    value={description} onChange={(e) => setDescription(e.target.value)}
+                                                    placeholder="Deskripsi Resep">
+                                        </textarea>
+                                    </div>
+                                </div>
                                 <div className="flex justify-between items-center mt-12 ml-4 mr-4"> 
                                     <Link
                                         to="/resep-makanan"

@@ -38,10 +38,10 @@ export default function KaloriForm() {
             </CardHeader>
             <div className="mt-7 ml-4">
                 <Link
-                    to="/tambah-kalori"
+                    to="/tambah-kalori-makanan"
                     className="flex bg-info500 focus:ring focus:ring-blue-200 items-center justify-center gap-4 text-sm text-white font-light px-4 py-2 rounded-lg w-32"
                 >
-                    Tambah Resep
+                    Tambah Data
                 </Link>
             </div>
             <CardBody>
@@ -50,17 +50,20 @@ export default function KaloriForm() {
                         <thead className="bg-secondary100">
                             <tr>
                                 <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
-                                    ID
+                                    No
                                 </th>
                                 <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
                                     Nama Bahan Makanan
                                 </th>
                                 <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
-                                    Jumlah Kalori
+                                    Jumlah Penyajian
                                 </th>
                                 <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
-                                    Tanggal dibuat
+                                    Jumlah Kalori
                                 </th>
+                                {/* <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
+                                    Tanggal dibuat
+                                </th> */}
                                 <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
                                     Aksi
                                 </th>
@@ -100,15 +103,18 @@ export default function KaloriForm() {
                                     {materials.name}
                                 </td>
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                    {materials.serve}
+                                </td>
+                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                     {materials.calory}
                                 </td>
-                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                {/* <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                     {materials.created_at}
-                                </td>
+                                </td> */}
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                     <div className="flex flex-col space-y-1 lg:space-x-4 lg:flex-row lg:items-end">
-                                        <Link className="" to={`/lihat-kalori/${materials.id}`}><img src={View} alt="Tombol Lihat"/></Link>
-                                        <Link className="" to="/edit-kalori"><img src={Edit} alt="Tombol Edit"/></Link>
+                                        <Link className="" to={`/lihat-kalori-makanan/${materials.id}`}><img src={View} alt="Tombol Lihat"/></Link>
+                                        <Link className="" to={`/edit-kalori-makanan/${materials.id}`}><img src={Edit} alt="Tombol Edit"/></Link>
                                         <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
                                     </div>
                                 </td>
