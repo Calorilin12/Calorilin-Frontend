@@ -13,6 +13,9 @@ import axios from 'axios';
 
 export default function KaloriForm() {
     const [showModalDelete, setShowModalDelete] = useState(false);
+    const [deleteItem, setDeleteItem] = useState();
+    const [nameItem, setNameItem] = useState();
+    const [refreshData, setRefreshData] = useState(0)
     const [apiData, setApiData] = useState([]);
     const config = {
         headers: { Authorization: `Bearer ${getToken()}` }
@@ -27,7 +30,7 @@ export default function KaloriForm() {
             .catch((err) => {
                 console.log(err);
             }); 
-    }, []);
+    }, [refreshData]);
     return (
         <>
         <Card>
@@ -115,7 +118,14 @@ export default function KaloriForm() {
                                     <div className="flex flex-col space-y-1 lg:space-x-4 lg:flex-row lg:items-end">
                                         <Link className="" to={`/lihat-kalori-makanan/${materials.id}`}><img src={View} alt="Tombol Lihat"/></Link>
                                         <Link className="" to={`/edit-kalori-makanan/${materials.id}`}><img src={Edit} alt="Tombol Edit"/></Link>
-                                        <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
+                                        {/* <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button> */}
+                                        <button className="" 
+                                            onClick={() => {
+                                                setShowModalDelete(true);
+                                                setDeleteItem(materials.id);
+                                                setNameItem(materials.name);
+                                            }}>
+                                        <img src={Delete} alt="Tombol Hapus"/></button>
                                     </div>
                                 </td>
                             </tr>

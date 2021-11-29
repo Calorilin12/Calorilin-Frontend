@@ -12,6 +12,9 @@ import axios from 'axios';
 
 export default function PenggunaForm() {
     const [showModalDelete, setShowModalDelete] = useState(false);
+    const [deleteItem, setDeleteItem] = useState();
+    const [nameItem, setNameItem] = useState();
+    const [refreshData, setRefreshData] = useState(0)
     const [apiData, setApiData] = useState([]);
     const config = {
         headers: { Authorization: `Bearer ${getToken()}` }
@@ -27,7 +30,7 @@ export default function PenggunaForm() {
             .catch((err) => {
                 console.log(err);
             }); 
-    }, []);
+    },  [refreshData]);
     return (
         <> 
             <Card>
@@ -70,7 +73,14 @@ export default function PenggunaForm() {
                                         <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                             <div className="flex flex-col space-y-2 lg:space-x-4 lg:flex-row lg:items-end">
                                                 <Link className="" to={`/lihat-pengguna/${user.id}`}><img src={View} alt="Tombol Lihat"/></Link>
-                                                <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
+                                                {/* <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button> */}
+                                                <button className="" 
+                                                    onClick={() => {
+                                                        setShowModalDelete(true);
+                                                        setDeleteItem(user.id);
+                                                        setNameItem(user.name);
+                                                    }}>
+                                                <img src={Delete} alt="Tombol Hapus"/></button>
                                             </div>
                                         </td> 
                                     </tr>
