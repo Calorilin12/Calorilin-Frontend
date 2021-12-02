@@ -7,14 +7,16 @@ import View from '../assets/img/view.png';
 import Delete from '../assets/img/delete.png';
 import ModalDelete from './ModalPenggunaDelete';
 import { USERS } from 'utils/url';
-import { getToken } from 'utils/auth'
+import { getToken } from 'utils/auth';
+import Search from 'assets/img/search-grey.png';
 import axios from 'axios';
 
 export default function PenggunaForm() {
     const [showModalDelete, setShowModalDelete] = useState(false);
     const [deleteItem, setDeleteItem] = useState();
     const [nameItem, setNameItem] = useState();
-    const [refreshData, setRefreshData] = useState(0)
+    const [refreshData, setRefreshData] = useState(0);
+    const [search, setSearch] = useState("");
     const [apiData, setApiData] = useState([]);
     const config = {
         headers: { Authorization: `Bearer ${getToken()}` }
@@ -39,6 +41,16 @@ export default function PenggunaForm() {
                         <h2 className="text-white text-2xl">Data Pengguna Aplikasi</h2>
                     </div>
                 </CardHeader>
+                <div className="flex flex-row justify-end">
+                    <div className="absolute mr-52 mt-11">
+                        <img src={Search} alt="Icon Search" className="w-4 h-4"/>
+                    </div>
+                    <div className="items-end mt-8 mb-1 mr-4"> 
+                        <input class="border-2 border-gray-300 bg-white h-10 pl-10 w-56 rounded-lg text-sm focus:outline-none"
+                                type="search" name="search" placeholder="Search" onChange = {(e) => { setSearch(e.target.value); }}>
+                        </input>
+                    </div>
+                </div>
                 <CardBody>
                     <div className="overflow-x-auto">
                         <table className="items-center w-full bg-transparent border-collapse">
@@ -59,7 +71,13 @@ export default function PenggunaForm() {
                                 </tr>
                             </thead>
                             <tbody className="">
-                                {apiData.map(user =>
+                                {apiData.filter(val => {
+                                if(search === ''){
+                                    return val;
+                                } else if(val.name.toLowerCase().includes(search.toLowerCase())){
+                                    return val;
+                                }
+                                }).map(user =>
                                     <tr key={user.id}>
                                         <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                             {user.id}
@@ -90,7 +108,7 @@ export default function PenggunaForm() {
                     </div>
                 </CardBody>
             </Card>
-            {showModalDelete && <ModalDelete closeModalDelete={setShowModalDelete}/>}
+            {showModalDelete && <ModalDelete closeModalDelete={setShowModalDelete} onSuccess={setRefreshData} deleteItem={deleteItem} nameItem={nameItem}/>}
         </>
     );
 }

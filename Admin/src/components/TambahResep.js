@@ -65,6 +65,7 @@ function TambahResep() {
     const [publishDate, setPublishDate] = useState("");
     const [name, setName] = useState("");
     const [madeBy, setMadeBy] = useState("");
+    const [category, setCategory] = useState("");
     const [calory, setCalory] = useState("");
     const [eater, setEater] = useState("");
     const [duration, setDuration] = useState("");
@@ -98,6 +99,7 @@ function TambahResep() {
             formData.append("recipe_image", saveImage);
             formData.append("name", name);
             formData.append("made_by", madeBy);
+            formData.append("category", category);
             formData.append("level_of_difficult", level);
             formData.append("publish_date", publishDate);
             formData.append("duration", duration);
@@ -134,8 +136,8 @@ function TambahResep() {
                             </div>
                             <hr className="mt-3 mb-6 min-w-full" />
                             <form action="#" className="mt-5" id="formDataResep">
-                                <div className="grid grid-cols-10">
-                                    <div className="col-start-1 col-end-11 px-4 mb-2">
+                                <div className="grid grid-cols-10 h-20">
+                                    <div className="col-start-1 col-end-11 px-4 mb-2 space-y-2">
                                         <label className="text-secondary500 text-sm" for="recipe_image">Gambar Makanan</label><br/>
                                         <input type="file" id="recipe_image" onChange={handleUploadChange}/>
                                     </div>
@@ -145,6 +147,13 @@ function TambahResep() {
                                         <label className="text-secondary500 text-sm">Tanggal Terbit</label><br/>
                                         <input type="date" id="publish_date" className="p-3 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
                                                 value={publishDate} onChange={(e) => setPublishDate(e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="col-start-6 col-end-11 px-4 mb-2">
+                                        <label className="text-secondary500 text-sm">Sumber</label><br/>
+                                        <input type="text" id="made_by" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
+                                                value={madeBy} onChange={(e) => setMadeBy(e.target.value)}
+                                                placeholder="Sumber Resep" 
                                         />
                                     </div>
                                 </div>         
@@ -157,10 +166,10 @@ function TambahResep() {
                                         />
                                     </div>
                                     <div className="col-start-6 col-end-11 px-4 mb-2">
-                                        <label className="text-secondary500 text-sm">Sumber</label><br/>
-                                        <input type="text" id="made_by" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
-                                                value={madeBy} onChange={(e) => setMadeBy(e.target.value)}
-                                                placeholder="Sumber Resep" 
+                                        <label className="text-secondary500 text-sm">Kategori Makanan</label><br/>
+                                        <input type="text" id="category" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
+                                                value={category} onChange={(e) => setCategory(e.target.value)}
+                                                placeholder="Kategori Makanan" 
                                         />
                                     </div>
                                 </div>

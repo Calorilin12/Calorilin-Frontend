@@ -7,7 +7,7 @@ import View from '../assets/img/view.png';
 import Delete from '../assets/img/delete.png';
 import ModalDelete from './ModalJadwalDelete';
 import { FOOD_MATERIALS_FAVORITES } from 'utils/url';
-import { getToken } from 'utils/auth'
+import { getToken } from 'utils/auth';
 import axios from 'axios';
 
 export default function JadwalForm() {
@@ -20,8 +20,9 @@ export default function JadwalForm() {
         axios
             .get(FOOD_MATERIALS_FAVORITES, config)
             .then((res) => {
-                console.log(res.data);
-                setApiData(res.data);
+                console.log("masuk bro");
+                console.log(res.data.data);
+                setApiData(res.data.data);
             })
             .catch((err) => {
                 console.log(err);
@@ -64,21 +65,17 @@ export default function JadwalForm() {
                                         {jadwal.id}
                                     </th>
                                     <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        {jadwal.username}
+                                    </td>
+                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                         {jadwal.name}
                                     </td>
-                                    {/* <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        <ul>
-                                            <li>Roti</li>
-                                            <li>Susu</li>
-                                            <li>Telur</li>
-                                        </ul> 
+                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        {jadwal.calory}
                                     </td>
                                     <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        1530 Kcal
-                                    </td> */}
-                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                         <div className="flex flex-col space-y-2 lg:space-x-4 lg:flex-row lg:items-end">
-                                            <Link className="" to="/lihat-jadwal"><img src={View} alt="Tombol Lihat"/></Link>
+                                            <Link className="" to={`/lihat-jadwal/${jadwal.id}`}><img src={View} alt="Tombol Lihat"/></Link>
                                             <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
                                         </div>
                                     </td>

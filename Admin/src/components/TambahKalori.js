@@ -61,13 +61,13 @@ function TambahKalori() {
                             <h2 className="text-2xl font-semibold">Form Tambah Data Bahan Makanan</h2>
                         </div>
                         <hr className="mt-4 mb-6 min-w-full" />
-                        <div className="grid grid-cols-10 h-16">
-                            <div className="col-start-1 col-end-11 px-4 mb-2 space-y-1">
+                        <div className="grid grid-cols-10 h-20">
+                            <div className="col-start-1 col-end-11 px-4 mb-2 space-y-2">
                                 <label className="text-secondary500 text-sm" for="gambar">Gambar Bahan Makanan</label><br/>
                                 <input type="file" name="gambar" onChange={handleUploadChange}/>
                             </div>
                         </div>
-                        <div className="grid grid-cols-10 h-20 mt-1">
+                        <div className="grid grid-cols-10 h-20">
                             <div className="col-start-1 col-end-6 px-4 mb-2">
                                 <label className="text-secondary500 text-sm" for="jumlah">Jumlah Penyajian</label><br/>
                                 <input type="text" name="jumlah" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" placeholder="Jumlah Penyajian"

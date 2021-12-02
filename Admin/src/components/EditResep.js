@@ -15,6 +15,7 @@ function EditResep() {
     const [publishDate, setPublishDate] = useState("");
     const [name, setName] = useState("");
     const [madeBy, setMadeBy] = useState("");
+    const [category, setCategory] = useState("");
     const [calory, setCalory] = useState("");
     const [eater, setEater] = useState("");
     const [duration, setDuration] = useState("");
@@ -85,6 +86,7 @@ function EditResep() {
                 setPublishDate(res.data[0].publish_date);
                 setName(res.data[0].name);
                 setMadeBy(res.data[0].made_by);
+                setCategory(res.data[0].category);
                 setCalory(res.data[0].total_calory);
                 setEater(res.data[0].total_eater);
                 setDuration(res.data[0].duration);
@@ -154,6 +156,7 @@ function EditResep() {
             formData.append("recipe_image", saveImage);
             formData.append("name", name);
             formData.append("made_by", madeBy);
+            formData.append("category", category);
             formData.append("level_of_difficult", level);
             formData.append("publish_date", publishDate);
             formData.append("duration", duration);
@@ -207,6 +210,10 @@ function EditResep() {
                                             value={publishDate} onChange={(e) => setPublishDate(e.target.value)}
                                     />
                                 </div>
+                                <div className="col-start-6 col-end-11 px-4 mb-2">
+                                    <label className="text-secondary500 text-sm" for="sumber">Sumber</label><br/>
+                                    <input type="text" name="sumber" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={madeBy} onChange={(e) => setMadeBy(e.target.value)}/>
+                                </div>
                             </div>
                             <div className="grid grid-cols-10 h-20">
                                 <div className="col-start-1 col-end-6 px-4 mb-2">
@@ -214,8 +221,8 @@ function EditResep() {
                                     <input type="text" name="name" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={name} onChange={(e) => setName(e.target.value)} />
                                 </div>
                                 <div className="col-start-6 col-end-11 px-4 mb-2">
-                                    <label className="text-secondary500 text-sm" for="sumber">Sumber</label><br/>
-                                    <input type="text" name="sumber" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={madeBy} onChange={(e) => setMadeBy(e.target.value)}/>
+                                    <label className="text-secondary500 text-sm" for="sumber">Kategori Makanan</label><br/>
+                                    <input type="text" name="kategori" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={category} onChange={(e) => setCategory(e.target.value)}/>
                                 </div>
                             </div>
                             <div className="grid grid-cols-10 h-20">

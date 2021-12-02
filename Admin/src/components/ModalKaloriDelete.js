@@ -1,13 +1,11 @@
 import React from 'react';
 import Cancel from '../assets/img/cancel.png';
 import Button from "@material-tailwind/react/Button";
-import {useHistory} from "react-router-dom";
 import { FOOD_MATERIALS } from 'utils/url';
 import { getToken } from 'utils/auth';
 import axios from 'axios';
 
 function ModalKaloriDelete({closeModalDelete, onSuccess, deleteItem, nameItem}) {
-    const history = useHistory();
     const config = {
         headers: { 'Authorization': `Bearer ${getToken()}`, 'content-type': `multipart/form-data` }
     };
@@ -41,7 +39,7 @@ function ModalKaloriDelete({closeModalDelete, onSuccess, deleteItem, nameItem}) 
                                 Apakah Anda yakin menghapus data "{nameItem}" ?
                             </h3>
                             <p className="my-2 text-blueGray-500 text-md leading-relaxed flex justify-center">
-                                Data akan dihapus dari sistem aplikasi
+                                Data akan dihapus secara permanen dari sistem aplikasi
                             </p>
                         </div>
                         {/*footer*/}
@@ -66,7 +64,7 @@ function ModalKaloriDelete({closeModalDelete, onSuccess, deleteItem, nameItem}) 
                                 block={false}
                                 iconOnly={false}
                                 ripple="light"
-                                onClick={() => closeModalDelete(false)}
+                                onClick={() => handleDelete()}
                             >
                                 Hapus
                             </Button>

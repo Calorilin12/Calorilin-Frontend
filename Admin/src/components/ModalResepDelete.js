@@ -1,13 +1,11 @@
 import React from 'react';
 import Cancel from '../assets/img/cancel.png';
 import Button from "@material-tailwind/react/Button";
-import {useHistory} from "react-router-dom";
 import { RECIPES } from 'utils/url';
 import { getToken } from 'utils/auth';
 import axios from 'axios';
 
 function ModalResepDelete({closeModalDelete, onSuccess, deleteItem, nameItem}) {
-    const history = useHistory();
     const config = {
         headers: { 'Authorization': `Bearer ${getToken()}`, 'content-type': `multipart/form-data` }
     };

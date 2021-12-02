@@ -73,8 +73,10 @@ function LihatResep() {
                                 <p className="ml-1">{"by " + recipes.made_by}</p> */}
                             </div>
                             <hr className="mt-3 mb-6 min-w-full" />
-                            <div className="ml-4 mb-4 w-64 h-40">
-                                <img src={`${BASE_URL}/recipe-detail-images/${recipes.recipe_image}`} alt={recipes.name} className="w-64 h-40"/>
+                            <div className="flex justify-center mb-6">
+                                <div className="w-80 h-72">
+                                    <img src={`${BASE_URL}/recipe-detail-images/${recipes.recipe_image}`} alt={recipes.name} className="w-80 h-72"/>
+                                </div>
                             </div>
                             <div className="grid grid-cols-10 h-20">
                                 <div className="col-start-1 col-end-6 px-4 mb-2">
@@ -149,7 +151,7 @@ function LihatResep() {
                                     </textarea>
                                 </div>
                             </div>
-                            <div className="flex justify-end items-center mt-12 ml-4 mr-4"> 
+                            <div className="flex justify-end items-center mt-6 mb-6 ml-4 mr-4"> 
                                 <Link
                                     to="/resep-makanan"
                                     className="flex bg-secondary500 focus:ring focus:ring-gray-200 items-center justify-center gap-4 text-sm text-white font-light px-4 py-2 rounded-lg w-32"

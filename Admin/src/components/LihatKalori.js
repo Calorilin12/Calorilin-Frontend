@@ -32,8 +32,10 @@ function LihatKalori() {
                             <h2 className="text-2xl font-semibold">Data Kalori Bahan Makanan</h2>
                         </div>
                         <hr className="mt-4 mb-6 min-w-full" />
-                        <div className="ml-4 mb-4">
-                            <img src={`${BASE_URL}/food-material-images/${apiData.image}`} alt={apiData.name} className="w-64 h-40"/>
+                        <div className="flex justify-center mb-6">
+                            <div className="w-80 h-72">
+                                <img src={`${BASE_URL}/food-material-images/${apiData.image}`} alt={apiData.name} className="w-80 h-72"/>
+                            </div>
                         </div>
                         {/* <div className="grid grid-cols-10 h-20">
                             <div className="col-start-1 col-end-6 px-4 mb-2">

@@ -67,7 +67,7 @@ export const APP_ROUTE = [
   },
   {
     name: "Lihat Jadwal",
-    path: "/lihat-jadwal",
+    path: "/lihat-jadwal/:id",
     exact: true,
     component: LihatJadwal,
     private: true,
