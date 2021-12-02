@@ -8064,11 +8064,6 @@
     "lower-case" "^2.0.2"
     "tslib" "^2.0.3"
 
-"node-bin-setup@^1.0.0":
-  "integrity" "sha512-uPIxXNis1CRbv1DwqAxkgBk5NFV3s7cMN/Gf556jSw6jBvV7ca4F9lRL/8cALcZecRibeqU+5dFYqFFmzv5a0Q=="
-  "resolved" "https://registry.npmjs.org/node-bin-setup/-/node-bin-setup-1.0.6.tgz"
-  "version" "1.0.6"
-
 "node-emoji@^1.8.1":
   "integrity" "sha512-Yt3384If5H6BYGVHiHwTL+99OzJKHhgp82S8/dktEK73T26BazdgZ4JZh92xSVtGNJvz9UbXdNAc5hcrXV42vw=="
   "resolved" "https://registry.npmjs.org/node-emoji/-/node-emoji-1.10.0.tgz"
@@ -8184,13 +8179,6 @@
     "sass-graph" "2.2.5"
     "stdout-stream" "^1.4.0"
     "true-case-path" "^1.0.2"
-
-"node@^16.13.0":
-  "integrity" "sha512-bCUq6u/0rVHBvCpxLFTv5/kPjJGTltcyWQ2EtqlZ6WOqSpkTVBFtNoJ9tSVIGmadb0KoRsWd2CyNs9bU/drxXQ=="
-  "resolved" "https://registry.npmjs.org/node/-/node-16.13.0.tgz"
-  "version" "16.13.0"
-  dependencies:
-    "node-bin-setup" "^1.0.0"
 
 "nopt@^5.0.0":
   "integrity" "sha512-Tbj67rffqceeLpcRXrT7vKAN8CwfPeIBgM7E6iBkmKLV7bEMwpGgYLGv0jACUsECaa/vuxP0IjEont6umdMgtQ=="
