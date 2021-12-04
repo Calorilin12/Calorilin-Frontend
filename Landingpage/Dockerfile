@@ -1,11 +1,13 @@
-FROM node:latest
+FROM node:17
 
 WORKDIR /app
 
-COPY package.json ./
+COPY . .
+
+RUN rm -rf node_modules
 
 RUN npm install
 
-COPY . .
+EXPOSE 3000
 
 CMD ["npm", "start"]
