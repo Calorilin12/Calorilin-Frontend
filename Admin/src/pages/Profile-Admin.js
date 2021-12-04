@@ -1,9 +1,9 @@
 import React from 'react';
 import Sidebar from 'components/Sidebar';
 import Footer from 'components/Footer';
-import ResepForm from 'components/EditResep';
+import Profile from 'components/Profile';
 
-export default function editResepMakan() {
+export default function ProfileAdmin() {
     return (
         <>
             <Sidebar />
@@ -12,7 +12,7 @@ export default function editResepMakan() {
                 <div className="px-3 md:px-8 -mt-28">
                     <div className="container mx-auto max-w-full">
                         <div className="grid grid-cols-1">
-                            <ResepForm />
+                            <Profile />
                         </div>
                         <Footer />
                     </div>

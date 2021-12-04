@@ -8,16 +8,19 @@
 
 import Login from "pages/Login";
 import Dashboard from "pages/Dashboard";
+import Profile from "pages/Profile-Admin";
 import Pengguna from "pages/Data-Pengguna";
 import Jadwal from "pages/Jadwal-Makan";
 import Kalori from "pages/Kalori-Makanan";
 import Resep from "pages/Resep-Makanan";
 import TambahResep from "pages/Tambah-Resep-Makanan";
+import TambahKalori from "pages/Tambah-Kalori-Makanan";
 import LihatResep from "pages/Lihat-Resep-Makanan";
 import EditResep from "pages/Edit-Resep-Makanan";
+import EditKalori from "pages/Edit-Kalori-Makanan";
 import LihatJadwal from "pages/Lihat-Jadwal";
 import LihatPengguna from "pages/Lihat-Pengguna";
-import LihatKalori from "pages/Lihat-Kalori";
+import LihatKalori from "pages/Lihat-Kalori-Makanan";
 
 export const APP_ROUTE = [
   {
@@ -35,10 +38,24 @@ export const APP_ROUTE = [
     private: true,
   },
   {
+    name: "Profile Admin",
+    path: "/profile-admin/:id",
+    exact: true,
+    component: Profile,
+    private: true,
+  },
+  {
     name: "Data Pengguna",
     path: "/data-pengguna",
     exact: true,
     component: Pengguna,
+    private: true,
+  },
+  {
+    name: "Lihat Pengguna",
+    path: "/lihat-pengguna/:id",
+    exact: true,
+    component: LihatPengguna,
     private: true,
   },
   {
@@ -49,10 +66,38 @@ export const APP_ROUTE = [
     private: true,
   },
   {
+    name: "Lihat Jadwal",
+    path: "/lihat-jadwal/:id",
+    exact: true,
+    component: LihatJadwal,
+    private: true,
+  },
+  {
     name: "Kalori Makanan",
     path: "/kalori-makanan",
     exact: true,
     component: Kalori,
+    private: true,
+  },
+  {
+    name: "Tambah Kalori Bahan Makanan",
+    path: "/tambah-kalori-makanan",
+    exact: true,
+    component: TambahKalori,
+    private: true,
+  },
+  {
+    name: "Lihat Kalori",
+    path: "/lihat-kalori-makanan/:id",
+    exact: true,
+    component: LihatKalori,
+    private: true,
+  },
+  {
+    name: "Edit Kalori Makanan",
+    path: "/edit-kalori-makanan/:id",
+    exact: true,
+    component: EditKalori,
     private: true,
   },
   {
@@ -71,37 +116,16 @@ export const APP_ROUTE = [
   },
   {
     name: "Lihat Resep Makanan",
-    path: "/lihat-resep-makanan",
+    path: "/lihat-resep-makanan/:id",
     exact: true,
     component: LihatResep,
     private: true,
   },
   {
     name: "Edit Resep Makanan",
-    path: "/edit-resep-makanan",
+    path: "/edit-resep-makanan/:id",
     exact: true,
     component: EditResep,
-    private: true,
-  },
-  {
-    name: "Lihat Jadwal",
-    path: "/lihat-jadwal",
-    exact: true,
-    component: LihatJadwal,
-    private: true,
-  },
-  {
-    name: "Lihat Pengguna",
-    path: "/lihat-pengguna",
-    exact: true,
-    component: LihatPengguna,
-    private: true,
-  },
-  {
-    name: "Lihat Kalori",
-    path: "/lihat-kalori",
-    exact: true,
-    component: LihatKalori,
     private: true,
   },
 ];

@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { DASHBOARD } from 'utils/url';
+import { getToken } from 'utils/auth';
+import axios from 'axios';
 import Icon from '@material-tailwind/react/Icon';
 
 export default function StatusCard() {
+    const [apiData, setApiData] = useState([]);
+    const config = {
+        headers: { Authorization: `Bearer ${getToken()}` }
+    };
+    useEffect(() => {
+        axios
+            .get(DASHBOARD, config)
+            .then((res) => {
+                setApiData(res.data.dashboard);
+            })
+            .catch((err) => {
+                console.log(err);
+            }); 
+    }, []);
     return (
         <>
             {/* Card stats */}
@@ -15,7 +32,7 @@ export default function StatusCard() {
                                         Pengguna
                                     </h5>
                                     <span className="font-semibold text-2xl text-blueGray-700">
-                                        2.356
+                                        {apiData.users}
                                     </span>
                                 </div>
                                 <div className="relative w-auto pl-4 flex-initial">
@@ -33,10 +50,10 @@ export default function StatusCard() {
                             <div className="flex flex-wrap">
                                 <div className="relative w-full pr-4 max-w-full flex-grow flex-1 mt-2 ml-2">
                                     <h5 className="text-blueGray-400 uppercase text-xs mb-1">
-                                        Data Kalori
+                                        Data Bahan Makanan
                                     </h5>
                                     <span className="font-semibold text-2xl text-blueGray-700">
-                                        1.100
+                                        {apiData.food_materials}
                                     </span>
                                 </div>
                                 <div className="relative w-auto pl-4 flex-initial">
@@ -57,7 +74,7 @@ export default function StatusCard() {
                                         Data Resep
                                     </h5>
                                     <span className="font-semibold text-2xl text-blueGray-700">
-                                        456
+                                        {apiData.recipes}
                                     </span>
                                 </div>
                                 <div className="relative w-auto pl-4 flex-initial">

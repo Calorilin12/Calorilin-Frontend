@@ -1,0 +1,17 @@
+.pagination-item {
+    display: inline;
+}
+
+.pagination-item a {
+    padding: 4px;
+    margin: 2px;
+    border-radius: 5px;
+    border: 1px solid #27AE61;
+    color: #27AE61;
+    cursor: pointer;
+}
+
+.pagination-item a:hover {
+    color: white;
+    background-color: #27AE61;
+}

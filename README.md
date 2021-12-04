@@ -1,8 +1,16 @@
 # Calorilin-Frontend
-Aplikasi Calorilin untuk bagian Frontend
+Aplikasi Calorilin untuk bagian Frontend.
 
-Untuk menjalankan aplikasi Frontend sementara ada dua pilihan yaitu tanpa backend atau dengan backend. Namun menjalankan Frontend with API masih error.
-Jika ingin mencoba dengan API bisa langsung diuncomment code yang telah tersedia dan mengcomment kode yang tidak perlu. Alamat URL backend yang berada di code telah dihosting. 
+Sprint 2 yang sukses dideliver :
+- Fitur Read All Pelanggan dan Detail Pelanggan
+- Fitur Read All Resep Makanan dan Detail Resep
+- Fitur Create Resep Makanan
+
+Sprint 3 :
+- Fitur Delete Pelanggan
+- Fitur Update dan Delete Resep Makanan
+- Fitur Create, Read, Update, Delete Kalori Bahan Makanan
+- Fitur Search
 
 Link github backend jika diperlukan :
 https://github.com/Calorilin12/Calorilin-Backend.git
