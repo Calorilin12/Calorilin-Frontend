@@ -37,12 +37,6 @@ function LihatKalori() {
                                 <img src={`${BASE_URL}/food-material-images/${apiData.image}`} alt={apiData.name} className="w-80 h-72"/>
                             </div>
                         </div>
-                        {/* <div className="grid grid-cols-10 h-20">
-                            <div className="col-start-1 col-end-6 px-4 mb-2">
-                                <label className="text-secondary500 text-sm" for="tanggal">Tanggal dibuat</label><br/>
-                                <input type="text" name="tanggal" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={apiData.created_at} readOnly/>
-                            </div>
-                        </div> */}
                         <div className="grid grid-cols-10 h-20">
                             <div className="col-start-1 col-end-6 px-4 mb-2">
                                 <label className="text-secondary500 text-sm" for="jumlah">Jumlah Penyajian</label><br/>

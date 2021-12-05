@@ -246,47 +246,6 @@ function TambahResep() {
                                         <label className="text-secondary500 text-sm ml-2">Asam Lambung</label>
                                     </div>
                                 </div>
-                                {/* <p className="text-lg font-medium mt-10 mb-4 ml-4">Bisa dikonsumsi untuk penderita :</p> 
-                                <ul className="list-disc ml-7 mb-2" >
-                                    <li className="text-secondary500 text-sm">Beri angka 1 jika TIDAK</li>  
-                                    <li className="text-secondary500 text-sm">Beri angka 0 jika YA</li> 
-                                </ul> 
-                                <div className="grid grid-cols-10 h-20">
-                                    <div className="col-start-1 col-end-6 px-4 mb-2">
-                                        <label className="text-secondary500 text-sm">Kolesterol</label><br/>
-                                        <input type="text" id="cholesterol" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
-                                                value={kolesterol} onChange={(e) => setKolesterol(e.target.value)}
-                                        />
-                                    </div>
-                                    <div className="col-start-6 col-end-11 px-4 mb-2">
-                                        <label className="text-secondary500 text-sm">Diabetes</label><br/>
-                                        <input type="text" id="diabetes" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
-                                                value={diabetes} onChange={(e) => setDiabetes(e.target.value)}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="grid grid-cols-10 h-20">
-                                    <div className="col-start-1 col-end-6 px-4 mb-2">
-                                        <label className="text-secondary500 text-sm">Hipertensi</label><br/>
-                                        <input type="text" id="hyper_tension" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
-                                                value={hipertensi} onChange={(e) => setHipertensi(e.target.value)}
-                                        />
-                                    </div>
-                                    <div className="col-start-6 col-end-11 px-4 mb-2">
-                                        <label className="text-secondary500 text-sm">Asam Urat</label><br/>
-                                        <input type="text" id="uric_acid" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
-                                                value={asamUrat} onChange={(e) => setAsamUrat(e.target.value)}
-                                        />
-                                    </div>
-                                </div>     
-                                <div className="grid grid-cols-10 h-20">
-                                    <div className="col-start-1 col-end-6 px-4 mb-2">
-                                        <label className="text-secondary500 text-sm" for="waktu">Asam Lambung</label><br/>
-                                        <input type="text" id="stomach_acid" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
-                                                value={asamLambung} onChange={(e) => setAsamLambung(e.target.value)}
-                                        />
-                                    </div>
-                                </div>      */}
                                 <div className="grid grid-cols-10 h-60 mt-9">
                                     <div className="col-start-1 col-end-11 px-4 mb-2">
                                         <p className="text-lg font-medium mb-3">Deskripsi Resep</p> 

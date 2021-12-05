@@ -2,29 +2,23 @@ import React , {useEffect, useState} from 'react';
 import Card from '@material-tailwind/react/Card';
 import CardHeader from '@material-tailwind/react/CardHeader';
 import CardBody from '@material-tailwind/react/CardBody';
-// import View from '../assets/img/view.png';
-// import Delete from '../assets/img/delete.png';
-// import Edit from '../assets/img/edit.png';
-import ResepList from './ResepList';
-import ResepPagination from './ResepPagination';
+import View from '../assets/img/view.png';
+import Delete from '../assets/img/delete.png';
+import Edit from '../assets/img/edit.png';
 import Search from 'assets/img/search-grey.png';
-// import ModalDelete from './ModalResepDelete';
+import ModalDelete from './ModalResepDelete';
 import { Link } from 'react-router-dom';
 import { RECIPES } from 'utils/url';
 import { getToken } from 'utils/auth';
 import axios from 'axios';
 
 export default function ResepForm() {
-    // const [showModalDelete, setShowModalDelete] = useState(false);
-    // const [deleteItem, setDeleteItem] = useState();
-    // const [nameItem, setNameItem] = useState();
+    const [showModalDelete, setShowModalDelete] = useState(false);
+    const [deleteItem, setDeleteItem] = useState();
+    const [nameItem, setNameItem] = useState();
     const [refreshData, setRefreshData] = useState(0);
     const [search, setSearch] = useState("");
     const [apiData, setApiData] = useState([]);
-
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(5);
-
     const config = {
         headers: { Authorization: `Bearer ${getToken()}` }
     };
@@ -39,15 +33,6 @@ export default function ResepForm() {
                 console.log(err);
             }); 
     }, [refreshData]);
-
-    // Get current posts
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = apiData.slice(indexOfFirstPost, indexOfLastPost);
-
-    // Change page
-    const paginate = pageNumber => setCurrentPage(pageNumber);
-
     return (
     <>
         <Card>
@@ -77,15 +62,76 @@ export default function ResepForm() {
                 </div>
             </div>
             <CardBody>
-                <ResepList apiData={currentPosts} search={search} refreshData={setRefreshData} />
+                <div className="overflow-x-auto">
+                    <table className="items-center w-full bg-transparent border-collapse">
+                        <thead className="bg-secondary100">
+                            <tr>
+                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
+                                    No
+                                </th>
+                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
+                                    Nama Makanan
+                                </th>
+                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
+                                    Sumber Resep
+                                </th>
+                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
+                                    Level Pembuatan
+                                </th>
+                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
+                                    Tanggal Dibuat
+                                </th>
+                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
+                                    Aksi
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody className="">
+                            {apiData.filter(val => {
+                                if(search === ''){
+                                    return val;
+                                } else if(val.name.toLowerCase().includes(search.toLowerCase())){
+                                    return val;
+                                }
+                            }).map((recipes, index) =>
+                                <tr key={recipes.id}>
+                                    <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        {index+1}
+                                    </th>
+                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        {recipes.name}
+                                    </td>
+                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        {recipes.made_by}
+                                    </td>
+                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        {recipes.level_of_difficult}
+                                    </td>
+                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        {recipes.created_at}
+                                    </td>
+                                    <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                        <div className="flex flex-col space-y-1 lg:space-x-4 lg:flex-row lg:items-end">
+                                            <Link className="" to={`/lihat-resep-makanan/${recipes.id}`}><img src={View} alt="Tombol Lihat"/></Link>
+                                            <Link className="" to={`/edit-resep-makanan/${recipes.id}`}><img src={Edit} alt="Tombol Edit"/></Link>
+                                            {/* <button className="" onClick={() => handleClick(recipes.id)}><img src={Delete} alt="Tombol Hapus"/></button> */}
+                                            <button className="" 
+                                                onClick={() => {
+                                                    setShowModalDelete(true);
+                                                    setDeleteItem(recipes.id);
+                                                    setNameItem(recipes.name);
+                                                }}>
+                                            <img src={Delete} alt="Tombol Hapus"/></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
             </CardBody>
-            <ResepPagination
-                postsPerPage={postsPerPage}
-                totalPosts={apiData.length}
-                paginate={paginate}
-            />
         </Card>
-        {/* {showModalDelete && <ModalDelete closeModalDelete={showModalDelete} onSuccess={setRefreshData} deleteItem={deleteItem} nameItem={nameItem}/>} */}
+        {showModalDelete && <ModalDelete closeModalDelete={setShowModalDelete} onSuccess={setRefreshData} deleteItem={deleteItem} nameItem={nameItem}/>}
     </>
     ); 
 }

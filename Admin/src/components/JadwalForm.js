@@ -5,6 +5,7 @@ import CardHeader from '@material-tailwind/react/CardHeader';
 import CardBody from '@material-tailwind/react/CardBody';
 import View from '../assets/img/view.png';
 import Delete from '../assets/img/delete.png';
+import Search from 'assets/img/search-grey.png';
 import ModalDelete from './ModalJadwalDelete';
 import { FOOD_MATERIALS_FAVORITES } from 'utils/url';
 import { getToken } from 'utils/auth';
@@ -13,6 +14,7 @@ import axios from 'axios';
 export default function JadwalForm() {
     const [showModalDelete, setShowModalDelete] = useState(false);
     const [apiData, setApiData] = useState([]);
+    const [search, setSearch] = useState("");
     const config = {
         headers: { Authorization: `Bearer ${getToken()}` }
     };
@@ -36,6 +38,16 @@ export default function JadwalForm() {
                     <h2 className="text-white text-2xl">Jadwal Makan Pengguna</h2>
                 </div>
             </CardHeader>
+            <div className="flex flex-row justify-end">
+                    <div className="absolute mr-52 mt-11">
+                        <img src={Search} alt="Icon Search" className="w-4 h-4"/>
+                    </div>
+                    <div className="items-end mt-8 mb-1 mr-4"> 
+                        <input class="border-2 border-gray-300 bg-white h-10 pl-10 w-56 rounded-lg text-sm focus:outline-none"
+                                type="search" name="search" placeholder="Search" onChange = {(e) => { setSearch(e.target.value); }}>
+                        </input>
+                    </div>
+                </div>
             <CardBody>
                 <div className="overflow-x-auto">
                     <table className="items-center w-full bg-transparent border-collapse">
@@ -59,8 +71,14 @@ export default function JadwalForm() {
                             </tr>
                         </thead>
                         <tbody className="">
-                            {apiData.map(jadwal =>
-                                <tr>
+                            {apiData.filter(val => {
+                                if(search === ''){
+                                    return val;
+                                } else if(val.username.toLowerCase().includes(search.toLowerCase())){
+                                    return val;
+                                }
+                            }).map(jadwal =>
+                                <tr key={jadwal.id}>
                                     <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                         {jadwal.id}
                                     </th>

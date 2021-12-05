@@ -39,7 +39,7 @@ function ModalKaloriDelete({closeModalDelete, onSuccess, deleteItem, nameItem}) 
                                 Apakah Anda yakin menghapus data "{nameItem}" ?
                             </h3>
                             <p className="my-2 text-blueGray-500 text-md leading-relaxed flex justify-center">
-                                Data akan dihapus secara permanen dari sistem aplikasi
+                                Data akan dihapus dari sistem aplikasi
                             </p>
                         </div>
                         {/*footer*/}

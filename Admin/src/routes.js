@@ -9,6 +9,7 @@
 import Login from "pages/Login";
 import Dashboard from "pages/Dashboard";
 import Profile from "pages/Profile-Admin";
+import UbahKataSandi from "pages/Setting-Admin";
 import Pengguna from "pages/Data-Pengguna";
 import Jadwal from "pages/Jadwal-Makan";
 import Kalori from "pages/Kalori-Makanan";
@@ -42,6 +43,13 @@ export const APP_ROUTE = [
     path: "/profile-admin/:id",
     exact: true,
     component: Profile,
+    private: true,
+  },
+  {
+    name: "Setting Profile Admin",
+    path: "/ubah-kata-sandi/:id",
+    exact: true,
+    component: UbahKataSandi,
     private: true,
   },
   {

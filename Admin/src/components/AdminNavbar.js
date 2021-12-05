@@ -14,6 +14,9 @@ export default function AdminNavbar({ showSidebar, setShowSidebar }) {
     const handleProfile = () => {
         history.replace('/profile-admin/1');
     };
+    const handleKataSandi = () => {
+        history.replace('/ubah-kata-sandi/1');
+    };
     return (
         <nav className="bg-primary500 md:ml-64 py-6 px-3">
             <div className="container max-w-full mx-auto flex items-center justify-between md:pr-8 md:pl-10">
@@ -74,6 +77,9 @@ export default function AdminNavbar({ showSidebar, setShowSidebar }) {
                             >
                                 <DropdownItem color="lightBlue" onClick={() => handleProfile()}>
                                     Profile
+                                </DropdownItem>
+                                <DropdownItem color="lightBlue" onClick={() => handleKataSandi()}>
+                                    Ubah Kata Sandi
                                 </DropdownItem>
                             </Dropdown>
                         </div>

@@ -72,10 +72,10 @@ export default function PenggunaForm() {
                             </thead>
                             <tbody className="">
                                 {apiData.filter(val => {
-                                if(search === ''){
-                                    return val;
-                                } else if(val.name.toLowerCase().includes(search.toLowerCase())){
-                                    return val;
+                                    if(search === ''){
+                                        return val;
+                                    } else if(val.name.toLowerCase().includes(search.toLowerCase())){
+                                        return val;
                                 }
                                 }).map(user =>
                                     <tr key={user.id}>

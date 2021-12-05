@@ -30,7 +30,7 @@ const LihatPengguna = () => {
             <div className="bg-white shadow-lg max-w-full mx-2 p-4 mt-4">
                 <div className="flex">
                     <div className="w-full p-4 px-5 py-5">
-                        <img src={`${BASE_URL}/user-detail-images/${apiData.image}`} alt="Foto Profil Pengguna" className="w-48 h-48 mx-auto rounded-full mt-4"/>
+                        <img src={`${BASE_URL}/user-detail-images/${apiData.image}`} alt="Foto Profil Pengguna" className="w-48 h-52 mx-auto rounded-full mt-3"/>
                         <div className="mt-6">
                             <p className="text-center font-semibold text-xl">{apiData.name}</p>
                             <p className="text-center mt-2 text-sm">{apiData.email}</p>

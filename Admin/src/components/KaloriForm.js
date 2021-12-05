@@ -3,21 +3,22 @@ import { Link } from 'react-router-dom';
 import Card from '@material-tailwind/react/Card';
 import CardHeader from '@material-tailwind/react/CardHeader';
 import CardBody from '@material-tailwind/react/CardBody';
-import KaloriList from './KaloriList';
-import KaloriPagination from './KaloriPagination';
+import View from '../assets/img/view.png';
+import Delete from '../assets/img/delete.png';
+import Edit from '../assets/img/edit.png';
 import Search from 'assets/img/search-grey.png';
+import ModalDelete from './ModalKaloriDelete';
 import { FOOD_MATERIALS } from 'utils/url';
 import { getToken } from 'utils/auth'
 import axios from 'axios';
 
 export default function KaloriForm() {
+    const [showModalDelete, setShowModalDelete] = useState(false);
+    const [deleteItem, setDeleteItem] = useState();
+    const [nameItem, setNameItem] = useState();
     const [refreshData, setRefreshData] = useState(0);
     const [search, setSearch] = useState("");
     const [apiData, setApiData] = useState([]);
-
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(5);
-
     const config = {
         headers: { Authorization: `Bearer ${getToken()}` }
     };
@@ -32,15 +33,6 @@ export default function KaloriForm() {
                 console.log(err);
             }); 
     }, [refreshData]);
-
-    // Get current posts
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = apiData.slice(indexOfFirstPost, indexOfLastPost);
-
-    // Change page
-    const paginate = pageNumber => setCurrentPage(pageNumber);
-
     return (
         <>
         <Card>
@@ -70,14 +62,74 @@ export default function KaloriForm() {
                 </div>
             </div>
             <CardBody>
-                <KaloriList apiData={currentPosts} search={search} refreshData={setRefreshData} />
+                <div className="overflow-x-auto">
+                    <table className="items-center w-full bg-transparent border-collapse">
+                        <thead className="bg-secondary100">
+                            <tr>
+                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
+                                    No
+                                </th>
+                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
+                                    Nama Bahan Makanan
+                                </th>
+                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
+                                    Jumlah Penyajian
+                                </th>
+                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
+                                    Jumlah Kalori
+                                </th>
+                                <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
+                                    Aksi
+                                </th>
+                            </tr>
+                        </thead>
+                        {apiData.filter(val => {
+                                if(search === ''){
+                                    return val;
+                                } else if(val.name.toLowerCase().includes(search.toLowerCase())){
+                                    return val;
+                                }
+                        }).map((materials, index) =>
+                        <tbody className="">
+                            <tr key={materials.id}>
+                            <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                    {index+1}
+                                </th>
+                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                    {materials.name}
+                                </td>
+                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                    {materials.serve}
+                                </td>
+                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                    {materials.calory}
+                                </td>
+                                {/* <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                    {materials.created_at}
+                                </td> */}
+                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                    <div className="flex flex-col space-y-1 lg:space-x-4 lg:flex-row lg:items-end">
+                                        <Link className="" to={`/lihat-kalori-makanan/${materials.id}`}><img src={View} alt="Tombol Lihat"/></Link>
+                                        <Link className="" to={`/edit-kalori-makanan/${materials.id}`}><img src={Edit} alt="Tombol Edit"/></Link>
+                                        {/* <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button> */}
+                                        <button className="" 
+                                            onClick={() => {
+                                                setShowModalDelete(true);
+                                                setDeleteItem(materials.id);
+                                                setNameItem(materials.name);
+                                            }}>
+                                        <img src={Delete} alt="Tombol Hapus"/></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        )}
+
+                    </table>
+                </div>
             </CardBody>
-            <KaloriPagination
-                postsPerPage={postsPerPage}
-                totalPosts={apiData.length}
-                paginate={paginate}
-            />
         </Card>
+        {showModalDelete && <ModalDelete closeModalDelete={setShowModalDelete} onSuccess={setRefreshData} deleteItem={deleteItem} nameItem={nameItem}/>}
         </>
     );
 }
