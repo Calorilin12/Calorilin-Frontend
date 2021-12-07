@@ -132,7 +132,7 @@ function TambahResep() {
                     <div className="flex">
                         <div className="w-full p-4 px-5 py-5">
                             <div className="flex flex-row">
-                                <h2 className="text-2xl font-semibold">Form Tambah Resep Makanan</h2>
+                                <h2 className="text-xl lg:text-2xl font-semibold">Form Tambah Resep Makanan</h2>
                             </div>
                             <hr className="mt-3 mb-6 min-w-full" />
                             <form action="#" className="mt-5" id="formDataResep">
@@ -142,14 +142,14 @@ function TambahResep() {
                                         <input type="file" id="recipe_image" onChange={handleUploadChange}/>
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-10 h-20">
-                                    <div className="col-start-1 col-end-6 px-4 mb-2">
+                                <div className="grid grid-cols-10">
+                                    <div className="col-start-1 col-end-11 lg:col-start-1 lg:col-end-6 px-4 mb-2">
                                         <label className="text-secondary500 text-sm">Tanggal Terbit</label><br/>
                                         <input type="date" id="publish_date" className="p-3 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
                                                 value={publishDate} onChange={(e) => setPublishDate(e.target.value)}
                                         />
                                     </div>
-                                    <div className="col-start-6 col-end-11 px-4 mb-2">
+                                    <div className="col-start-1 col-end-11 lg:col-start-6 lg:col-end-11 px-4 mb-2">
                                         <label className="text-secondary500 text-sm">Sumber</label><br/>
                                         <input type="text" id="made_by" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
                                                 value={madeBy} onChange={(e) => setMadeBy(e.target.value)}
@@ -157,15 +157,15 @@ function TambahResep() {
                                         />
                                     </div>
                                 </div>         
-                                <div className="grid grid-cols-10 h-20">
-                                    <div className="col-start-1 col-end-6 px-4 mb-2">
+                                <div className="grid grid-cols-10">
+                                    <div className="col-start-1 col-end-11 lg:col-start-1 lg:col-end-6 px-4 mb-2">
                                         <label className="text-secondary500 text-sm">Nama Makanan</label><br/>
                                         <input type="text" id="name" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
                                                 value={name} onChange={(e) => setName(e.target.value)}
                                                 placeholder="Nama Makanan" 
                                         />
                                     </div>
-                                    <div className="col-start-6 col-end-11 px-4 mb-2">
+                                    <div className="col-start-1 col-end-11 lg:col-start-6 lg:col-end-11 px-4 mb-2">
                                         <label className="text-secondary500 text-sm">Kategori Makanan</label><br/>
                                         <input type="text" id="category" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
                                                 value={category} onChange={(e) => setCategory(e.target.value)}
@@ -173,15 +173,15 @@ function TambahResep() {
                                         />
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-10 h-20">
-                                    <div className="col-start-1 col-end-6 px-4 mb-2">
+                                <div className="grid grid-cols-10">
+                                    <div className="col-start-1 col-end-11 lg:col-start-1 lg:col-end-6 px-4 mb-2">
                                         <label className="text-secondary500 text-sm">Kalori Per Porsi</label><br/>
                                         <input type="text" id="total_calory" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
                                                 value={calory} onChange={(e) => setCalory(e.target.value)}
                                                 placeholder="Total Kalori" 
                                         />
                                     </div>
-                                    <div className="col-start-6 col-end-11 px-4 mb-2">
+                                    <div className="col-start-1 col-end-11 lg:col-start-6 lg:col-end-11 px-4 mb-2">
                                         <label className="text-secondary500 text-sm">Porsi</label><br/>
                                         <input type="text" name="total_eater" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
                                                 value={eater} onChange={(e) => setEater(e.target.value)}
@@ -189,15 +189,15 @@ function TambahResep() {
                                         />
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-10 h-20">
-                                    <div className="col-start-1 col-end-6 px-4 mb-2">
+                                <div className="grid grid-cols-10">
+                                    <div className="col-start-1 col-end-11 lg:col-start-1 lg:col-end-6 px-4 mb-2">
                                         <label className="text-secondary500 text-sm">Durasi Masak</label><br/>
                                         <input type="text" id="duration" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
                                                 value={duration} onChange={(e) => setDuration(e.target.value)}
                                                 placeholder="Lama Masak" 
                                         />
                                     </div>
-                                    <div className="col-start-6 col-end-11 px-4 mb-2">
+                                    <div className="col-start-1 col-end-11 lg:col-start-6 lg:col-end-11 px-4 mb-2">
                                         <label className="text-secondary500 text-sm">Level Pembuatan</label><br/>
                                         <input type="text" id="level_of_difficult" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
                                                 value={level} onChange={(e) => setLevel(e.target.value)}

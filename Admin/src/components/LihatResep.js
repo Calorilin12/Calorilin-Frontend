@@ -66,11 +66,9 @@ function LihatResep() {
                 <div className="bg-white shadow-lg rounded-lg max-w-full mx-2 p-4">
                     <div className="flex">
                         <div className="w-full p-4 px-5 py-5">
-                            <div className="flex flex-row">
-                                <h3 className="text-2xl font-semibold">{recipes.name}</h3>
-                                <h3 className="text-2xl font-light ml-2">{"by " + recipes.made_by}</h3>
-                                {/* <sup className="text-2xl font-semibold">{recipes.name}</sup>
-                                <p className="ml-1">{"by " + recipes.made_by}</p> */}
+                            <div className="flex flex-col lg:flex-row">
+                                <h3 className="text-xl lg:text-2xl font-semibold">{recipes.name}</h3>
+                                <h3 className="text-xl lg:text-2xl font-light lg:ml-2">{"by " + recipes.made_by}</h3>
                             </div>
                             <hr className="mt-3 mb-6 min-w-full" />
                             <div className="flex justify-center mb-6">
@@ -78,28 +76,28 @@ function LihatResep() {
                                     <img src={`${BASE_URL}/recipe-detail-images/${recipes.recipe_image}`} alt={recipes.name} className="w-80 h-72"/>
                                 </div>
                             </div>
-                            <div className="grid grid-cols-10 h-20">
-                                <div className="col-start-1 col-end-6 px-4 mb-2">
+                            <div className="grid grid-cols-10">
+                                <div className="col-start-1 col-end-11 lg:col-start-1 lg:col-end-6 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="kalori">Tanggal dibuat</label><br/>
                                     <input type="text" name="tanggal" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.publish_date} readOnly/>
                                 </div>
                             </div>
-                            <div className="grid grid-cols-10 h-20">
-                                <div className="col-start-1 col-end-6 px-4 mb-2">
+                            <div className="grid grid-cols-10">
+                                <div className="col-start-1 col-end-11 lg:col-start-1 lg:col-end-6 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="kalori">Kalori Per Porsi</label><br/>
                                     <input type="text" name="kalori" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.total_calory + " kKal"} readOnly/>
                                 </div>
-                                <div className="col-start-6 col-end-11 px-4 mb-2">
+                                <div className="col-start-1 col-end-11 lg:col-start-6 lg:col-end-11 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="porsi">Porsi</label><br/>
                                     <input type="text" name="porsi" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.total_eater} readOnly/>
                                 </div>
                             </div>
-                            <div className="grid grid-cols-10 h-20">
-                                <div className="col-start-1 col-end-6 px-4 mb-2">
+                            <div className="grid grid-cols-10">
+                                <div className="col-start-1 col-end-11 lg:col-start-1 lg:col-end-6 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="waktu">Durasi Masak</label><br/>
                                     <input type="text" name="waktu" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.duration + " menit"} readOnly/>
                                 </div>
-                                <div className="col-start-6 col-end-11 px-4 mb-2">
+                                <div className="col-start-1 col-end-11 lg:col-start-6 lg:col-end-11 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="sumber">Level Pembuatan</label><br/>
                                     <input type="text" name="kesulitan" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.level_of_difficult} readOnly/>
                                 </div>

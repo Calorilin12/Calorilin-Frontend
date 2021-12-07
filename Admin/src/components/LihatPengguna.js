@@ -37,22 +37,22 @@ const LihatPengguna = () => {
                             <p className="text-center mt-2 text-sm">{apiData.phone_number}</p>
                         </div>
                         <hr className="mt-8 mb-10 min-w-full"/>
-                        <div className="grid grid-cols-12 space-x-2 h-16">
-                            <div className="flex flex-row justify-center col-start-1 col-end-5 mb-2 space-x-4">
+                        <div className="grid grid-cols-12 space-x-2 h-16 mb-12 lg:mb-2">
+                            <div className="flex flex-col justify-center items-center col-start-1 col-end-5 space-y-2 lg:mb-2 lg:flex-row lg:space-x-4">
                                 <img src={Weight} alt="Icon Berat Badan" className="w-12 h-12"/>
                                 <div className="text-center space-y-1">
                                     <p className="text-sm">Berat Badan</p>
                                     <p className="text-md font-medium">{apiData.weight}</p>
                                 </div>
                             </div>
-                            <div className="flex flex-row justify-center col-start-5 col-end-9 mb-2 space-x-4">
+                            <div className="flex flex-col justify-center items-center col-start-5 col-end-9 space-y-2 lg:mb-2 lg:flex-row lg:space-x-4">
                                 <img src={Height} alt="Icon Tinggi Badan" className="w-12 h-12"/> 
                                 <div className="text-center space-y-1">
                                     <p className="text-sm">Tinggi Badan</p>
                                     <p className="text-md font-medium">{apiData.height}</p>
                                 </div>   
                             </div>
-                            <div className="flex flex-row justify-center col-start-9 col-end-13 mb-2 space-x-4">
+                            <div className="flex flex-col justify-center items-center col-start-9 col-end-13 space-y-2 lg:flex-row lg:mb-2 lg:space-x-4">
                                 <img src={Tension} alt="Icon Tensi" className="w-12 h-12"/> 
                                 <div className="text-center space-y-1">
                                     <p className="text-sm">Tensi</p>

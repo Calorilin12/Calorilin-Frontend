@@ -58,7 +58,7 @@ function Login() {
                             <h2>Make your life is better</h2>
                         </div>
                     </div>
-                    <div className="login ml-16 mt-20 md:ml-20">
+                    <div className="login ml-16 mt-16 md:mt-20 md:ml-20">
                         <h3 className="text-3xl lg:text-4xl">Selamat Datang !</h3>
                         <form action="#" className="mt-8">
                             <div className="inputBox">

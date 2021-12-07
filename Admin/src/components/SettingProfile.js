@@ -115,10 +115,6 @@ const SettingProfile = () => {
                                     />
                                 </div>
                             </div>
-                            {/* <label className="text-secondary500 text-sm">Password Baru</label><br/>
-                            <input type="password" className="p-3 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
-                                    placeholder="Password Baru" value={sandi} onChange={(e) => setSandi(e.target.value)}
-                            /> */}
                             {errorMatching && 
                                 <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded relative mt-4" role="alert">
                                     <strong class="font-bold text-sm">Ubah Password Gagal! </strong>
@@ -134,7 +130,7 @@ const SettingProfile = () => {
                         </div>
                         <Link
                             onClick={uploadData}
-                            className="flex bg-info500 focus:ring focus:ring-blue-200 items-center justify-center gap-4 text-sm text-white font-light px-4 py-2 mt-6 rounded-lg w-32"
+                            className="flex bg-info500 focus:ring focus:ring-blue-200 items-center justify-center gap-4 text-sm text-white font-light px-4 py-2 mt-14 rounded-lg w-32"
                         >
                             UBAH
                         </Link>

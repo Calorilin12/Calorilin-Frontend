@@ -194,7 +194,7 @@ function EditResep() {
                     <div className="flex">
                         <div className="w-full p-4 px-5 py-5">
                             <div className="flex flex-row">
-                                <h2 className="text-2xl font-semibold">Form Edit Resep Makanan</h2>
+                                <h2 className="text-xl lg:text-2xl font-semibold">Form Edit Resep Makanan</h2>
                             </div>
                             <hr className="mt-3 mb-6 min-w-full" />
                             <div className="grid grid-cols-10">
@@ -203,44 +203,44 @@ function EditResep() {
                                     <input type="file" name="gambar" onChange={handleUploadChange}/>
                                 </div>
                             </div>
-                            <div className="grid grid-cols-10 h-20">
-                                <div className="col-start-1 col-end-6 px-4 mb-2">
+                            <div className="grid grid-cols-10">
+                                <div className="col-start-1 col-end-11 lg:col-start-1 lg:col-end-6 px-4 mb-2">
                                     <label className="text-secondary500 text-sm">Tanggal Terbit</label><br/>
                                     <input type="date" id="publish_date" className="p-3 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" 
                                             value={publishDate} onChange={(e) => setPublishDate(e.target.value)}
                                     />
                                 </div>
-                                <div className="col-start-6 col-end-11 px-4 mb-2">
+                                <div className="col-start-1 col-end-11 lg:col-start-6 lg:col-end-11 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="sumber">Sumber</label><br/>
                                     <input type="text" name="sumber" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={madeBy} onChange={(e) => setMadeBy(e.target.value)}/>
                                 </div>
                             </div>
-                            <div className="grid grid-cols-10 h-20">
-                                <div className="col-start-1 col-end-6 px-4 mb-2">
+                            <div className="grid grid-cols-10">
+                                <div className="col-start-1 col-end-11 lg:col-start-1 lg:col-end-6 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="nama">Nama Makanan</label><br/>
                                     <input type="text" name="name" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={name} onChange={(e) => setName(e.target.value)} />
                                 </div>
-                                <div className="col-start-6 col-end-11 px-4 mb-2">
+                                <div className="col-start-1 col-end-11 lg:col-start-6 lg:col-end-11 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="sumber">Kategori Makanan</label><br/>
                                     <input type="text" name="kategori" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={category} onChange={(e) => setCategory(e.target.value)}/>
                                 </div>
                             </div>
-                            <div className="grid grid-cols-10 h-20">
-                                <div className="col-start-1 col-end-6 px-4 mb-2">
+                            <div className="grid grid-cols-10">
+                                <div className="col-start-1 col-end-11 lg:col-start-1 lg:col-end-6 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="kalori">Kalori</label><br/>
                                     <input type="text" name="kalori" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={calory} onChange={(e) => setCalory(e.target.value)}/>
                                 </div>
-                                <div className="col-start-6 col-end-11 px-4 mb-2">
+                                <div className="col-start-1 col-end-11 lg:col-start-6 lg:col-end-11 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="porsi">Porsi</label><br/>
                                     <input type="text" name="porsi" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={eater} onChange={(e) => setEater(e.target.value)} />
                                 </div>
                             </div>
-                            <div className="grid grid-cols-10 h-20">
-                                <div className="col-start-1 col-end-6 px-4 mb-2">
+                            <div className="grid grid-cols-10">
+                                <div className="col-start-1 col-end-11 lg:col-start-1 lg:col-end-6 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="waktu">Lama Masak</label><br/>
                                     <input type="text" name="waktu" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={duration} onChange={(e) => setDuration(e.target.value)}/>
                                 </div>
-                                <div className="col-start-6 col-end-11 px-4 mb-2">
+                                <div className="col-start-1 col-end-11 lg:col-start-6 lg:col-end-11 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="sumber">Kesulitan</label><br/>
                                     <input type="text" name="kesulitan" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={level} onChange={(e) => setLevel(e.target.value)}/>
                                 </div>
