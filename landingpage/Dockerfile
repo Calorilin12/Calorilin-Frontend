@@ -14,7 +14,7 @@ RUN sed -i 's/bin\/ash/bin\/bash/g' /etc/passwd
 COPY . /app
 
 # Build app
-RUN npm ci --silent
+# RUN npm ci --silent
 RUN npm install --no-optional --silent
 RUN npm run build 
   
