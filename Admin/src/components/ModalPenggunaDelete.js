@@ -17,9 +17,11 @@ function ModalPenggunaDelete({closeModalDelete, onSuccess, deleteItem, nameItem}
                 console.log("sukses");
                 onSuccess(oldKey => oldKey +1);
                 closeModalDelete();
+                alert('Data Berhasil Dihapus');
             }).catch((err) => {
                 console.log(err);
                 console.log("gagal");
+                alert('Coba Lagi, Data Gagal Dihapus');
             });
         };
     return (
@@ -29,7 +31,7 @@ function ModalPenggunaDelete({closeModalDelete, onSuccess, deleteItem, nameItem}
             >
                 <div className="relative w-auto my-6 mx-auto max-w-3xl">
                     {/*content*/}
-                    <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                    <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-96 sm:w-full bg-white outline-none focus:outline-none">
                         {/*header*/}
                         <div className="flex items-start justify-center mt-10 rounded-t">
                             <img src={Cancel} alt="Gambar Cancel" className="w-28 h-28"/>

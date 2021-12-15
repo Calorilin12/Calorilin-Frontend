@@ -3,6 +3,7 @@ import {Link, useHistory} from "react-router-dom";
 import { RECIPES } from 'utils/url';
 import { getToken } from 'utils/auth';
 import axios from 'axios';
+import { ElementFlags } from 'typescript';
 
 function TambahResep() {
 
@@ -94,6 +95,9 @@ function TambahResep() {
     function uploadData(){
         if(!saveImage){
             alert('Upload Gambar Dulu!');
+        } else if(!name || !madeBy || !category || !level || !publishDate || !duration || !eater || !calory || !compositions || !steps
+                    || !description){
+            alert('Semua Input Field Harus Terisi, Kecuali Informasi Resep Untuk Penderita Penyakit.');
         } else{
             let formData = new FormData();
             formData.append("recipe_image", saveImage);
@@ -118,9 +122,11 @@ function TambahResep() {
             .then((res) => {
                 console.log("sukses");
                 console.log(res.data);
+                alert('Data Berhasil Ditambahkan.');
                 history.replace('/resep-makanan');
             }).catch((err) => {
                 console.log(err);
+                alert('Coba Lagi, Data Gagal Ditambahkan.');
             });
         }
     }

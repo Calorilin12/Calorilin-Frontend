@@ -30,6 +30,18 @@ function TambahKalori() {
     function uploadData(){
         if(!saveImage){
             alert('Upload Gambar Dulu!');
+        } else if (!serve){
+            alert('Field Jumlah Penyajian Harus Terisi!');
+        } else if(!name){
+            alert('Field Nama Harus Terisi!');
+        } else if (!calory){
+            alert('Field Kalori Harus Terisi!');
+        } else if(!carbo){
+            alert('Field Karbo Harus Terisi!');
+        } else if (!protein){
+            alert('Field Protein Harus Terisi!');
+        } else if(!fat){
+            alert('Field Fat Harus Terisi!');
         } else{
             let formData = new FormData();
             formData.append("image", saveImage);
@@ -48,6 +60,7 @@ function TambahKalori() {
                 history.replace('/kalori-makanan');
             }).catch((err) => {
                 console.log(err);
+                alert('Coba Lagi, Data Gagal Ditambahkan');
             });
         }
     }

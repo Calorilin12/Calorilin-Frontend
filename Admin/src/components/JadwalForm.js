@@ -13,8 +13,12 @@ import axios from 'axios';
 
 export default function JadwalForm() {
     const [showModalDelete, setShowModalDelete] = useState(false);
+    const [deleteItem, setDeleteItem] = useState();
+    const [nameItem, setNameItem] = useState();
+    const [nameFood, setNameFood] = useState();
     const [apiData, setApiData] = useState([]);
     const [search, setSearch] = useState("");
+    const [refreshData, setRefreshData] = useState(0);
     const config = {
         headers: { Authorization: `Bearer ${getToken()}` }
     };
@@ -29,7 +33,7 @@ export default function JadwalForm() {
             .catch((err) => {
                 console.log(err);
             }); 
-    }, []);
+    }, [refreshData]);
     return (
     <>
         <Card>
@@ -54,7 +58,7 @@ export default function JadwalForm() {
                         <thead className="bg-secondary100">
                             <tr>
                                 <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
-                                    ID
+                                    No
                                 </th>
                                 <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
                                     Nama
@@ -77,10 +81,10 @@ export default function JadwalForm() {
                                 } else if(val.username.toLowerCase().includes(search.toLowerCase())){
                                     return val;
                                 }
-                            }).map(jadwal =>
+                            }).map((jadwal, index) =>
                                 <tr key={jadwal.id}>
                                     <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        {jadwal.id}
+                                        {index+1}
                                     </th>
                                     <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                         {jadwal.username}
@@ -94,7 +98,14 @@ export default function JadwalForm() {
                                     <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                         <div className="flex flex-col space-y-2 lg:space-x-4 lg:flex-row lg:items-end">
                                             <Link className="" to={`/lihat-jadwal/${jadwal.id}`}><img src={View} alt="Tombol Lihat"/></Link>
-                                            <button className="" onClick={() => setShowModalDelete(true)}><img src={Delete} alt="Tombol Hapus"/></button>
+                                            <button className="" 
+                                            onClick={() => {
+                                                setShowModalDelete(true);
+                                                setDeleteItem(jadwal.id);
+                                                setNameItem(jadwal.username);
+                                                setNameFood(jadwal.name);
+                                            }}>
+                                        <img src={Delete} alt="Tombol Hapus"/></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -104,7 +115,7 @@ export default function JadwalForm() {
                 </div>
             </CardBody>
         </Card>
-        {showModalDelete && <ModalDelete closeModalDelete={setShowModalDelete}/>}
+        {showModalDelete && <ModalDelete closeModalDelete={setShowModalDelete} onSuccess={setRefreshData} deleteItem={deleteItem} nameItem={nameItem} nameFood={nameFood}/>}
     </>
     );
 }

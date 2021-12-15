@@ -47,25 +47,40 @@ function EditKalori() {
     }, []);
 
     const updateData = () => {
-        let formData = new FormData();
-        formData.append("image", saveImage);
-        formData.append("name", name);
-        formData.append("serve", serve);
-        formData.append("type", type);
-        formData.append("calory", calory);
-        formData.append("carbo", carbo);
-        formData.append("protein", protein);
-        formData.append("fat", fat);
-        axios
-            .post(FOOD_MATERIALS + id + '?_method=PUT', formData, config)
-            .then((res) => {
-                console.log("sukses edit data");
-                console.log(res.data);                
-                alert('Data Berhasil Diubah');
-                history.replace('/kalori-makanan');
-            }).catch((err) => {
-                console.log(err);
-            });
+        if (!serve){
+            alert('Field Jumlah Penyajian Harus Terisi!');
+        } else if(!name){
+            alert('Field Nama Harus Terisi!');
+        } else if (!calory){
+            alert('Field Kalori Harus Terisi!');
+        } else if(!carbo){
+            alert('Field Karbo Harus Terisi!');
+        } else if (!protein){
+            alert('Field Protein Harus Terisi!');
+        } else if(!fat){
+            alert('Field Fat Harus Terisi!');
+        } else {
+            let formData = new FormData();
+            formData.append("image", saveImage);
+            formData.append("name", name);
+            formData.append("serve", serve);
+            formData.append("type", type);
+            formData.append("calory", calory);
+            formData.append("carbo", carbo);
+            formData.append("protein", protein);
+            formData.append("fat", fat);
+            axios
+                .post(FOOD_MATERIALS + id + '?_method=PUT', formData, config)
+                .then((res) => {
+                    console.log("sukses edit data");
+                    console.log(res.data);                
+                    alert('Data Berhasil Diubah');
+                    history.replace('/kalori-makanan');
+                }).catch((err) => {
+                    console.log(err);
+                    alert('Coba Lagi, Data Gagal Diubah');
+                });
+        }
     };
 
     return (

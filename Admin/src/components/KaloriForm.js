@@ -92,7 +92,7 @@ export default function KaloriForm() {
                         }).map((materials, index) =>
                         <tbody className="">
                             <tr key={materials.id}>
-                            <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
+                                <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                     {index+1}
                                 </th>
                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">

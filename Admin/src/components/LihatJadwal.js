@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {useParams} from 'react-router-dom';
-import { BASE_URL, FOOD_MATERIALS_FAVORITES } from 'utils/url';
+import {Link, useParams} from 'react-router-dom';
+import { FOOD_MATERIALS_FAVORITES } from 'utils/url';
 import { getToken } from 'utils/auth';
 import axios from 'axios';
-import Gambar from '../assets/img/team-1-800x800.jpg';
 
 function LihatJadwal() {
     const { id } = useParams();
@@ -49,33 +48,41 @@ function LihatJadwal() {
                                     <input type="text" name="jenis" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={jadwal.type} readOnly/>
                                 </div>
                             </div>
-                            <div className="grid grid-cols-10 h-20">
+                            <div className="grid grid-cols-10">
                                 <div className="col-start-1 col-end-11 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="menu">Jumlah Penyajian</label><br/>
                                     <input type="text" name="jumlah" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={jadwal.serve} readOnly />
                                 </div>
                             </div>
-                            <div className="grid grid-cols-10 h-20">
-                                <div className="col-start-1 col-end-6 px-4 mb-2">
+                            <div className="grid grid-cols-10">
+                                <div className="col-start-1 col-end-11 lg:col-start-1 lg:col-end-6 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="kalori">Kalori</label><br/>
                                     <input type="text" name="kalori" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={jadwal.calory} readOnly />
                                 </div>
-                                <div className="col-start-6 col-end-11 px-4 mb-2">
+                                <div className="col-start-1 col-end-11 lg:col-start-6 lg:col-end-11 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="karbo">Karbo</label><br/>
                                     <input type="text" name="karbo" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={jadwal.carbo} readOnly />
                                 </div>
                             </div>
-                            <div className="grid grid-cols-10 h-20 mb-8">
-                                <div className="col-start-1 col-end-6 px-4 mb-2">
+                            <div className="grid grid-cols-10">
+                                <div className="col-start-1 col-end-11 lg:col-start-1 lg:col-end-6 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="lemak">Lemak</label><br/>
                                     <input type="text" name="lemak" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={jadwal.fat} readOnly />
                                 </div>
-                                <div className="col-start-6 col-end-11 px-4 mb-2">
+                                <div className="col-start-1 col-end-11 lg:col-start-6 lg:col-end-11 px-4 mb-2">
                                     <label className="text-secondary500 text-sm" for="protein">Protein</label><br/>
                                     <input type="text" name="protein" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={jadwal.protein} readOnly />
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div className="flex justify-end mt-4 mr-10 mb-10"> 
+                        <Link
+                            to="/jadwal-makan"
+                            className="flex bg-secondary500 focus:ring focus:ring-gray-200 items-center justify-center gap-4 text-sm text-white font-light px-4 py-2 rounded-lg w-32"
+                        >
+                            Kembali
+                        </Link>
                     </div>
                 </div>
             )}
