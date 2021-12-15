@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 export const BASE_URL = 'https://api.calorilin.me';
+=======
+export const BASE_URL = "https://api.calorilin.me";
+>>>>>>> f32fd0e77a0d1a21c4f65ac618ca1b5e01f9ad61
 //export const BASE_URL = 'http://192.168.194.215:8000';
 //export const BASE_URL = 'http://127.0.0.1:8000';
 
