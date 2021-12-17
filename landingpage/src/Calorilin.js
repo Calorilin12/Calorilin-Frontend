@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Link } from "react-router-dom";
 
 import mockup from './assets/img/Frame 82.png';
@@ -14,9 +14,42 @@ import kris from './assets/img/kris.png';
 import dedi from './assets/img/dedi.png';
 import reinata from './assets/img/reinata.png';
 import logo from './assets/img/Logo.png'
-import {Navbar, Nav, Container,NavDropdown } from "react-bootstrap"
+import {Navbar, Nav, Container,NavDropdown } from "react-bootstrap";
+import axios from 'axios';
 
 function Calorilin() {
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [comment, setComment] = useState("");
+
+  function uploadData(){
+    if(!name || !email || !phone || !comment ){
+        alert('Semua Input Field Harus Terisi.');
+    } else{
+        let formData = new FormData();
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("phone_number", phone);
+        formData.append("comment", comment);
+        axios
+        .post('https://api.calorilin.me/api/contact-write', formData)
+        .then((res) => {
+            console.log("sukses");
+            console.log(res.data);
+            alert('Data terkirim. Terima kasih atas pertanyaan, kritik, dan saran yang anda berikan.');
+            setName("");
+            setEmail("");
+            setPhone("");
+            setComment("");
+        }).catch((err) => {
+            console.log(err);
+            alert('Coba Lagi, Data Gagal Dikirim.');
+        });
+    }
+  }
+
   return (
     <div classNameName="App">
       <div className="lp-container">
@@ -369,22 +402,30 @@ function Calorilin() {
             <form className="contact input">
               <div className="form-group">
                 <label for="name">Name</label>
-                <input type="text" className="form-control" id="name" placeholder="Input Your Name"></input>
+                <input type="text" className="form-control" id="name" placeholder="Input Your Name" 
+                        value={name} onChange={(e) => setName(e.target.value)}>
+                </input>
               </div>
               <div className="form-group mt-2">
                 <label for="email">Email</label>
-                <input type="text" className="form-control" id="email" placeholder="Input Your Email"></input>
+                <input type="text" className="form-control" id="email" placeholder="Input Your Email"
+                        value={email} onChange={(e) => setEmail(e.target.value)}>
+                </input>
               </div>
               <div className="form-group mt-2">
                 <label for="phone">Phone Number</label>
-                <input type="text" className="form-control" id="phone" placeholder="Input Your Phone Number"></input>
+                <input type="text" className="form-control" id="phone" placeholder="Input Your Phone Number"
+                        value={phone} onChange={(e) => setPhone(e.target.value)}>
+                </input>
               </div>
               <div className="form-group mt-2">
                 <label for="comment">Comment</label>
-                <textarea name="comment" id="comment" className="form-control"></textarea>
+                <textarea name="comment" id="comment" className="form-control"
+                          value={comment} onChange={(e) => setComment(e.target.value)}>
+                </textarea>
               </div>
               <div className="form-group mt-4">
-                <button type="button" className="btn text-white button-contact">Submit</button>
+                <button type="button" className="btn text-white button-contact" onClick={uploadData}>Submit</button>
               </div>
             </form>
           </div>
