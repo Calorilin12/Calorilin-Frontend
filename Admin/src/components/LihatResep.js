@@ -81,6 +81,10 @@ function LihatResep() {
                                     <label className="text-secondary500 text-sm" for="kalori">Tanggal dibuat</label><br/>
                                     <input type="text" name="tanggal" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.publish_date} readOnly/>
                                 </div>
+                                <div className="col-start-1 col-end-11 lg:col-start-6 lg:col-end-11 px-4 mb-2">
+                                    <label className="text-secondary500 text-sm">Kategori Makanan</label><br/>
+                                    <input type="text" name="kategori" className="p-4 w-full h-10 rounded pl-4 mt-1 text-sm border focus:outline-none focus:border-gray-500" value={recipes.category} readOnly/>
+                                </div>
                             </div>
                             <div className="grid grid-cols-10">
                                 <div className="col-start-1 col-end-11 lg:col-start-1 lg:col-end-6 px-4 mb-2">

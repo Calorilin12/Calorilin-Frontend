@@ -15,7 +15,7 @@ COPY . /app
 
 # Build app
 # RUN npm ci --silent
-RUN npm install --no-optional --silent
+RUN npm install --no-optional
 RUN npm run build 
   
 ### NGINX ###

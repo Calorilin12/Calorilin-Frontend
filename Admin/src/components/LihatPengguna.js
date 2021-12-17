@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import { BASE_URL, USERS } from 'utils/url';
 import { getToken } from 'utils/auth';
 import Height from 'assets/img/height.png';
 import Weight from 'assets/img/weight.png';
 import Tension from 'assets/img/heart-rate.png';
+import Back from 'assets/img/previous.png';
 import axios from 'axios';
 
 const LihatPengguna = () => {
@@ -30,6 +31,9 @@ const LihatPengguna = () => {
             <div className="bg-white shadow-lg max-w-full mx-2 p-4 mt-4">
                 <div className="flex">
                     <div className="w-full p-4 px-5 py-5">
+                        <div className="flex justify-start items-center mt-3 ml-4 mr-4 mb-6"> 
+                            <Link className="" to={"/data-pengguna"}><img src={Back} alt="Icon Back" className="w-8 h-8"/></Link>
+                        </div>
                         <img src={`${BASE_URL}/user-detail-images/${apiData.image}`} alt="Foto Profil Pengguna" className="w-48 h-52 mx-auto rounded-full mt-3"/>
                         <div className="mt-6">
                             <p className="text-center font-semibold text-xl">{apiData.name}</p>

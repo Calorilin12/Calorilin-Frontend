@@ -152,33 +152,40 @@ function EditResep() {
     console.log(asamLambung)
 
     const updateData = () => {
-        let formData = new FormData();
-            formData.append("recipe_image", saveImage);
-            formData.append("name", name);
-            formData.append("made_by", madeBy);
-            formData.append("category", category);
-            formData.append("level_of_difficult", level);
-            formData.append("publish_date", publishDate);
-            formData.append("duration", duration);
-            formData.append("total_eater", eater);
-            formData.append("total_calory", calory);
-            formData.append("compositions", compositions);
-            formData.append("steps_of_make", steps);
-            formData.append("short_description", description);
-            formData.append("cholesterol", kolesterol);
-            formData.append("diabetes", diabetes);
-            formData.append("hyper_tension", hipertensi);
-            formData.append("uric_acid", asamUrat);
-            formData.append("stomach_acid", asamLambung);
-        axios
-            .post(RECIPES + id + '?_method=PUT', formData, config)
-            .then((res) => {
-                console.log("sukses edit data");
-                console.log(res.data);
-                history.replace('/resep-makanan');
-            }).catch((err) => {
-                console.log(err);
-            });
+        if(!name || !madeBy || !category || !level || !publishDate || !duration || !eater || !calory || !compositions || !steps
+            || !description){
+            alert('Semua Input Field Harus Terisi, Kecuali Gambar Dan Informasi Resep Untuk Penderita Penyakit.');
+        } else{
+            let formData = new FormData();
+                formData.append("recipe_image", saveImage);
+                formData.append("name", name);
+                formData.append("made_by", madeBy);
+                formData.append("category", category);
+                formData.append("level_of_difficult", level);
+                formData.append("publish_date", publishDate);
+                formData.append("duration", duration);
+                formData.append("total_eater", eater);
+                formData.append("total_calory", calory);
+                formData.append("compositions", compositions);
+                formData.append("steps_of_make", steps);
+                formData.append("short_description", description);
+                formData.append("cholesterol", kolesterol);
+                formData.append("diabetes", diabetes);
+                formData.append("hyper_tension", hipertensi);
+                formData.append("uric_acid", asamUrat);
+                formData.append("stomach_acid", asamLambung);
+            axios
+                .post(RECIPES + id + '?_method=PUT', formData, config)
+                .then((res) => {
+                    console.log("sukses edit data");
+                    console.log(res.data);
+                    alert('Data Berhasil Diubah.');
+                    history.replace('/resep-makanan');
+                }).catch((err) => {
+                    console.log(err);
+                    alert('Coba Lagi, Data Gagal Diubah.');
+                });
+        }
     };
 
     function handleUploadChange(e){
