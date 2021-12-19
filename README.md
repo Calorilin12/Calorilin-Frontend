@@ -1,6 +1,10 @@
 # Calorilin-Frontend
 Aplikasi Calorilin untuk bagian Frontend.
 
+Halaman Frontend Calorilin dapat diakses melalui :
+admin.calorilin.me - Untuk halaman admin (CRUD data), dengan username : admin@admin.com, dan password : 123
+calorilin.me - Untuk landing page (halaman user)
+
 Sprint 2 yang sukses dideliver :
 - Fitur Read All Pelanggan dan Detail Pelanggan
 - Fitur Read All Resep Makanan dan Detail Resep
