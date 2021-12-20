@@ -2,11 +2,14 @@ import React , {useEffect, useState} from 'react';
 import Card from '@material-tailwind/react/Card';
 import CardHeader from '@material-tailwind/react/CardHeader';
 import CardBody from '@material-tailwind/react/CardBody';
+import Dropdown from '@material-tailwind/react/Dropdown';
+import DropdownItem from '@material-tailwind/react/DropdownItem';
 import View from '../assets/img/view.png';
 import Delete from '../assets/img/delete.png';
 import Edit from '../assets/img/edit.png';
 import Search from 'assets/img/search-grey.png';
 import ModalDelete from './ModalResepDelete';
+import '../assets/styles/components.css';
 import { Link } from 'react-router-dom';
 import { RECIPES } from 'utils/url';
 import { getToken } from 'utils/auth';
@@ -19,6 +22,10 @@ export default function ResepForm() {
     const [refreshData, setRefreshData] = useState(0);
     const [search, setSearch] = useState("");
     const [apiData, setApiData] = useState([]);
+    const [data, setData] = useState([]);
+    const [sortType, setSortType] = useState('id');
+
+
     const config = {
         headers: { Authorization: `Bearer ${getToken()}` }
     };
@@ -33,6 +40,63 @@ export default function ResepForm() {
                 console.log(err);
             }); 
     }, [refreshData]);
+
+    useEffect(() => {
+        const sortData = type => {
+            const types = {
+                id: 'id',
+                created_at: 'created_at',
+            };
+            const sortProperty = types[type];
+            // const sorted = apiData.sort((a, b) => b[sortProperty] - a[sortProperty]);
+            console.log(sortProperty)
+            if(sortProperty === 'created_at'){
+                // setData(data => data.sort((a, b) => b[sortProperty].localeCompare(a[sortProperty])));
+                // console.log(data)
+                const sorted = apiData.sort((a, b) => b[sortProperty].localeCompare(a[sortProperty]));
+                console.log(sorted);
+                setData(sorted);
+            } else if(sortProperty === 'id'){
+                const sortedID = apiData.sort((a, b) => a[sortProperty] - b[sortProperty]);
+                //setData(data => data.sort((a, b) => a[sortProperty] - b[sortProperty]));
+                setData(sortedID);
+                console.log(sortedID);
+            }
+        };
+        sortData(sortType);
+      }, [sortType]);
+
+    // const _sortData = () => {
+    //     let sortedArray = apiData.sort((a, b) => b.updated_at.localeCompare(a.updated_at));
+    //     console.log(sortedArray);
+    // };
+
+    const sortTerbaru = () => {
+        const sorted = [...apiData].sort((a, b) => {
+            return b.id - a.id;
+        });
+        setApiData(sorted);
+    };
+    const sortTerlama = () => {
+        const sorted = [...apiData].sort((a, b) => {
+            return a.id - b.id;
+        });
+        setApiData(sorted);
+    };
+    const sortAsc = () => {
+        const sorted = [...apiData].sort((a, b) => {
+            return a.name.localeCompare(b.name);
+        });
+        setApiData(sorted);
+    }
+
+    const sortDesc = () => {
+        const sorted = [...apiData].sort((a, b) => {
+            return b.name.localeCompare(a.name);
+        });
+        setApiData(sorted);
+    }
+    
     return (
     <>
         <Card>
@@ -41,6 +105,16 @@ export default function ResepForm() {
                     <h2 className="text-white text-2xl">Resep Makanan</h2>
                 </div>
             </CardHeader>
+            <div className="mt-8 ml-4 mr-4">
+                <div className="absolute ml-4 mt-3">
+                    <img src={Search} alt="Icon Search" className="w-4 h-4"/>
+                </div>
+                <div> 
+                    <input class="border-2 border-gray-300 bg-white h-10 w-32 pl-10 rounded-lg text-sm focus:outline-none sm:w-full"
+                            type="search" name="search" placeholder="Search" onChange = {(e) => { setSearch(e.target.value); }}>
+                    </input>
+                </div>
+            </div>
             <div className="flex flex-row justify-between items-center">
                 <div className="mt-8 mb-1 ml-4"> 
                     <Link
@@ -50,15 +124,13 @@ export default function ResepForm() {
                         Tambah Resep
                     </Link>
                 </div>
-                <div className="flex flex-row justify-end">
-                    <div className="absolute mr-36 mt-11 sm:mr-52">
-                        <img src={Search} alt="Icon Search" className="w-4 h-4"/>
-                    </div>
-                    <div className="items-end mt-8 mb-1 mr-4"> 
-                        <input class="border-2 border-gray-300 bg-white h-10 w-40 pl-10 rounded-lg text-sm focus:outline-none sm:w-56 sm:pl-10"
-                                type="search" name="search" placeholder="Search" onChange = {(e) => { setSearch(e.target.value); }}>
-                        </input>
-                    </div>
+                <div className="flex flex-row justify-end mt-8 mr-4">
+                    <select className="option bg-secondary500 items-center justify-center gap-4 text-sm text-white font-light px-4 py-2 rounded-lg w-full h-9">
+                        <option onClick={sortTerlama}>Data Terlama</option>
+                        <option onClick={sortTerbaru}>Data Terbaru</option>
+                        <option onClick={sortAsc}>Nama Bahan A-Z</option>
+                        <option onClick={sortDesc}>Nama Bahan Z-A</option>
+                    </select>
                 </div>
             </div>
             <CardBody>
@@ -114,7 +186,6 @@ export default function ResepForm() {
                                         <div className="flex flex-col space-y-1 lg:space-x-4 lg:flex-row lg:items-end">
                                             <Link className="" to={`/lihat-resep-makanan/${recipes.id}`}><img src={View} alt="Tombol Lihat"/></Link>
                                             <Link className="" to={`/edit-resep-makanan/${recipes.id}`}><img src={Edit} alt="Tombol Edit"/></Link>
-                                            {/* <button className="" onClick={() => handleClick(recipes.id)}><img src={Delete} alt="Tombol Hapus"/></button> */}
                                             <button className="" 
                                                 onClick={() => {
                                                     setShowModalDelete(true);

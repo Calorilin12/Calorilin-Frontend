@@ -33,6 +33,33 @@ export default function PenggunaForm() {
                 console.log(err);
             }); 
     },  [refreshData]);
+
+    const sortTerbaru = () => {
+        const sorted = [...apiData].sort((a, b) => {
+            return b.id - a.id;
+        });
+        setApiData(sorted);
+    };
+    const sortTerlama = () => {
+        const sorted = [...apiData].sort((a, b) => {
+            return a.id - b.id;
+        });
+        setApiData(sorted);
+    };
+    const sortAsc = () => {
+        const sorted = [...apiData].sort((a, b) => {
+            return a.name.localeCompare(b.name);
+        });
+        setApiData(sorted);
+    }
+
+    const sortDesc = () => {
+        const sorted = [...apiData].sort((a, b) => {
+            return b.name.localeCompare(a.name);
+        });
+        setApiData(sorted);
+    }
+    
     return (
         <> 
             <Card>
@@ -41,14 +68,24 @@ export default function PenggunaForm() {
                         <h2 className="text-white text-2xl">Data Pengguna Aplikasi</h2>
                     </div>
                 </CardHeader>
-                <div className="flex flex-row justify-end">
-                    <div className="absolute mr-52 mt-11">
-                        <img src={Search} alt="Icon Search" className="w-4 h-4"/>
+                <div className="flex flex-row items-center justify-between">
+                    <div className="ml-4">
+                        <div className="absolute ml-4 mt-11">
+                            <img src={Search} alt="Icon Search" className="w-4 h-4"/>
+                        </div>
+                        <div className="items-end mt-8 mb-1 mr-4"> 
+                            <input class="border-2 border-gray-300 bg-white h-10 pl-10 w-56 rounded-lg text-sm focus:outline-none"
+                                    type="search" name="search" placeholder="Search" onChange = {(e) => { setSearch(e.target.value); }}>
+                            </input>
+                        </div>
                     </div>
-                    <div className="items-end mt-8 mb-1 mr-4"> 
-                        <input class="border-2 border-gray-300 bg-white h-10 pl-10 w-56 rounded-lg text-sm focus:outline-none"
-                                type="search" name="search" placeholder="Search" onChange = {(e) => { setSearch(e.target.value); }}>
-                        </input>
+                    <div className="mt-8 mr-4">
+                        <select className="option bg-secondary500 items-center justify-center gap-4 text-sm text-white font-light px-4 py-2 rounded-lg w-full h-9">
+                            <option onClick={sortTerlama}>Data Terlama</option>
+                            <option onClick={sortTerbaru}>Data Terbaru</option>
+                            <option onClick={sortAsc}>Nama Pengguna A-Z</option>
+                            <option onClick={sortDesc}>Nama Pengguna Z-A</option>
+                        </select>
                     </div>
                 </div>
                 <CardBody>

@@ -34,13 +34,13 @@ const LihatPengguna = () => {
                         <div className="flex justify-start items-center mt-3 ml-4 mr-4 mb-6"> 
                             <Link className="" to={"/data-pengguna"}><img src={Back} alt="Icon Back" className="w-8 h-8"/></Link>
                         </div>
-                        <img src={`${BASE_URL}/user-detail-images/${apiData.image}`} alt="Foto Profil Pengguna" className="w-48 h-52 mx-auto rounded-full mt-3"/>
+                        {/* <img src={`${BASE_URL}/user-detail-images/${apiData.image}`} alt="Foto Profil Pengguna" className="w-48 h-52 mx-auto rounded-full mt-3"/> */}
                         <div className="mt-6">
                             <p className="text-center font-semibold text-xl">{apiData.name}</p>
                             <p className="text-center mt-2 text-sm">{apiData.email}</p>
                             <p className="text-center mt-2 text-sm">{apiData.phone_number}</p>
                         </div>
-                        <hr className="mt-8 mb-10 min-w-full"/>
+                        <hr className="mt-10 mb-10 min-w-full"/>
                         <div className="grid grid-cols-12 space-x-2 h-16 mb-12 lg:mb-2">
                             <div className="flex flex-col justify-center items-center col-start-1 col-end-5 space-y-2 lg:mb-2 lg:flex-row lg:space-x-4">
                                 <img src={Weight} alt="Icon Berat Badan" className="w-12 h-12"/>
