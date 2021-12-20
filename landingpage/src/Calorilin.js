@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
+import AOS from 'aos'
+import 'aos/dist/aos.css';
+
+
 import mockup from './assets/img/Frame 82.png';
 import illustrator from './assets/img/Kontrol Kalori.svg';
 import illustrator2 from './assets/img/Control Food.svg';
@@ -15,6 +19,9 @@ import dedi from './assets/img/dedi.png';
 import reinata from './assets/img/reinata.png';
 import logo from './assets/img/Logo.png'
 import {Navbar, Nav, Container,NavDropdown } from "react-bootstrap"
+AOS.init({
+  once: true,
+});
 
 function Calorilin() {
   return (
@@ -69,23 +76,23 @@ function Calorilin() {
           <h2>What's in <span className="span">Calorilin ??</span></h2>
         </div>
         <div className="row1-container">
-          <div className="box box-down cyan">
-            <h2>Calorie Control</h2>
+          <div data-aos="fade-right" data-aos-duration="2000" className="box box-down cyan">
+            <h2>Calorie Daily Control</h2>
             <p>Daily calorie control service with groceries input only</p>
           </div>
 
-          <div className="box red">
+          <div data-aos-offset="400" data-aos="fade-left" data-aos-duration="2000" className="box red">
             <h2>Food Recomendation</h2>
             <p>Provide food recommendations according to the body's needs</p>
           </div>
 
-          <div className="box box-down blue">
+          <div data-aos="fade-left" data-aos-duration="2000" className="box box-down blue">
             <h2>Calorie Information</h2>
             <p>The most complete food calorie database with 1000+ data</p>
           </div>
         </div>
         <div className="row2-container">
-          <div className="box orange">
+          <div data-aos="fade-right" data-aos-duration="2000" className="box orange">
             <h2>Food Recipe Tutorial</h2>
             <p>How to make food that is guaranteed delicious and healthy</p>
           </div>
@@ -96,20 +103,20 @@ function Calorilin() {
       {/* <!-- info section --> */}
       <div className="section-info">
         <div className="info-container">
-          <div className="left-info">
+          <div data-aos="fade-right" data-aos-offset="300" data-aos-duration="2000" className="left-info">
             <h1 className="info-title">A new experience in <span>controlling calories</span> easily and practically to start a <span>healthy lifestyle!</span></h1>
             <p className="info-description">Control your daily food according to the user's calorie needs</p>
           </div>
-          <div className="right-info">
+          <div data-aos="fade-left" data-aos-offset="300" data-aos-duration="2000" data-aos-delay="300" className="right-info">
             <img className="info-right" src={illustrator} alt="" />
           </div>
         </div>
 
         <div className="info-container">
-          <div className="right-info">
+          <div data-aos="fade-right" data-aos-duration="2000" data-aos-delay="300" data-aos-offset="400" className="right-info">
             <img className="info-right" src={illustrator2} alt="" />
           </div>
-          <div className="left-info">
+          <div data-aos="fade-left" data-aos-duration="2000" data-aos-offset="400" className="left-info">
             <h1 className="info-title">A guide in <span>selecting</span> suitable foods that are adapted to the <span>user's body condition!</span></h1>
             <p className="info-description">Provide food recommendations according to the disease experienced by the user </p>
           </div>
@@ -142,8 +149,8 @@ function Calorilin() {
                 </div>
             </div>
 
-            <div className="row">
-              <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+            <div className="row" >
+              <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2" data-aos="flip-left" data-aos-duration="1000" data-aos-offset="1000">
                   <div className="mt-4 pt-2">
                       <div className="team position-relative d-block text-center">
                           <div className="image position-relative d-block overflow-hidden">
@@ -162,7 +169,7 @@ function Calorilin() {
                   </div>
               </div>
               
-              <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+              <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="100" data-aos-offset="1000">
                   <div className="mt-4 pt-2">
                       <div className="team position-relative d-block text-center">
                           <div className="image position-relative d-block overflow-hidden">
@@ -181,7 +188,7 @@ function Calorilin() {
                   </div>
               </div>
               
-              <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+              <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="200" data-aos-offset="1000">
                   <div className="mt-4 pt-2">
                       <div className="team position-relative d-block text-center">
                           <div className="image position-relative d-block overflow-hidden">
@@ -206,8 +213,8 @@ function Calorilin() {
 
           <div class="container mt-100 mt-60">
 
-            <div className="row">
-              <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+            <div className="row" >
+              <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="300" data-aos-offset="1000">
                   <div className="mt-4 pt-2">
                       <div className="team position-relative d-block text-center">
                           <div className="image position-relative d-block overflow-hidden">
@@ -226,7 +233,7 @@ function Calorilin() {
                   </div>
               </div>
               
-              <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+              <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="400" data-aos-offset="1000">
                   <div className="mt-4 pt-2">
                       <div className="team position-relative d-block text-center">
                           <div className="image position-relative d-block overflow-hidden">
@@ -245,7 +252,7 @@ function Calorilin() {
                   </div>
               </div>
               
-              <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+              <div className="col-lg-4 col-md-6 col-12 mt-4 pt-2" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="500" data-aos-offset="1000">
                   <div className="mt-4 pt-2">
                       <div className="team position-relative d-block text-center">
                           <div className="image position-relative d-block overflow-hidden">
@@ -277,7 +284,7 @@ function Calorilin() {
       <!-- testimonial --> */}
     <div className="section-info">
       <h1 className="wrapper-testi-title">What do they say about <span>Calorilin ??</span></h1>
-      <div className="wrapper-testi">
+      <div data-aos-offset="1500" data-aos="fade-up" data-aos-duration="2000" className="wrapper-testi">
         <div className="box-testi">
           <i className="fas fa-quote-left quote"></i>
           <p>“Calorilin memberikan pengalaman terbaru dalam pengelolaan pola makan, memberikan fitur yang berguna bagi pengguna dan mudah untuk digunakan”</p>
@@ -350,7 +357,7 @@ function Calorilin() {
         </div>
 
         <div className="row justify-content-center">
-          <div className="col-lg-4">
+          <div className="col-lg-4" data-aos="fade-right" data-aos-duration="2000" data-aos-offset="1500">
             <div className="card-contact text-light text-left mb-3">
               <div className="card-body">
                 <h5 className="card-title">Our Contact</h5>
@@ -365,7 +372,7 @@ function Calorilin() {
             </ul>
           </div>
 
-          <div className="col-lg-6">
+          <div className="col-lg-6" data-aos="fade-left" data-aos-duration="2000" data-aos-offset="1500">
             <form className="contact input">
               <div className="form-group">
                 <label for="name">Name</label>

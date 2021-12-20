@@ -96,8 +96,8 @@ function Login() {
                 </div>
                 <div className="imageCover bg-white w-full md:w-6/12">
                     <img src={Cover} alt="Cover" className="h-screen w-full"/> 
-                    <h3 className="tittleCover text-2xl ml-4 md:ml-14 lg:ml-20">Administrator Page</h3>
-                    <h3 className="textCover text-sm ml-4 md:ml-14 lg:ml-20">Welcome aboard my friend, let's to develop !</h3>
+                    <h3 className="tittleCover text-2xl ml-4 ">Administrator Page</h3>
+                    <h3 className="textCover text-sm ml-4 ">Welcome aboard my friend, let's to develop !</h3>
                 </div>
             </div>
         </>
