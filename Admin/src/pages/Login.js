@@ -6,7 +6,7 @@ import '../assets/styles/pages.css';
 import Cover from '../assets/img/cover-login.png';
 import Logo from '../assets/img/logo-fix.png';
 import Email from '../assets/img/email.png';
-import Key from '../assets/img/key.png';
+import Key from '../assets/img/lock.png';
 import showIcon from '../assets/img/eye.png';
 import showOffIcon from '../assets/img/eye_invisible.png';
 import axios from 'axios';

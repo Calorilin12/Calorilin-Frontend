@@ -1,16 +1,23 @@
 # Calorilin-Frontend
 Aplikasi Calorilin untuk bagian Frontend.
 
-Sprint 2 yang sukses dideliver :
+Fitur Pada Sprint 2 :
 - Fitur Read All Pelanggan dan Detail Pelanggan
 - Fitur Read All Resep Makanan dan Detail Resep
 - Fitur Create Resep Makanan
 
-Sprint 3 :
-- Fitur Delete Pelanggan
-- Fitur Update dan Delete Resep Makanan
-- Fitur Create, Read, Update, Delete Kalori Bahan Makanan
-- Fitur Search
+Fitur Pada Sprint 3 :
+- Fitur delete pelanggan
+- Fitur update dan delete resep makanan
+- Fitur create, read, update, delete kalori bahan makanan
+- Fitur search pada tiap menu (pengguna, jadwal, resep, dan kalori)
+- Fitur sorting data (data terbaru, data terlama, nama a-z, dan nama z-a) pada tiap menu
+- Fitur ubah password admin
+- Fitur grafik untuk memonitor banyaknya pengguna tiap bulan
+
+Link domain name hasil deploy :
+- Landing Page -> https://calorilin.me/
+- Admin Page -> https://admin.calorilin.me/
 
 Link github backend jika diperlukan :
 https://github.com/Calorilin12/Calorilin-Backend.git

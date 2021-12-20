@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import Button from '@material-tailwind/react/Button';
 import Icon from '@material-tailwind/react/Icon';
-import NavbarInput from '@material-tailwind/react/NavbarInput';
+import Profile from '../assets/img/person-icon.jpg';
 import Image from '@material-tailwind/react/Image';
 import Dropdown from '@material-tailwind/react/Dropdown';
 import DropdownItem from '@material-tailwind/react/DropdownItem';
@@ -65,8 +65,8 @@ export default function AdminNavbar({ showSidebar, setShowSidebar }) {
                             <Dropdown
                                 color="transparent"
                                 buttonText={
-                                    <div className="w-12">
-                                        <Image src={ProfilePicture} rounded />
+                                    <div className="w-10">
+                                        <Image src={Profile} rounded />
                                     </div>
                                 }
                                 rounded
