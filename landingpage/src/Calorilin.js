@@ -18,15 +18,11 @@ import kris from './assets/img/kris.png';
 import dedi from './assets/img/dedi.png';
 import reinata from './assets/img/reinata.png';
 import logo from './assets/img/Logo.png'
-<<<<<<< HEAD
-import {Navbar, Nav, Container,NavDropdown } from "react-bootstrap"
+import {Navbar, Nav, Container,NavDropdown } from "react-bootstrap";
+import axios from 'axios';
 AOS.init({
   once: true,
 });
-=======
-import {Navbar, Nav, Container,NavDropdown } from "react-bootstrap";
-import axios from 'axios';
->>>>>>> 39231574cc0ec778cda9e4684dbc014497e811cd
 
 function Calorilin() {
 
@@ -93,8 +89,8 @@ function Calorilin() {
             <h1 className="showcase-title">Make your life is healthier</h1>
             <p className="showcase-description">Food calorie counter app with daily food control</p>
             <div className="social-list-showcase">
-              <i className="fab fa-instagram fa-2x"></i>
-              <i className="fab fa-github fa-2x"></i>
+              <a href="https://www.instagram.com/app.calorilin/"><i className="fab fa-instagram fa-2x"></i></a>
+              <a href="https://github.com/Calorilin12"><i className="fab fa-github fa-2x"></i></a>
               <a href="#" className="btn btn-started">Get started</a>
             </div>
           </div>
@@ -165,7 +161,7 @@ function Calorilin() {
           <div className="card-box-info">
           {/* Iframe  */}
           <div class="youtube">
-            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+            <iframe width="790" height="475" src="https://www.youtube.com/embed/C8xOxDJ_dF4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
 
           </div>

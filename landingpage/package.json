@@ -6,16 +6,11 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-<<<<<<< HEAD
     "aos": "^2.3.4",
-    "bootstrap": "^5.1.3",
-    "gsap": "^3.9.0",
-    "node": "^17.2.0",
-=======
     "axios": "^0.24.0",
     "bootstrap": "^5.1.3",
-    "node": "^16.13.0",
->>>>>>> 39231574cc0ec778cda9e4684dbc014497e811cd
+    "gsap": "^3.9.0",
+    "node": "^17.3.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.3",
     "react-dom": "^17.0.2",

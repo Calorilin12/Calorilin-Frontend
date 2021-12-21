@@ -142,6 +142,7 @@ ul {
 .social-list-showcase .fa-github,
 .social-list-showcase .fa-instagram {
   margin-right: 15px;
+  color: #1E272E;
 }
 
 .btn-started {
@@ -353,29 +354,6 @@ span {
   display: flex;
   justify-content: center;
   width: 100%;
-}
-
-.responsive-iframe {
-  width: 75%;
-  height: 450px;
-}
-
-@media (max-width:1028px) {
-  .responsive-iframe {
-    height: 300px;
-  }
-}
-
-@media (max-width:750px) {
-  .responsive-iframe {
-    height: 200px;
-  }
-}
-
-@media (max-width:550px) {
-  .responsive-iframe {
-    height: 175px;
-  }
 }
 
 .right-card-info {
