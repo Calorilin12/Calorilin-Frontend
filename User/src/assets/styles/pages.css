@@ -1,0 +1,89 @@
+.box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.login {
+    width: 70%;
+}
+.link{
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    box-shadow: 0px 3px 4px grey;
+    display: inline-block;
+    border-radius: 48px;
+    font-weight: 300;
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+}
+
+.logo-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+/* .inputField, h6{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    border-radius: 8px;
+} */
+
+/* label, span, strong{
+    font-family: 'Poppins', sans-serif;
+} */
+
+/* h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+} */
+
+.title{
+    position: relative;
+    left: 5px;
+    top: 16px;
+}
+
+#toggle {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+#Icon {
+    position: absolute;
+    top: 49%;
+    left: 15px;
+    transform: translateY(-50%);
+}
+
+.inputBox {
+    position: relative;
+}
+
+.imageCover{
+    position: relative;
+    z-index: 1;
+    top: 0px;
+}
+.tittleCover{
+    position: absolute;
+    top: 68%;
+    z-index: 2;
+}
+.textCover{
+    position: absolute;
+    top: 74%;
+    z-index: 2;
+}
