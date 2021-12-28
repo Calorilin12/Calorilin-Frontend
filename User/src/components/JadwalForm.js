@@ -1,11 +1,12 @@
 import React , {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Card from '@material-tailwind/react/Card';
 import CardHeader from '@material-tailwind/react/CardHeader';
 import CardBody from '@material-tailwind/react/CardBody';
 import View from '../assets/img/view.png';
 import Delete from '../assets/img/delete.png';
 import Search from 'assets/img/search-grey.png';
+import ModalDelete from './ModalJadwalDelete';
 import { FOOD_MATERIALS_FAVORITES } from 'utils/url';
 import { getToken } from 'utils/auth';
 import axios from 'axios';
@@ -21,61 +22,63 @@ export default function JadwalForm() {
     const config = {
         headers: { Authorization: `Bearer ${getToken()}` }
     };
+
+    const { id } = useParams();
     useEffect(() => {
         axios
-            .get(FOOD_MATERIALS_FAVORITES, config)
+            .get(FOOD_MATERIALS_FAVORITES + id, config)
             .then((res) => {
                 console.log("masuk bro");
-                console.log(res.data.data);
-                setApiData(res.data.data);
+                console.log(res.data);
+                setApiData(res.data);
             })
             .catch((err) => {
                 console.log(err);
             }); 
     }, [refreshData]);
 
-    const sortTerbaru = () => {
-        const sorted = [...apiData].sort((a, b) => {
-            return b.id - a.id;
-        });
-        setApiData(sorted);
-    };
-    const sortTerlama = () => {
-        const sorted = [...apiData].sort((a, b) => {
-            return a.id - b.id;
-        });
-        setApiData(sorted);
-    };
+    // const sortTerbaru = () => {
+    //     const sorted = [...apiData].sort((a, b) => {
+    //         return b.id - a.id;
+    //     });
+    //     setApiData(sorted);
+    // };
+    // const sortTerlama = () => {
+    //     const sorted = [...apiData].sort((a, b) => {
+    //         return a.id - b.id;
+    //     });
+    //     setApiData(sorted);
+    // };
     
-    const sortAsc = () => {
-        const sorted = [...apiData].sort((a, b) => {
-            return a.username.localeCompare(b.username);
-        });
-        setApiData(sorted);
-    }
+    // const sortAsc = () => {
+    //     const sorted = [...apiData].sort((a, b) => {
+    //         return a.username.localeCompare(b.username);
+    //     });
+    //     setApiData(sorted);
+    // }
 
-    const sortDesc = () => {
-        const sorted = [...apiData].sort((a, b) => {
-            return b.username.localeCompare(a.username);
-        });
-        setApiData(sorted);
-    }
+    // const sortDesc = () => {
+    //     const sorted = [...apiData].sort((a, b) => {
+    //         return b.username.localeCompare(a.username);
+    //     });
+    //     setApiData(sorted);
+    // }
     return (
     <>
-        <Card className="bg-gray-100">
+        <Card className="">
             <CardHeader color="green" contentPosition="none">
                 <div className="w-full flex items-center justify-between">
-                    <h2 className="text-white text-2xl">Jadwal Makan Pengguna</h2>
+                    <h2 className="text-white text-2xl">Jadwal Makan Anda</h2>
                 </div>
             </CardHeader>
-            <div className="flex flex-row items-center justify-between">
+            {/* <div className="flex flex-row items-center justify-between">
                 <div className="ml-4">
                     <div className="absolute ml-4 mt-11">
                         <img src={Search} alt="Icon Search" className="w-4 h-4"/>
                     </div>
                     <div className="items-end mt-8 mb-1 mr-4"> 
                         <input class="border-2 border-gray-300 bg-white h-10 pl-10 w-56 rounded-lg text-sm focus:outline-none"
-                                type="search" name="search" placeholder="Search" onChange = {(e) => { setSearch(e.target.value); }}>
+                                type="search" name="search" placeholder="Cari Waktu Makan" onChange = {(e) => { setSearch(e.target.value); }}>
                         </input>
                     </div>
                 </div>
@@ -87,8 +90,9 @@ export default function JadwalForm() {
                         <option onClick={sortDesc}>Nama Pengguna Z-A</option>
                     </select>
                 </div>
-            </div>
+            </div> */}
             <CardBody>
+                <div className="bg-secondary500 w-48 h-8 rounded-2xl text-white font-semibold text-sm flex justify-center items-center">Total Kalori Hari Ini : {apiData.reduce((total, currentValue) => total = total + currentValue.calory,0)}</div><br/>
                 <div className="overflow-x-auto">
                     <table className="items-center w-full bg-transparent border-collapse">
                         <thead className="bg-secondary100">
@@ -97,7 +101,7 @@ export default function JadwalForm() {
                                     No
                                 </th>
                                 <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
-                                    Nama
+                                    Waktu Makan
                                 </th>
                                 <th className="px-2 text-teal-500 align-middle border-b border-solid border-gray-200 py-2 text-sm whitespace-nowrap font-light text-left">
                                     Menu Pilihan
@@ -114,7 +118,7 @@ export default function JadwalForm() {
                             {apiData.filter(val => {
                                 if(search === ''){
                                     return val;
-                                } else if(val.username.toLowerCase().includes(search.toLowerCase())){
+                                } else if(val.time_show.toLowerCase().includes(search.toLowerCase())){
                                     return val;
                                 }
                             }).map((jadwal, index) =>
@@ -123,7 +127,7 @@ export default function JadwalForm() {
                                         {index+1}
                                     </th>
                                     <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
-                                        {jadwal.username}
+                                        {jadwal.time_show}
                                     </td>
                                     <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-3 text-left">
                                         {jadwal.name}
@@ -138,7 +142,7 @@ export default function JadwalForm() {
                                             onClick={() => {
                                                 setShowModalDelete(true);
                                                 setDeleteItem(jadwal.id);
-                                                setNameItem(jadwal.username);
+                                                setNameItem(jadwal.time_show);
                                                 setNameFood(jadwal.name);
                                             }}>
                                         <img src={Delete} alt="Tombol Hapus"/></button>
@@ -151,6 +155,7 @@ export default function JadwalForm() {
                 </div>
             </CardBody>
         </Card>
+        {showModalDelete && <ModalDelete closeModalDelete={setShowModalDelete} onSuccess={setRefreshData} deleteItem={deleteItem} nameItem={nameItem} nameFood={nameFood}/>}
     </>
     );
 }

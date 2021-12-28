@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {Link, useParams} from 'react-router-dom';
-import { FOOD_MATERIALS_FAVORITES } from 'utils/url';
-import { getToken } from 'utils/auth';
+import { FOOD_MATERIALS_FAVORITES_DETAILS } from 'utils/url';
+import { getID, getToken } from 'utils/auth';
 import axios from 'axios';
 
 function LihatJadwal() {
@@ -12,7 +12,7 @@ function LihatJadwal() {
     };
     useEffect(() => {
         axios
-            .get(FOOD_MATERIALS_FAVORITES + id, config)
+            .get(FOOD_MATERIALS_FAVORITES_DETAILS + id, config)
             .then((res) => {
                 console.log(res);
                 console.log(res.data)
@@ -78,7 +78,7 @@ function LihatJadwal() {
                     </div>
                     <div className="flex justify-end mt-4 mr-10 mb-10"> 
                         <Link
-                            to="/jadwal-makan"
+                            to={`/jadwal-makan/${getID()}`}
                             className="flex bg-secondary500 focus:ring focus:ring-gray-200 items-center justify-center gap-4 text-sm text-white font-light px-4 py-2 rounded-lg w-32"
                         >
                             Kembali

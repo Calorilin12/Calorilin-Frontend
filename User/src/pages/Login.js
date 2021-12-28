@@ -34,7 +34,7 @@ function Login() {
             })
             .then((res) => {
                 console.log(res.data);
-                login(res.data.token);
+                login(res.data.token, res.data.user.id);
                 history.push("/dashboard");
             }).catch((err) => {
                 console.log(err);
@@ -91,8 +91,9 @@ function Login() {
                 </div>
                 <div className="imageCover bg-white w-full md:w-6/12">
                     <img src={Cover} alt="Cover" className="h-screen w-full"/> 
-                    <h3 className="tittleCover text-2xl ml-4 ">Welcome aboard my friend</h3>
-                    <h3 className="textCover text-sm ml-4 ">Let's keep a healthy lifestyle !</h3>
+                    <h3 className="tittleCover text-2xl">Halo, Teman!</h3>
+                    <h3 className="textCover1 text-sm">Daftarkan diri anda dan mulai gunakan layanan kami segera</h3>
+                    <a href="https://play.google.com/store/apps/details?id=com.calorilin.calorilin_mobile" className="textCover2 text-sm p-3.5 rounded-3xl border border-green-500 text-primary500">DAFTAR</a> 
                 </div>
             </div>
         </>

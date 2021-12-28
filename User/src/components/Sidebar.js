@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { NavLink, Link, useHistory } from 'react-router-dom';
 import AdminNavbar from './AdminNavbar';
-import { logout } from "utils/auth";
+import { getID, logout } from "utils/auth";
 import Icon from '@material-tailwind/react/Icon';
 import Logo from '../assets/img/logo-fix.png'
 
@@ -44,7 +44,7 @@ export default function Sidebar() {
                             </li>
                             <li className="rounded-lg mb-2 ">
                                 <NavLink
-                                    to="/jadwal-makan"
+                                    to={`/jadwal-makan/${getID()}`}
                                     className="flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg"
                                     activeClassName="bg-primary500 text-white shadow-md"
                                 >

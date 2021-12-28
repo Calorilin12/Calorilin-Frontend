@@ -32,7 +32,7 @@ export const APP_ROUTE = [
   },
   {
     name: "Jadwal Makan",
-    path: "/jadwal-makan",
+    path: "/jadwal-makan/:id",
     exact: true,
     component: Jadwal,
     private: true,
