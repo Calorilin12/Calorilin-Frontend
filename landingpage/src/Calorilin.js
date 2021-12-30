@@ -17,7 +17,9 @@ import fabyan from './assets/img/fabyan.png';
 import kris from './assets/img/kris.png';
 import dedi from './assets/img/dedi.png';
 import reinata from './assets/img/reinata.png';
-import logo from './assets/img/Logo.png'
+import logo from './assets/img/Logo.png';
+import play from './assets/img/playstore.png'
+
 import {Navbar, Nav, Container,NavDropdown } from "react-bootstrap";
 import axios from 'axios';
 AOS.init({
@@ -61,8 +63,9 @@ function Calorilin() {
     <div classNameName="App">
       <div className="lp-container">
       {/* <!-- nav --> */}
-      <Navbar  sticky="top" collapseOnSelect expand="lg"  variant="dark">
-        <Container className="navbar">
+
+      <Navbar sticky="top" collapseOnSelect expand="lg" variant="dark" >
+        <Container classname="navbar">
         <img src={logo}></img>
         <Navbar.Brand href="#home">Calorilin</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -72,6 +75,9 @@ function Calorilin() {
             <Nav.Link href="#feature">Feature</Nav.Link>
             <Nav.Link href="#team">Team</Nav.Link>
             <Nav.Link href="#contact">Contact</Nav.Link>
+          </Nav>
+          <Nav>
+            <Nav.Link href="https://user.calorilin.me/">Login User</Nav.Link>
           </Nav>
         </Navbar.Collapse>
         </Container>
@@ -91,7 +97,7 @@ function Calorilin() {
             <div className="social-list-showcase">
               <a href="https://www.instagram.com/app.calorilin/"><i className="fab fa-instagram fa-2x"></i></a>
               <a href="https://github.com/Calorilin12"><i className="fab fa-github fa-2x"></i></a>
-              <a href="#" className="btn btn-started">Get started</a>
+              <a href="https://play.google.com/store/apps/details?id=com.calorilin.calorilin_mobile" className="btn btn-started">Download</a>
             </div>
           </div>
 
@@ -317,7 +323,7 @@ function Calorilin() {
       <!-- testimonial --> */}
     <div className="section-info">
       <h1 className="wrapper-testi-title">What do they say about <span>Calorilin ??</span></h1>
-      <div data-aos-offset="1500" data-aos="fade-up" data-aos-duration="2000" className="wrapper-testi">
+      <div data-aos="fade-up" data-aos-duration="2000" className="wrapper-testi">
         <div className="box-testi">
           <i className="fas fa-quote-left quote"></i>
           <p>“Calorilin memberikan pengalaman terbaru dalam pengelolaan pola makan, memberikan fitur yang berguna bagi pengguna dan mudah untuk digunakan”</p>
@@ -390,7 +396,7 @@ function Calorilin() {
         </div>
 
         <div className="row justify-content-center">
-          <div className="col-lg-4" data-aos="fade-right" data-aos-duration="2000" data-aos-offset="1500">
+          <div className="col-lg-4" data-aos="fade-right" data-aos-duration="2000">
             <div className="card-contact text-light text-left mb-3">
               <div className="card-body">
                 <h5 className="card-title">Our Contact</h5>
@@ -405,7 +411,7 @@ function Calorilin() {
             </ul>
           </div>
 
-          <div className="col-lg-6" data-aos="fade-left" data-aos-duration="2000" data-aos-offset="1500">
+          <div className="col-lg-6" data-aos="fade-left" data-aos-duration="2000">
             <form className="contact input">
               <div className="form-group">
                 <label for="name">Name</label>
@@ -444,19 +450,20 @@ function Calorilin() {
 
 
       {/* <!-- footer --> */}
-      <div class="footer-basic">
+      <div className="footer-basic">
         <footer>
-            <div class="social"><a href="https://www.instagram.com/app.calorilin/"><i class="fab fa-instagram"></i></a><a href="https://github.com/Calorilin12"><i class="fab fa-github"></i></a></div>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#home">Home</a></li>
-                <li class="list-inline-item"><a href="#feature">Feature</a></li>
-                <li class="list-inline-item"><a href="#team">Team</a></li>
-                <li class="list-inline-item"><a href="#contact">Contact</a></li>
+            <div className="social"><a href="https://www.instagram.com/app.calorilin/"><i className="fab fa-instagram"></i></a><a href="https://github.com/Calorilin12"><i className="fab fa-github"></i></a></div>
+            <ul className="list-inline">
+                <li className="list-inline-item"><a href="#home">Home</a></li>
+                <li className="list-inline-item"><a href="#feature">Feature</a></li>
+                <li className="list-inline-item"><a href="#team">Team</a></li>
+                <li className="list-inline-item"><a href="#contact">Contact</a></li>
                 
-                <li class="list-inline-item"><Link to="/Terms">Terms & Conditions</Link></li>
-                <li class="list-inline-item"><Link to="/Privacy">Privacy Policy</Link></li>
+                <li className="list-inline-item"><Link to="/Terms">Terms & Conditions</Link></li>
+                <li className="list-inline-item"><Link to="/Privacy">Privacy Policy</Link></li>
             </ul>
-            <p class="copyright">Calorilin © 2021</p>
+            <a href='https://play.google.com/store/apps/details?id=com.calorilin.calorilin_mobile'><img className="copy-img" src={play} alt="" /></a>
+            <p className="copyright">Calorilin © 2021</p>
         </footer>
       </div>
 

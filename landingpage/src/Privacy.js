@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
-import logo from './assets/img/Logo.png'
+import logo from './assets/img/Logo.png';
+import play from './assets/img/playstore.png'
 import {Navbar, Nav, Container,NavDropdown } from "react-bootstrap"
 
 function Privacy() {
@@ -9,10 +10,10 @@ function Privacy() {
     <div classNameName="App">
       <div className="lp-container">
       {/* <!-- nav --> */}
-      <Navbar  sticky="top" collapseOnSelect expand="lg"  variant="dark">
-        <Container className="navbar">
+      <Navbar sticky="top" collapseOnSelect expand="lg" variant="dark" >
+        <Container classname="navbar">
         <img src={logo}></img>
-        <Navbar.Brand href="#home">Calorilin</Navbar.Brand>
+        <Navbar.Brand href="/">Calorilin</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -20,6 +21,9 @@ function Privacy() {
             <Nav.Link href="/">Feature</Nav.Link>
             <Nav.Link href="/">Team</Nav.Link>
             <Nav.Link href="/">Contact</Nav.Link>
+          </Nav>
+          <Nav>
+            <Nav.Link href="https://user.calorilin.me/">Login User</Nav.Link>
           </Nav>
         </Navbar.Collapse>
         </Container>
@@ -115,6 +119,7 @@ function Privacy() {
                 <li class="list-inline-item"><Link to="/Terms">Terms & Conditions</Link></li>
                 <li class="list-inline-item"><Link to="/Privacy">Privacy Policy</Link></li>
             </ul>
+            <a href='https://play.google.com/store/apps/details?id=com.calorilin.calorilin_mobile'><img className="copy-img" src={play} alt="" /></a>
             <p class="copyright">Calorilin © 2021</p>
         </footer>
       </div>
