@@ -87,3 +87,11 @@
     top: 74%;
     z-index: 2;
 }
+@media (max-width: 800px) {
+    .imageCover {
+        display: none;
+    }
+    .respon-down{
+        display: block !important;
+    }
+  }
