@@ -80,6 +80,7 @@ function Login() {
                                 </div>
                             </div>
                             <Link className="link bg-primary500 mt-10 focus:ring focus:ring-green-100 w-full h-14" onClick={_onSubmit}>MASUK</Link>
+                            <a href="https://play.google.com/store/apps/details?id=com.calorilin.calorilin_mobile" className="respon-down link mt-10 border border-green-500 text-primary500 focus:ring focus:ring-green-100 w-full h-14" >DOWLOAD</a>
                         </form>
                         {error && 
                                 <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded relative mt-4" role="alert">
@@ -91,9 +92,9 @@ function Login() {
                 </div>
                 <div className="imageCover bg-white w-full md:w-6/12">
                     <img src={Cover} alt="Cover" className="h-screen w-full"/> 
-                    <h3 className="tittleCover text-2xl">Halo, Teman!</h3>
-                    <h3 className="textCover1 text-sm">Daftarkan diri anda dan mulai gunakan layanan kami segera</h3>
-                    <a href="https://play.google.com/store/apps/details?id=com.calorilin.calorilin_mobile" className="textCover2 text-sm p-3.5 rounded-3xl border border-green-500 text-primary500">DAFTAR</a> 
+                    <h3 className="tittleCover text-2xl">Selamat Datang,</h3>
+                    <h3 className="textCover1 text-sm">Download aplikasi di google playstore dan mulai gunakan layanan kami segera</h3>
+                    <a href="https://play.google.com/store/apps/details?id=com.calorilin.calorilin_mobile" className="textCover2 text-sm p-3.5 pl-20 pr-20 rounded-3xl border border-green-500 text-primary500">DOWNLOAD</a> 
                 </div>
             </div>
         </>
