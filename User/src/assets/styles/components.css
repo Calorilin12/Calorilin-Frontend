@@ -20,7 +20,31 @@
     cursor: pointer;
 }
 
+.cards{
+    width: 480px;
+    height: 390px;
+}
+
 .cards:hover {
     transform: scale(1.1);
     box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+    background-color: #27AE61;
+}
+
+.imageArticle{
+    width: 850px;
+    height: 350px;
+}
+
+.coverArticle{
+    position: relative;
+    z-index: 1;
+    top: 0px;
+}
+
+.tittleCover{
+    position: absolute;
+    top: 30%;
+    margin-left: 185px;
+    z-index: 2;
 }

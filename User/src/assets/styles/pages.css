@@ -96,10 +96,10 @@
     z-index: 2;
 }
 
-a:hover {
+/* a:hover {
     background-color: #27AE61;
     color: white;
-}
+} */
 
 
 @media (max-width: 800px) {
