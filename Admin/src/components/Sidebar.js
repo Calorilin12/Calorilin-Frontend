@@ -82,6 +82,16 @@ export default function Sidebar() {
                                     Kalori Makanan
                                 </NavLink>
                             </li>
+                            <li className="rounded-lg mb-2 text-gray-700">
+                                <NavLink
+                                    to="/artikel"
+                                    className="flex items-center gap-4 text-sm text-gray-700 font-light px-4 py-3 rounded-lg"
+                                    activeClassName="bg-primary500 text-white shadow-md"
+                                >
+                                    <Icon name="book" size="2xl" />
+                                    Artikel
+                                </NavLink>
+                            </li>
                         </ul>
 
                         <ul className="flex-col min-w-full flex list-none absolute bottom-0">

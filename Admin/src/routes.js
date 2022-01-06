@@ -22,6 +22,10 @@ import EditKalori from "pages/Edit-Kalori-Makanan";
 import LihatJadwal from "pages/Lihat-Jadwal";
 import LihatPengguna from "pages/Lihat-Pengguna";
 import LihatKalori from "pages/Lihat-Kalori-Makanan";
+import Artikel from "pages/Artikel";
+import TambahArtikel from "pages/Tambah-Artikel";
+import LihatArtikel from "pages/Lihat-Artikel";
+import EditArtikel from "pages/Edit-Artikel";
 
 export const APP_ROUTE = [
   {
@@ -134,6 +138,34 @@ export const APP_ROUTE = [
     path: "/edit-resep-makanan/:id",
     exact: true,
     component: EditResep,
+    private: true,
+  },
+  {
+    name: "Artikel",
+    path: "/artikel",
+    exact: true,
+    component: Artikel,
+    private: true,
+  },
+  {
+    name: "Tambah Artikel",
+    path: "/tambah-artikel",
+    exact: true,
+    component: TambahArtikel,
+    private: true,
+  },
+  {
+    name: "Lihat Artikel",
+    path: "/lihat-artikel/:id",
+    exact: true,
+    component: LihatArtikel,
+    private: true,
+  },
+  {
+    name: "Edit Artikel",
+    path: "/edit-artikel/:id",
+    exact: true,
+    component: EditArtikel,
     private: true,
   },
 ];

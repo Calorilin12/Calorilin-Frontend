@@ -19,3 +19,8 @@
 .option {
     cursor: pointer;
 }
+
+.imageArticle {
+    width: 500px;
+    height: 290px;
+}

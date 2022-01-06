@@ -17,8 +17,8 @@ export default function ChartLine() {
         axios
             .get(DASHBOARD, Config)
             .then((res) => {
-                setApiData(res.data.data2020);
-                setApiDataNow(res.data.data2021);
+                setApiData(res.data.data2021);
+                setApiDataNow(res.data.data2022);
             var config = {
                 type: 'line',
                 data: {
@@ -41,9 +41,9 @@ export default function ChartLine() {
                             label: new Date().getFullYear(),
                             backgroundColor: '#03a9f4',
                             borderColor: '#03a9f4',
-                            data: [res.data.data2021.january, res.data.data2021.february, res.data.data2021.march, res.data.data2021.april, 
-                                res.data.data2021.may, res.data.data2021.june, res.data.data2021.july, res.data.data2021.august, res.data.data2021.september, 
-                                res.data.data2021.october, res.data.data2021.november, res.data.data2021.december],
+                            data: [res.data.data2022.january, res.data.data2022.february, res.data.data2022.march, res.data.data2022.april, 
+                                res.data.data2022.may, res.data.data2022.june, res.data.data2022.july, res.data.data2022.august, res.data.data2022.september, 
+                                res.data.data2022.october, res.data.data2022.november, res.data.data2022.december],
                             fill: false,
                         },
                         {
@@ -51,9 +51,9 @@ export default function ChartLine() {
                             fill: false,
                             backgroundColor: '#ff9800',
                             borderColor: '#ff9800',
-                            data: [res.data.data2020.januaryBefore, res.data.data2020.februaryBefore, res.data.data2020.marchBefore, 
-                                res.data.data2020.aprilBefore, res.data.data2020.mayBefore, res.data.data2020.juneBefore, res.data.data2020.julyBefore, res.data.data2020.augustBefore,
-                                res.data.data2020.septemberBefore, res.data.data2020.octoberBefore, res.data.data2020.novemberBefore, res.data.data2020.decemberBefore],
+                            data: [res.data.data2021.januaryBefore, res.data.data2021.februaryBefore, res.data.data2021.marchBefore, 
+                                res.data.data2021.aprilBefore, res.data.data2021.mayBefore, res.data.data2021.juneBefore, res.data.data2021.julyBefore, res.data.data2021.augustBefore,
+                                res.data.data2021.septemberBefore, res.data.data2021.octoberBefore, res.data.data2021.novemberBefore, res.data.data2021.decemberBefore],
                         },
                     ],
                 },
