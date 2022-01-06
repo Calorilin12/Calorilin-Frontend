@@ -26,7 +26,7 @@ export default function ArticleCard() {
         <>
             <div className="relative flex flex-wrap bg-gray-100">
                 {apiData.map(article =>
-                    <Link key={article.id} class="cards bg-white shadow-md rounded-xl mx-4 my-5"  to={`/lihat-artikel/${article.id}`}>
+                    <Link key={article.id} className="cards cardsArticle bg-white shadow-md rounded-xl mx-4 my-5"  to={`/lihat-artikel/${article.id}`}>
                         <div className="overflow-x-hidden rounded-t-xl relative">
                             <img src={`${BASE_URL}/article-images/${article.article_image}`} alt={article.title} className="h-64 w-full object-cover"/>
                         </div>

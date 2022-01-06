@@ -53,8 +53,8 @@ function Login() {
                     flex items-center justify-center">
                     <div className="w-full h-100">
                         <img src={Logo} className='w-auto h-16'/>
-                        <h1 className="text-xl md:text-2xl font-regular leading-tight mt-12">Log in to your account</h1>
-                        <form action="#" className="mt-6">
+                        <h1 className="text-xl md:text-2xl font-regular leading-tight mt-8">Log in to your account</h1>
+                        <form action="#" className="mt-5">
                             <div className="inputBox">
                                 <div id="Icon">
                                     <img src={Email} alt="Icon Email"/> 
@@ -63,7 +63,7 @@ function Login() {
                                 <input type="email" name="email" id="" placeholder="Enter Email Address" className="w-full px-12 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-green focus:bg-white focus:outline-none"
                                 value={email} onChange={(e) => setEmail(e.target.value)} />
                             </div>
-                            <div className="mt-4">
+                            <div className="mt-3">
                                 <div className="inputBox">
                                     <div id="Icon">
                                         <img src={Key} alt="Icon Key"/> 
@@ -82,7 +82,7 @@ function Login() {
                                 </div>
                             <Link className="text-center w-full block bg-primary500 hover:bg-blue-400 focus:bg-primary500 text-white font-semibold rounded-lg
                                     px-4 py-3 mt-6" onClick={_onSubmit}>Log In</Link>
-                            <h4 className='leading-tight text-gray-700 text-base pt-6'>Test : calorilintest@gmail.com</h4>
+                            <h4 className='leading-tight text-gray-700 text-base pt-2'>Test : calorilintest@gmail.com</h4>
                             <h4 className='leading-tight text-gray-700 text-base'>Password : 123456</h4>
                         </form>
                         {error && 
@@ -100,7 +100,7 @@ function Login() {
                             </div>
                         </button>
                         </a>
-                        <p className="text-sm text-gray-500 mt-12">&copy; 2022 Calorilin - All Rights Reserved.</p>
+                        <p className="text-sm text-gray-500 mt-8">&copy; 2022 Calorilin - All Rights Reserved.</p>
                     </div>  
                 </div>
 

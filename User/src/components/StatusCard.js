@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { DASHBOARD } from 'utils/url';
-import { getToken } from 'utils/auth';
+import { DASHBOARD, FOOD_MATERIALS_FAVORITES } from 'utils/url';
+import { getToken, getID } from 'utils/auth';
 import axios from 'axios';
 import Icon from '@material-tailwind/react/Icon';
 
 export default function StatusCard() {
     const [apiData, setApiData] = useState([]);
+    const [data, setData] = useState([]);
     const config = {
         headers: { Authorization: `Bearer ${getToken()}` }
     };
@@ -14,6 +15,16 @@ export default function StatusCard() {
             .get(DASHBOARD, config)
             .then((res) => {
                 setApiData(res.data.dashboard);
+            })
+            .catch((err) => {
+                console.log(err);
+            }); 
+        axios
+            .get(FOOD_MATERIALS_FAVORITES + `${getID()}`, config)
+            .then((res) => {
+                console.log("masuk bro");
+                console.log(res.data);
+                setData(res.data);
             })
             .catch((err) => {
                 console.log(err);
@@ -29,15 +40,15 @@ export default function StatusCard() {
                             <div className="flex flex-wrap">
                                 <div className="relative w-full pr-4 max-w-full flex-grow flex-1 mt-2 ml-2">
                                     <h5 className="text-blueGray-400 uppercase text-xs mb-1">
-                                        Pengguna
+                                        Kalori Harian Anda
                                     </h5>
                                     <span className="font-semibold text-2xl text-blueGray-700">
-                                        {apiData.users}
+                                        {data.reduce((total, currentValue) => total = total + currentValue.calory,0)}
                                     </span>
                                 </div>
                                 <div className="relative w-auto pl-4 flex-initial">
                                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-16 h-16 shadow-lg rounded-full bg-pink-500">
-                                        <Icon name="groups" size="3xl"/>
+                                        <Icon name="restaurant" size="3xl"/>
                                     </div>
                                 </div>
                             </div>

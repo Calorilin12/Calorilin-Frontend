@@ -5,7 +5,6 @@ import CardHeader from '@material-tailwind/react/CardHeader';
 import CardBody from '@material-tailwind/react/CardBody';
 import View from '../assets/img/view.png';
 import Delete from '../assets/img/delete.png';
-import Search from 'assets/img/search-grey.png';
 import ModalDelete from './ModalJadwalDelete';
 import { FOOD_MATERIALS_FAVORITES } from 'utils/url';
 import { getToken } from 'utils/auth';
@@ -37,32 +36,6 @@ export default function JadwalForm() {
             }); 
     }, [refreshData]);
 
-    // const sortTerbaru = () => {
-    //     const sorted = [...apiData].sort((a, b) => {
-    //         return b.id - a.id;
-    //     });
-    //     setApiData(sorted);
-    // };
-    // const sortTerlama = () => {
-    //     const sorted = [...apiData].sort((a, b) => {
-    //         return a.id - b.id;
-    //     });
-    //     setApiData(sorted);
-    // };
-    
-    // const sortAsc = () => {
-    //     const sorted = [...apiData].sort((a, b) => {
-    //         return a.username.localeCompare(b.username);
-    //     });
-    //     setApiData(sorted);
-    // }
-
-    // const sortDesc = () => {
-    //     const sorted = [...apiData].sort((a, b) => {
-    //         return b.username.localeCompare(a.username);
-    //     });
-    //     setApiData(sorted);
-    // }
     return (
     <>
         <Card className="">
@@ -71,26 +44,6 @@ export default function JadwalForm() {
                     <h2 className="text-white text-2xl">Jadwal Makan Anda</h2>
                 </div>
             </CardHeader>
-            {/* <div className="flex flex-row items-center justify-between">
-                <div className="ml-4">
-                    <div className="absolute ml-4 mt-11">
-                        <img src={Search} alt="Icon Search" className="w-4 h-4"/>
-                    </div>
-                    <div className="items-end mt-8 mb-1 mr-4"> 
-                        <input class="border-2 border-gray-300 bg-white h-10 pl-10 w-56 rounded-lg text-sm focus:outline-none"
-                                type="search" name="search" placeholder="Cari Waktu Makan" onChange = {(e) => { setSearch(e.target.value); }}>
-                        </input>
-                    </div>
-                </div>
-                <div className="mt-8 mr-4">
-                    <select className="option bg-secondary500 items-center justify-center gap-4 text-sm text-white font-light px-4 py-2 rounded-lg w-full h-9">
-                        <option onClick={sortTerlama}>Data Terlama</option>
-                        <option onClick={sortTerbaru}>Data Terbaru</option>
-                        <option onClick={sortAsc}>Nama Pengguna A-Z</option>
-                        <option onClick={sortDesc}>Nama Pengguna Z-A</option>
-                    </select>
-                </div>
-            </div> */}
             <CardBody>
                 <div className="bg-secondary500 w-48 h-8 rounded-2xl text-white font-semibold text-sm flex justify-center items-center">Total Kalori Hari Ini : {apiData.reduce((total, currentValue) => total = total + currentValue.calory,0)}</div><br/>
                 <div className="overflow-x-auto">
