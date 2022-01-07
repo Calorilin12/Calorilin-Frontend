@@ -9,7 +9,7 @@ import Email from '../assets/img/email.png';
 import Key from '../assets/img/lock.png';
 import showIcon from '../assets/img/eye.png';
 import showOffIcon from '../assets/img/eye_invisible.png';
-import article from '../assets/img/background.png';
+import background from '../assets/img/background.png';
 import axios from 'axios';
 
 function Login() {
@@ -47,13 +47,13 @@ function Login() {
         <>
             <section className="flex flex-col md:flex-row h-screen items-center">
                 <div className="bg-blue-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
-                    <img src={article} alt="" className="w-full h-full object-cover" />
+                    <img src={background} alt="" className="w-full h-full object-cover" />
                 </div>
                 <div className="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
                     flex items-center justify-center">
                     <div className="w-full h-100">
                         <img src={Logo} className='w-auto h-16'/>
-                        <h1 className="text-xl md:text-2xl font-regular leading-tight mt-8">Log in to your account</h1>
+                        <h1 className="text-xl md:text-2xl font-regular leading-tight mt-6">Log in to your account</h1>
                         <form action="#" className="mt-5">
                             <div className="inputBox">
                                 <div id="Icon">
@@ -100,7 +100,7 @@ function Login() {
                             </div>
                         </button>
                         </a>
-                        <p className="text-sm text-gray-500 mt-8">&copy; 2022 Calorilin - All Rights Reserved.</p>
+                        <p className="text-sm text-gray-500 mt-4">&copy; 2022 Calorilin - All Rights Reserved.</p>
                     </div>  
                 </div>
 

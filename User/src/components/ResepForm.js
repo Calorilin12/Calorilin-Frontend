@@ -124,9 +124,9 @@ export default function ResepForm() {
                         return val;
                     }
                     }).map(recipes =>
-                    <Link key={recipes.id} class="cards w-72 bg-white shadow-md rounded-3xl p-2 mx-3 my-5"  to={`/lihat-resep-makanan/${recipes.id}`}>
-                        <div className="overflow-x-hidden rounded-2xl relative">
-                            <img src={`${BASE_URL}/recipe-detail-images/${recipes.recipe_image}`} alt={recipes.name} className="h-40 rounded-2xl w-full object-cover"/>
+                    <Link key={recipes.id} class="cards w-72 bg-white shadow-md rounded-xl p-2 mx-3 my-5"  to={`/lihat-resep-makanan/${recipes.id}`}>
+                        <div className="overflow-x-hidden rounded-xl relative">
+                            <img src={`${BASE_URL}/recipe-detail-images/${recipes.recipe_image}`} alt={recipes.name} className="h-40 rounded-xl w-full object-cover"/>
                         </div>
                         <div className="mt-4 pl-3 pr-3 mb-2">
                             <p className="text-lg font-semibold text-gray-900 mb-0">{recipes.name}</p>
