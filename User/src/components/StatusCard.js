@@ -43,7 +43,7 @@ export default function StatusCard() {
                                         Kalori Harian Anda
                                     </h5>
                                     <span className="font-semibold text-2xl text-blueGray-700">
-                                        {data.reduce((total, currentValue) => total = total + currentValue.calory,0)}
+                                        {data.reduce((total, currentValue) => total = total + currentValue.calory,0)+"  Cal"}
                                     </span>
                                 </div>
                                 <div className="relative w-auto pl-4 flex-initial">
