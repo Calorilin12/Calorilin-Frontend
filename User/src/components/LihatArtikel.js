@@ -39,7 +39,7 @@ function LihatArtikel() {
                             </div>
                         </div>
                         <div className="w-full mt-3 md:mt-1 md:p-12">
-                            <p className="mb-4 text-md">{apiData.content}</p>
+                            <p className="text-justify mb-4 text-md">{apiData.content}</p>
                         </div>
                         <div className="flex justify-end items-center mt-14 ml-4 mr-4"> 
                             <Link
